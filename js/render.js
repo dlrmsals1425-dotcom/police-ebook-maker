@@ -591,27 +591,25 @@
     );
   }
 
-  function renderPage(project, page, opts) {
+  function pageHtml(project, page, opts) {
     opts = opts || {};
-    let html;
     switch (page.type) {
       case "cover":
-        html = renderCover(project, page, opts);
-        break;
+        return renderCover(project, page, opts);
       case "toc":
-        html = renderToc(project, page, opts);
-        break;
+        return renderToc(project, page, opts);
       case "chapter":
-        html = renderChapter(project, page, opts);
-        break;
+        return renderChapter(project, page, opts);
       case "summary":
-        html = renderSummaryPage(project, page, opts);
-        break;
+        return renderSummaryPage(project, page, opts);
       default:
-        html = renderGeneric(project, page, opts);
+        return renderGeneric(project, page, opts);
     }
+  }
+
+  function renderPage(project, page, opts) {
     const box = document.createElement("div");
-    box.innerHTML = html;
+    box.innerHTML = pageHtml(project, page, opts);
     return box.firstElementChild;
   }
 
@@ -677,6 +675,7 @@
 
   EB.Render = {
     page: renderPage,
+    pageHtml: pageHtml,
     nav: renderNav,
     fit: fitStage,
     tocData: tocData,

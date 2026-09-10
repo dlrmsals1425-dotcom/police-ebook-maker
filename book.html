@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#0b1f3a"><title>전자책은 이렇게 쓴다</title><style>/* 경찰 교육 전자책 — 디자인 토큰
+   외부 폰트/CDN 없이 시스템 한글 폰트 fallback */
+:root {
+  --navy-950: #071221;
+  --navy-900: #0b1f3a;
+  --navy-800: #123052;
+  --navy-700: #1b4270;
+  --navy-600: #24608f;
+  --blue-500: #2e6aa6;
+  --blue-400: #4a86c1;
+  --blue-100: #e7f0f8;
+  --gold: #b8963e;
+  --gold-soft: #d4bc6a;
+
+  --ink: #1c2430;
+  --ink-2: #3a4556;
+  --muted: #6b7687;
+  --line: #e2e6ec;
+  --line-strong: #c5ced8;
+
+  --paper: #ffffff;
+  --canvas: #dfe7ee;
+  --sidebar: #f4f7fa;
+  --chrome: #0b1f3a;
+
+  --point-bg: #eef4fa;
+  --point-fg: #123052;
+  --tip-bg: #ebf7f2;
+  --tip-fg: #0b6b4f;
+  --tip-line: #1a9a72;
+  --warn-bg: #fff3eb;
+  --warn-fg: #c2410c;
+  --warn-line: #e8590c;
+  --law-bg: #f4f0e8;
+  --law-fg: #5c4a1f;
+  --law-line: #8a7340;
+  --example-bg: #f3eef8;
+  --example-fg: #5b3d8f;
+  --do-bg: #e9f6ee;
+  --do-fg: #146c3a;
+  --dont-bg: #fdecec;
+  --dont-fg: #b42318;
+  --summary-bg: #0b1f3a;
+
+  --danger: #b42318;
+  --ok: #0b6b4f;
+
+  --font: "Pretendard", "Pretendard Variable", "Noto Sans KR",
+    "Malgun Gothic", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+  --font-mono: "Cascadia Code", "D2Coding", "Consolas", monospace;
+
+  --fs-cover: 40px;
+  --fs-chapter: 34px;
+  --fs-h1: 26px;
+  --fs-h2: 18px;
+  --fs-body: 14.5px;
+  --fs-sm: 12.5px;
+  --fs-caption: 11.5px;
+  --fs-label: 11px;
+
+  --lh-tight: 1.35;
+  --lh-body: 1.7;
+  --radius: 3px;
+  --shadow-page: 0 18px 50px rgba(11, 31, 58, 0.18), 0 2px 8px rgba(11, 31, 58, 0.08);
+
+  --page-w: 210mm;
+  --page-h: 297mm;
+  --page-pad-x: 16mm;
+  --page-pad-y: 14mm;
+
+  --toolbar-h: 56px;
+  --nav-w: 268px;
+  --ins-w: 292px;
+}
+
+/* 전자책 페이지 템플릿 — 화면·인쇄 공통 */
+
+.ebook-page {
+  width: var(--page-w);
+  height: var(--page-h);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-page);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+}
+
+.page-inner {
+  flex: 1 1 0;
+  padding: var(--page-pad-y) var(--page-pad-x) 6mm;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.page-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--page-pad-x) 8mm;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  flex: 0 0 auto;
+}
+
+.page-footer .brand-mini {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.page-footer .pg-num {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--navy-800);
+}
+
+.ebook-page.is-navy {
+  background: var(--navy-900);
+  color: #eef3f8;
+}
+
+.ebook-page.is-navy .page-footer {
+  color: #8fa3b8;
+}
+
+.ebook-page.is-navy .page-footer .pg-num {
+  color: var(--gold-soft);
+}
+
+.ebook-page.is-mist {
+  background: #f3f6f9;
+}
+
+/* 공통 타이포 */
+.kicker {
+  font-size: var(--fs-label);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue-500);
+}
+
+.pg-title {
+  margin: 0 0 6px;
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: var(--lh-tight);
+  color: var(--navy-900);
+}
+
+.pg-title.size-sm { font-size: 22px; }
+.pg-title.size-lg { font-size: 32px; }
+
+.pg-sub {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.blk + .blk {
+  margin-top: 10px;
+}
+
+.blk.summary-ribbon,
+.blk.learn-box {
+  margin-top: auto;
+}
+
+.h-block {
+  margin: 4px 0 2px;
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy-800);
+  line-height: 1.35;
+}
+
+.h-block.lv3 {
+  font-size: 15.5px;
+  font-weight: 700;
+}
+
+.p-block {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+}
+
+.bullets {
+  margin: 0;
+  padding-left: 1.15em;
+}
+
+.bullets li {
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  margin: 3px 0;
+}
+
+/* ——— COVER ——— */
+.cover-top {
+  background: linear-gradient(165deg, var(--navy-800) 0%, var(--navy-950) 70%);
+  color: #fff;
+  padding: 22mm 16mm 16mm;
+  position: relative;
+  overflow: hidden;
+  min-height: 148mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.cover-top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      -18deg,
+      transparent 0 18px,
+      rgba(255, 255, 255, 0.018) 18px 19px
+    );
+  pointer-events: none;
+}
+
+.cover-top::after {
+  content: "";
+  position: absolute;
+  right: -30mm;
+  top: -20mm;
+  width: 140mm;
+  height: 140mm;
+  border: 1px solid rgba(212, 188, 106, 0.22);
+  transform: rotate(18deg);
+  pointer-events: none;
+}
+
+.cover-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  border: 1px solid rgba(212, 188, 106, 0.55);
+  color: var(--gold-soft);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  z-index: 1;
+}
+
+.cover-mark {
+  width: 42px;
+  height: 42px;
+  color: var(--gold-soft);
+  margin: 18mm 0 10mm;
+  z-index: 1;
+}
+
+.cover-kicker {
+  z-index: 1;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #9bb8d3;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.cover-title {
+  z-index: 1;
+  margin: 0;
+  font-size: var(--fs-cover);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.22;
+  max-width: 160mm;
+}
+
+.cover-sub {
+  z-index: 1;
+  margin: 14px 0 0;
+  font-size: 16px;
+  color: #c5d4e4;
+  font-weight: 500;
+  max-width: 150mm;
+  line-height: 1.5;
+}
+
+.cover-bottom {
+  flex: 1;
+  padding: 12mm 16mm 14mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+  align-content: start;
+  background: #fff;
+  color: var(--ink);
+}
+
+.meta-cell .k {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.meta-cell .v {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--navy-900);
+}
+
+.cover-rule {
+  height: 3px;
+  background: var(--gold);
+  border: 0;
+  margin: 0;
+}
+
+/* ——— TOC ——— */
+.toc-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8mm;
+  padding-bottom: 4mm;
+  border-bottom: 2px solid var(--navy-900);
+}
+
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toc-ch {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 8px 0 4px;
+  font-weight: 800;
+  color: var(--navy-900);
+  font-size: 15px;
+}
+
+.toc-ch .no {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  min-width: 72px;
+}
+
+.toc-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 0 5px 18px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+}
+
+.toc-row .dots {
+  flex: 1;
+  border-bottom: 1px dotted #c5ced8;
+  height: 0.7em;
+  margin: 0 6px;
+}
+
+.toc-row .num {
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 22px;
+  text-align: right;
+}
+
+/* ——— CHAPTER ——— */
+.chapter-page .page-inner {
+  padding-top: 16mm;
+}
+
+.ch-index {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color: var(--gold-soft);
+  margin-bottom: 8mm;
+}
+
+.ch-no {
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: #fff;
+  margin: 0 0 8mm;
+}
+
+.ch-title {
+  margin: 0;
+  font-size: var(--fs-chapter);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  max-width: 160mm;
+}
+
+.ch-sub {
+  margin: 10px 0 0;
+  color: #b7c7d8;
+  font-size: 15px;
+}
+
+.learn-box {
+  margin-top: auto;
+  padding-top: 10mm;
+}
+
+.learn-label {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 10px;
+}
+
+.learn-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.learn-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 2px solid var(--gold);
+  padding: 10px 12px;
+}
+
+.learn-item .n {
+  font-weight: 800;
+  color: var(--gold-soft);
+  font-variant-numeric: tabular-nums;
+  min-width: 1.4em;
+}
+
+.learn-item .t {
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+
+/* ——— POINT ——— */
+.point-bar {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  background: var(--point-bg);
+  border: 1px solid #d5e3f0;
+  margin-bottom: 8mm;
+}
+
+.point-bar .tag {
+  flex-shrink: 0;
+  width: 26px;
+  background: var(--navy-900);
+  color: #fff;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.point-bar .txt {
+  padding: 12px 14px 12px 4px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--navy-900);
+  letter-spacing: -0.02em;
+}
+
+/* Callouts */
+.callout {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.callout .side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 4px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+.callout .body {
+  padding: 10px 12px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.callout.is-tip .side { background: var(--tip-fg); }
+.callout.is-tip { background: var(--tip-bg); border-color: #c8eadc; }
+
+.callout.is-warning .side { background: var(--warn-fg); }
+.callout.is-warning { background: var(--warn-bg); border-color: #f6d0b4; }
+
+.callout.is-law .side { background: var(--law-fg); }
+.callout.is-law { background: var(--law-bg); border-color: #e2d6be; }
+
+.callout.is-example .side { background: var(--example-fg); }
+.callout.is-example { background: var(--example-bg); border-color: #ddd0ee; }
+
+.callout.is-summary .side { background: var(--navy-900); }
+.callout.is-summary { background: #f2f5f8; border-color: #d3dce6; }
+
+.callout .side .ico {
+  width: 16px;
+  height: 16px;
+}
+
+.summary-ribbon {
+  margin-top: auto;
+  background: var(--summary-bg);
+  color: #fff;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+}
+
+.summary-ribbon .tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold);
+  color: var(--navy-950);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.summary-ribbon .txt {
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+/* ——— CASE FLOW ——— */
+.flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 6px;
+}
+
+.flow-step {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  position: relative;
+}
+
+.flow-rail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flow-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--navy-900);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.flow-step:last-child .flow-dot {
+  background: var(--gold);
+  color: var(--navy-950);
+}
+
+.flow-rail::after {
+  content: "";
+  position: absolute;
+  top: 22px;
+  bottom: -4px;
+  width: 2px;
+  background: #d5deea;
+}
+
+.flow-step:last-child .flow-rail::after {
+  display: none;
+}
+
+.flow-card {
+  background: #f6f8fb;
+  border: 1px solid var(--line);
+  padding: 7px 12px 8px;
+  margin-bottom: 6px;
+}
+
+.flow-card .lab {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-500);
+  margin-bottom: 4px;
+}
+
+.flow-step:last-child .flow-card {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  color: #fff;
+}
+
+.flow-step:last-child .flow-card .lab {
+  color: var(--gold-soft);
+}
+
+.flow-card .txt {
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+/* ——— DO / DON'T ——— */
+.dodont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+}
+
+.col-do,
+.col-dont {
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  min-height: 140px;
+}
+
+.col-do { background: var(--do-bg); }
+.col-dont { background: var(--dont-bg); }
+
+.col-head {
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+.col-do .col-head { background: var(--do-fg); }
+.col-dont .col-head { background: var(--dont-fg); }
+
+.col-body {
+  padding: 10px 12px 14px;
+}
+
+.col-body li {
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 6px 0;
+}
+
+.col-body ul {
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+/* ——— CHECKLIST ——— */
+.check-group {
+  margin-bottom: 8px;
+  border: 1px solid var(--line);
+}
+
+.check-group h3 {
+  margin: 0;
+  padding: 6px 12px;
+  background: var(--navy-900);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.check-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 6px 10px 10px;
+}
+
+.check-group li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 5px 4px;
+  border-bottom: 1px solid #eef1f5;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.check-group li:last-child {
+  border-bottom: 0;
+}
+
+.box {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--navy-700);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  background: #fff;
+}
+
+.check-group li.is-checked .box {
+  background: var(--navy-900);
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+/* ——— LAW ——— */
+.law-card {
+  border: 1px solid #e2d6be;
+  background: var(--law-bg);
+  padding: 12px 14px;
+}
+
+.law-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--law-fg);
+  margin-bottom: 8px;
+}
+
+.law-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.law-cell {
+  background: #fff;
+  border: 1px solid #eadfcb;
+  padding: 8px 10px;
+}
+
+.law-cell .lab {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--law-fg);
+  margin-bottom: 4px;
+}
+
+.law-cell .txt {
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.law-original {
+  margin-top: 8px;
+  border: 1px dashed #cbb98a;
+  background: #fff;
+}
+
+.law-original summary {
+  cursor: pointer;
+  padding: 8px 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--law-fg);
+  list-style: none;
+}
+
+.law-original summary::-webkit-details-marker {
+  display: none;
+}
+
+.law-original .orig {
+  padding: 0 10px 10px;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  white-space: pre-wrap;
+}
+
+/* ——— SUMMARY PAGE ——— */
+.remember-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8mm;
+}
+
+.remember-mark {
+  width: 42px;
+  height: 42px;
+  background: var(--navy-900);
+  color: var(--gold-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.remember-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.remember-item {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  min-height: 64px;
+  border: 1px solid var(--line);
+}
+
+.remember-item .n {
+  background: var(--navy-900);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.remember-item .t {
+  padding: 12px 14px;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.5;
+  background: #f7f9fb;
+}
+
+.img-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.img-block img {
+  max-width: 100%;
+  max-height: 92mm;
+  object-fit: contain;
+  background: #f3f5f8;
+  border: 1px solid var(--line);
+}
+
+.img-block .cap {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.img-ph {
+  height: 48mm;
+  border: 1.5px dashed var(--line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 13px;
+  background: #fafbfc;
+}
+
+.quote-block {
+  margin: 4px 0;
+  padding: 10px 14px;
+  border-left: 3px solid var(--gold);
+  background: #faf7f0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--navy-800);
+  font-weight: 600;
+}
+
+/* 본문 열 */
+.content-stack {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* 편집 중인 리스트 항목 */
+.edit-list {
+  margin: 0;
+  padding-left: 1.15em;
+}
+
+.col-body .edit-list {
+  list-style: disc;
+}
+
+.edit-list > li {
+  position: relative;
+}
+
+.process {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.process-step {
+  border: 1px solid var(--line);
+  padding: 10px;
+  background: #f7f9fb;
+}
+
+.process-step .n {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--blue-500);
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.process-step .t {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* 페이지 타입 라벨 (편집 힌트, 인쇄 숨김) */
+.page-type-chip {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #8fa3b8;
+  pointer-events: none;
+}
+
+body.is-preview .page-type-chip,
+body.is-preview .blk-tools {
+  display: none !important;
+}
+
+.p-block,
+.point-bar .txt,
+.callout .body,
+.summary-ribbon .txt,
+.h-block,
+.flow-card .txt {
+  white-space: pre-wrap;
+}
+
+/* PDF / 인쇄: 크롬 숨기고 A4 페이지 단위로 분리 */
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #app {
+    display: none !important;
+  }
+
+  #print-root {
+    display: block !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  #print-root .ebook-page {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    box-shadow: none !important;
+    margin: 0;
+    page-break-after: always;
+    break-after: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    overflow: hidden;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #print-root .ebook-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .blk-tools,
+  .page-type-chip,
+  .toolbar,
+  .nav-pane,
+  .inspector-pane,
+  .modal-backdrop,
+  #toast,
+  .drop-overlay {
+    display: none !important;
+  }
+
+  [contenteditable="true"],
+  [contenteditable="plaintext-only"] {
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+#print-root {
+  display: none;
+}
+html,body.reader{margin:0;height:100%;background:#0b1f3a;font-family:var(--font);overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;}.r-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:6px;padding:8px 10px;padding-top:max(8px,env(safe-area-inset-top));background:#0b1f3a;color:#e8eef4;}.r-top button{height:34px;padding:0 10px;border:0;border-radius:4px;background:rgba(255,255,255,.08);color:#fff;font-weight:700;font-size:13px;}.r-title{flex:1;min-width:0;font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}.r-pg{font-variant-numeric:tabular-nums;font-size:12px;color:#9bb0c4;white-space:nowrap;}.r-stage{position:relative;height:calc(100dvh - 50px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));background:#dfe7ee;}.r-view{height:100%;overflow:hidden;display:flex;justify-content:center;}.r-view .ebook-page{display:none;width:min(100%,720px)!important;height:100%!important;max-height:100%!important;margin:0 auto;overflow:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;box-shadow:none;border-radius:0;}.r-view .ebook-page.is-current{display:flex;}.r-view .cover-top{min-height:42vh!important;padding:22px 18px 16px!important;}.r-view .cover-bottom{padding:14px 18px 18px!important;}.r-view .page-inner{overflow:visible!important;padding:16px 16px 12px!important;}.r-view .page-footer{padding-bottom:max(12px,env(safe-area-inset-bottom));}.r-view .ch-no{font-size:48px!important;}.r-view .cover-mark{margin:18px 0 12px!important;}.r-prog{position:fixed;left:0;right:0;bottom:0;height:3px;background:#123052;z-index:21;}.r-prog i{display:block;height:100%;width:0;background:#d4bc6a;}.r-toc{display:none;position:fixed;inset:0;z-index:30;background:rgba(7,18,33,.45);}body.toc-open .r-toc{display:block;}.r-toc nav{position:absolute;left:0;top:0;bottom:0;width:min(86vw,320px);background:#f4f7fa;overflow:auto;padding:16px 12px 32px;padding-top:max(16px,env(safe-area-inset-top));}.r-toc h2{margin:0 0 10px;font-size:13px;letter-spacing:.08em;color:#6b7687;}.r-toc button{display:block;width:100%;text-align:left;border:0;background:none;padding:9px 8px;border-radius:4px;font-size:14px;color:#1c2430;}.r-toc button.is-on{background:#0b1f3a;color:#fff;}.r-toc .ch{font-weight:800;margin-top:8px;}.blk-tools{display:none!important;}body.reader.is-night{background:#071018;}body.reader.is-night .r-stage{background:#0a1522;}body.reader.is-night .r-view .ebook-page{background:#101820;color:#e8eef4;}body.reader.is-night .r-view .ebook-page.is-navy{background:#0b1f3a;}body.reader.is-night .r-view .cover-bottom{background:#152238;color:#e8eef4;}body.reader.is-night .r-view .meta-cell .v,body.reader.is-night .r-view .pg-title,body.reader.is-night .r-view .h-block,body.reader.is-night .r-view .p-block{color:#e8eef4;}body.reader.is-night .r-toc nav{background:#101820;}body.reader.is-night .r-toc button{color:#e8eef4;}body.reader.is-night .r-toc button.is-on{background:#d4bc6a;color:#0b1f3a;}@media (max-width:720px){.r-view .dodont{grid-template-columns:1fr!important;} .r-view .cover-bottom{grid-template-columns:1fr!important;} .r-view .cover-title{font-size:28px!important;} .r-view .pg-title{font-size:22px!important;} .r-view .law-grid{grid-template-columns:1fr!important;}}@media print{html,body.reader{overflow:visible!important;height:auto!important;background:#fff!important;} .r-top,.r-toc,.r-prog{display:none!important;} .r-stage{height:auto!important;background:#fff!important;} .r-view{display:block;height:auto;} .r-view .ebook-page{display:flex!important;width:210mm!important;height:297mm!important;max-height:297mm!important;overflow:hidden!important;page-break-after:always;break-after:page;} .r-view .ebook-page:last-child{page-break-after:auto;} .r-view .cover-top{min-height:148mm!important;padding:22mm 16mm 16mm!important;} .r-view .page-inner{padding:var(--page-pad-y) var(--page-pad-x) 6mm!important;overflow:hidden!important;}}</style></head><body class="reader"><header class="r-top"><button type="button" id="r-tocbtn">목차</button><div class="r-title">전자책은 이렇게 쓴다</div><span class="r-pg" id="r-pg">1 / 1</span><button type="button" id="r-prev">이전</button><button type="button" id="r-next">다음</button><button type="button" id="r-night">밤</button><button type="button" onclick="window.print()">PDF</button></header><div class="r-toc" id="r-toc"><nav><h2>목차</h2><button type="button" class="" data-i="0">전자책은 이렇게 쓴다</button><button type="button" class="" data-i="1">목차</button><button type="button" class=" ch" data-i="2">CHAPTER 01  무엇을 넣는가</button><button type="button" class="" data-i="3">이 책의 위치</button><button type="button" class="" data-i="4">넣는 우선순위</button><button type="button" class="" data-i="5">원문은 잘라서 넣는다</button><button type="button" class=" ch" data-i="6">CHAPTER 02  우수사례는 교훈 카드</button><button type="button" class="" data-i="7">사례를 넣는 법</button><button type="button" class="" data-i="8">가상 사례 · 주취 난동</button><button type="button" class="" data-i="9">가상 사례 · 스토킹 대기</button><button type="button" class="" data-i="10">가상 사례 · 현장 보존</button><button type="button" class="" data-i="11">사례 작성 DO / DON'T</button><button type="button" class=" ch" data-i="12">CHAPTER 03  얇게, 자주 개정한다</button><button type="button" class="" data-i="13">네 권으로 나눈다</button><button type="button" class="" data-i="14">누가 쓰는가</button><button type="button" class="" data-i="15">운영 DO / DON'T</button><button type="button" class="" data-i="16">배포 전 체크리스트</button><button type="button" class="" data-i="17">원문은 어디에 두는가</button><button type="button" class="" data-i="18">이것만은 기억하세요</button></nav></div><div class="r-stage" id="r-stage"><div class="r-view" id="r-view"><article class="ebook-page is-cover" data-index="0" data-page-id="page_ktry53pvh"><div class="cover-top"><div class="cover-badge">INTERNAL TRAINING · HANDBOOK</div><svg class="cover-mark" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-width="2" d="M24 4 L42 12 V28 C42 36 33 42 24 45 C15 42 6 36 6 28 V12 Z"/><path fill="none" stroke="currentColor" stroke-width="1.6" d="M16 22 L22 28 L33 16"/></svg><div class="cover-kicker">내부 교육자료 · 운영 가이드</div><h1 class="cover-title">전자책은 이렇게 쓴다</h1><p class="cover-sub">우수사례와 매뉴얼을 현장 핸드북으로</p></div><hr class="cover-rule"><div class="cover-bottom"><div class="meta-cell"><span class="k">제작부서</span><span class="v">○○경찰서 지역경찰과</span></div><div class="meta-cell"><span class="k">제작일</span><span class="v">2026.03.01</span></div><div class="meta-cell"><span class="k">버전</span><span class="v">1.0</span></div><div class="meta-cell"><span class="k">분류</span><span class="v">내부 교육자료 · 운영 가이드</span></div></div></article><article class="ebook-page" data-index="1" data-page-id="page_snhn5ppvh"><div class="page-inner"><div class="toc-head"><h1 class="pg-title">목차</h1><span class="kicker">CONTENTS</span></div><div class="toc-list"><div class="toc-ch"><span class="no">CHAPTER 01</span><span>무엇을 넣는가</span></div><div class="toc-row"><span>이 책의 위치</span><span class="dots"></span><span class="num">04</span></div><div class="toc-row"><span>넣는 우선순위</span><span class="dots"></span><span class="num">05</span></div><div class="toc-row"><span>원문은 잘라서 넣는다</span><span class="dots"></span><span class="num">06</span></div><div class="toc-ch"><span class="no">CHAPTER 02</span><span>우수사례는 교훈 카드</span></div><div class="toc-row"><span>사례를 넣는 법</span><span class="dots"></span><span class="num">08</span></div><div class="toc-row"><span>가상 사례 · 주취 난동</span><span class="dots"></span><span class="num">09</span></div><div class="toc-row"><span>가상 사례 · 스토킹 대기</span><span class="dots"></span><span class="num">10</span></div><div class="toc-row"><span>가상 사례 · 현장 보존</span><span class="dots"></span><span class="num">11</span></div><div class="toc-row"><span>사례 작성 DO / DON'T</span><span class="dots"></span><span class="num">12</span></div><div class="toc-ch"><span class="no">CHAPTER 03</span><span>얇게, 자주 개정한다</span></div><div class="toc-row"><span>네 권으로 나눈다</span><span class="dots"></span><span class="num">14</span></div><div class="toc-row"><span>누가 쓰는가</span><span class="dots"></span><span class="num">15</span></div><div class="toc-row"><span>운영 DO / DON'T</span><span class="dots"></span><span class="num">16</span></div><div class="toc-row"><span>배포 전 체크리스트</span><span class="dots"></span><span class="num">17</span></div><div class="toc-row"><span>원문은 어디에 두는가</span><span class="dots"></span><span class="num">18</span></div><div class="toc-row"><span>이것만은 기억하세요</span><span class="dots"></span><span class="num">19</span></div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">02 / 19</span></div></article><article class="ebook-page chapter-page is-navy" data-index="2" data-page-id="page_9lz2qppvi"><div class="page-inner"><div class="ch-index">CHAPTER</div><div class="ch-no">01</div><h1 class="ch-title">무엇을 넣는가</h1><div class="blk learn-box"><div class="learn-label">이 Chapter에서 배울 내용</div><div class="learn-items"><div class="learn-item"><span class="n">01</span><span class="t" data-index="0">긴 매뉴얼을 통째로 옮기지 않는다.</span></div><div class="learn-item"><span class="n">02</span><span class="t" data-index="1">자주 하는 일, 자주 틀리는 일부터 넣는다.</span></div><div class="learn-item"><span class="n">03</span><span class="t" data-index="2">한 페이지에 핵심 메시지 하나만 남긴다.</span></div></div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">03 / 19</span></div></article><article class="ebook-page" data-index="3" data-page-id="page_nykk5apvj"><div class="page-inner content-stack"><div class="kicker">기본 교육</div><h1 class="pg-title size-md">이 책의 위치</h1><div class="blk point-bar"><div class="tag">POINT</div><div class="txt">전자책은 매뉴얼 대체본이 아니다. 현장에서 꺼내는 실행층이다.</div></div><div class="blk"><div class="h-block">기록용과 실행용을 가른다</div></div><div class="blk"><ul class="bullets edit-list"><li data-index="0">결과보고·법령 전문은 원래 파일에 둔다.</li><li data-index="1">전자책에는 지금 할 행동만 남긴다.</li><li data-index="2">열어도 행동이 안 바뀌면 그 페이지는 뺀다.</li></ul></div><div class="blk callout is-tip"><div class="side">TIP</div><div class="body">직원이 출동 전에 펼치는가가 성공 기준이다.</div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">검색하는 자료가 아니라 손에 익은 짧은 카드다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">04 / 19</span></div></article><article class="ebook-page" data-index="4" data-page-id="page_o8byjspvj"><div class="page-inner content-stack"><div class="kicker">기본 교육</div><h1 class="pg-title size-md">넣는 우선순위</h1><div class="blk point-bar"><div class="tag">POINT</div><div class="txt">매일 하고, 실수 비용이 큰 일부터 전자책으로 만든다.</div></div><div class="blk"><div class="h-block">이 순서로 고른다</div></div><div class="blk"><ul class="bullets edit-list"><li data-index="0">1순위: 112 초동, 분리, 현장 보존</li><li data-index="1">2순위: 우수사례를 교훈 한 줄로</li><li data-index="2">3순위: 매뉴얼에서 자주 틀리는 구간</li><li data-index="3">4순위: 새 제도에서 바뀐 행동만</li></ul></div><div class="blk callout is-warning"><div class="side">주의</div><div class="body">연간 사례 30건을 한 권에 넣으면 아무도 열지 않는다.</div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">자주 하는 일, 자주 틀리는 일이 1순위다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">05 / 19</span></div></article><article class="ebook-page" data-index="5" data-page-id="page_i4wibapvk"><div class="page-inner content-stack"><div class="kicker">기본 교육</div><h1 class="pg-title size-md">원문은 잘라서 넣는다</h1><div class="blk point-bar"><div class="tag">POINT</div><div class="txt">긴 원문 목차를 옮기지 말고, 현장에서 헷갈리는 지점만 자른다.</div></div><div class="blk"><div class="h-block">전자책에 남길 것</div></div><div class="blk"><ul class="bullets edit-list"><li data-index="0">현장에서 던질 판단 질문 한 줄</li><li data-index="1">하면 안 되는 행동 두세 개</li><li data-index="2">원문 자료 이름과 위치 한 줄</li></ul></div><div class="blk callout is-tip"><div class="side">TIP</div><div class="body">원문은 별도 파일에 두고, 전자책에는 질문만 둔다.</div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">원문은 통째가 아니라 자주 틀리는 쪽만 옮긴다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">06 / 19</span></div></article><article class="ebook-page chapter-page is-navy" data-index="6" data-page-id="page_rj7slipvk"><div class="page-inner"><div class="ch-index">CHAPTER</div><div class="ch-no">02</div><h1 class="ch-title">우수사례는 교훈 카드</h1><div class="blk learn-box"><div class="learn-label">이 Chapter에서 배울 내용</div><div class="learn-items"><div class="learn-item"><span class="n">01</span><span class="t" data-index="0">경위 나열이 아니라 다음 판단 규칙을 남긴다.</span></div><div class="learn-item"><span class="n">02</span><span class="t" data-index="1">한 사례는 반드시 한 페이지다.</span></div><div class="learn-item"><span class="n">03</span><span class="t" data-index="2">교훈이 한 줄로 안 나오면 넣지 않는다.</span></div></div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">07 / 19</span></div></article><article class="ebook-page" data-index="7" data-page-id="page_87ro0gpvk"><div class="page-inner content-stack"><div class="kicker">기본 교육</div><h1 class="pg-title size-md">사례를 넣는 법</h1><div class="blk point-bar"><div class="tag">POINT</div><div class="txt">우수사례의 목적은 자랑이 아니라 다음에도 같은 판단을 하는 것이다.</div></div><div class="blk"><div class="h-block">남기는 여섯 칸</div></div><div class="blk"><ul class="bullets edit-list"><li data-index="0">사건 발생, 현장 상황, 경찰관 판단</li><li data-index="1">조치, 결과, LESSON LEARNED</li><li data-index="2">교훈 한 줄이 없으면 그 사례는 보류한다</li></ul></div><div class="blk callout is-warning"><div class="side">주의</div><div class="body">실명·사건번호·연락처는 쓰지 말고 가상으로 바꾼다.</div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">잘했다는 문장보다 다음에 할 행동을 남긴다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">08 / 19</span></div></article><article class="ebook-page" data-index="8" data-page-id="page_zw4n1tpvk"><div class="page-inner content-stack"><div class="kicker">사건 사례</div><h1 class="pg-title size-md">가상 사례 · 주취 난동</h1><div class="blk point-bar"><div class="tag">POINT</div><div class="txt">주취는 양형 사유가 아니라 현장 위험 요소다.</div></div><div class="blk"><div class="flow"><div class="flow-step"><div class="flow-rail"><div class="flow-dot">1</div></div><div class="flow-card"><div class="lab" data-index="0">사건 발생</div><div class="txt" data-index="0">심야 상가 앞 주취 난동 112 신고. 유리컵이 깨졌다는 정보가 있었다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">2</div></div><div class="flow-card"><div class="lab" data-index="1">현장 상황</div><div class="txt" data-index="1">상대가 큰 소리로 항의하며 길을 막고 있었다. 통행인과 거리가 가까웠다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">3</div></div><div class="flow-card"><div class="lab" data-index="2">경찰관 판단</div><div class="txt" data-index="2">말다툼을 이기려 하지 않고, 2차 피해 공간부터 비우기로 했다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">4</div></div><div class="flow-card"><div class="lab" data-index="3">조치</div><div class="txt" data-index="3">주변을 먼저 물렸다. 거리를 유지한 채 두 명이 제지하고 구급을 요청했다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">5</div></div><div class="flow-card"><div class="lab" data-index="4">결과</div><div class="txt" data-index="4">설득으로 끝내지 않고 위해를 차단한 뒤 인계했다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">6</div></div><div class="flow-card"><div class="lab" data-index="5">LESSON LEARNED</div><div class="txt" data-index="5">취해서 그렇다는 설명과 별개로, 조치는 취하지 않은 폭력과 같은 기준으로 한다.</div></div></div></div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">주취 현장의 목표는 설득이 아니라 위해 차단이다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">09 / 19</span></div></article><article class="ebook-page" data-index="9" data-page-id="page_qr8rbhpvk"><div class="page-inner content-stack"><div class="kicker">사건 사례</div><h1 class="pg-title size-md">가상 사례 · 스토킹 대기</h1><div class="blk point-bar"><div class="tag">POINT</div><div class="txt">한 번의 시비가 아니라 반복·대기·감시가 보이면 관점을 바꾼다.</div></div><div class="blk"><div class="flow"><div class="flow-step"><div class="flow-rail"><div class="flow-dot">1</div></div><div class="flow-card"><div class="lab" data-index="0">사건 발생</div><div class="txt" data-index="0">피해자가 전 연인이 직장 앞에서 기다린다고 신고하였다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">2</div></div><div class="flow-card"><div class="lab" data-index="1">현장 상황</div><div class="txt" data-index="1">상대가 출입구 근처에서 서 있었다. 메시지 횟수가 많다는 진술이 있었다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">3</div></div><div class="flow-card"><div class="lab" data-index="2">경찰관 판단</div><div class="txt" data-index="2">사적 분쟁으로 넘기지 않았다. 같은 장소의 반복 대기를 위험 신호로 보았다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">4</div></div><div class="flow-card"><div class="lab" data-index="3">조치</div><div class="txt" data-index="3">접근 자체를 기록했다. 패턴과 시간대를 남기고 보호 안내를 하였다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">5</div></div><div class="flow-card"><div class="lab" data-index="4">결과</div><div class="txt" data-index="4">당일 만남 한 번으로 종결하지 않고 반복 여부를 보고서에 남겼다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">6</div></div><div class="flow-card"><div class="lab" data-index="5">LESSON LEARNED</div><div class="txt" data-index="5">전 연인이라는 관계는 완화 사유가 아니다. 접근 자체를 위험으로 평가한다.</div></div></div></div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">한 번의 만남이 아니라 패턴을 기록한다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">10 / 19</span></div></article><article class="ebook-page" data-index="10" data-page-id="page_j4ts41pvk"><div class="page-inner content-stack"><div class="kicker">사건 사례</div><h1 class="pg-title size-md">가상 사례 · 현장 보존</h1><div class="blk point-bar"><div class="tag">POINT</div><div class="txt">초동에서 만진 물건은 나중에 설명이 필요해진다.</div></div><div class="blk"><div class="flow"><div class="flow-step"><div class="flow-rail"><div class="flow-dot">1</div></div><div class="flow-card"><div class="lab" data-index="0">사건 발생</div><div class="txt" data-index="0">공동주택 가정폭력 신고. 거실에 깨진 컵과 쓰러진 의자가 있었다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">2</div></div><div class="flow-card"><div class="lab" data-index="1">현장 상황</div><div class="txt" data-index="1">통행에 큰 방해는 없었다. 피해자는 빨리 치워 달라고 하였다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">3</div></div><div class="flow-card"><div class="lab" data-index="2">경찰관 판단</div><div class="txt" data-index="2">생명·안전에 필요 없는 이동은 하지 않기로 했다. 위치를 먼저 남기기로 했다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">4</div></div><div class="flow-card"><div class="lab" data-index="3">조치</div><div class="txt" data-index="3">사진을 남기고 치우지 않았다. 목격자 연락처를 현장에서 받았다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">5</div></div><div class="flow-card"><div class="lab" data-index="4">결과</div><div class="txt" data-index="4">현장 수습이 아니라 현장 보존으로 인계하였다.</div></div></div><div class="flow-step"><div class="flow-rail"><div class="flow-dot">6</div></div><div class="flow-card"><div class="lab" data-index="5">LESSON LEARNED</div><div class="txt" data-index="5">현장을 깨끗하게 만드는 것이 초동조치가 아니다.</div></div></div></div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">필요한 것만 만지고, 만졌으면 왜 만졌는지 남긴다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">11 / 19</span></div></article><article class="ebook-page" data-index="11" data-page-id="page_jn6vg1pvl"><div class="page-inner content-stack"><div class="kicker">DO / DON'T</div><h1 class="pg-title size-md">사례 작성 DO / DON'T</h1><div class="blk"><div class="dodont"><div class="col-do"><div class="col-head">DO · 해야 할 행동</div><div class="col-body"><ul class="bullets edit-list"><li data-index="0">한 사례를 한 페이지로 줄인다.</li><li data-index="1">판단과 조치를 시간 순으로 적는다.</li><li data-index="2">교훈을 한 줄 명령형으로 남긴다.</li><li data-index="3">개인정보는 가상으로 바꾼다.</li></ul></div></div><div class="col-dont"><div class="col-head">DON'T · 하면 안 되는 행동</div><div class="col-body"><ul class="bullets edit-list"><li data-index="0">공적조서·표창 문안을 그대로 붙이지 않는다.</li><li data-index="1">경위를 소설처럼 길게 쓰지 않는다.</li><li data-index="2">실명과 사건번호를 남기지 않는다.</li><li data-index="3">교훈 없이 결과만 자랑하지 않는다.</li></ul></div></div></div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">사례집은 실적 모음이 아니라 다음 출동의 판단 카드다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">12 / 19</span></div></article><article class="ebook-page chapter-page is-navy" data-index="12" data-page-id="page_3wy2depvl"><div class="page-inner"><div class="ch-index">CHAPTER</div><div class="ch-no">03</div><h1 class="ch-title">얇게, 자주 개정한다</h1><div class="blk learn-box"><div class="learn-label">이 Chapter에서 배울 내용</div><div class="learn-items"><div class="learn-item"><span class="n">01</span><span class="t" data-index="0">대작 한 권보다 얇은 시리즈가 다시 열린다.</span></div><div class="learn-item"><span class="n">02</span><span class="t" data-index="1">이달의 교훈은 월 1권, 사례 3건이면 충분하다.</span></div><div class="learn-item"><span class="n">03</span><span class="t" data-index="2">경고가 뜨는 쪽은 아직 현장용이 아니다.</span></div></div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">13 / 19</span></div></article><article class="ebook-page" data-index="13" data-page-id="page_844kh6pvl"><div class="page-inner content-stack"><div class="kicker">기본 교육</div><h1 class="pg-title size-md">네 권으로 나눈다</h1><div class="blk point-bar"><div class="tag">POINT</div><div class="txt">서 전체 모음집이 아니라 직무에 맞는 얇은 책을 여러 권 만든다.</div></div><div class="blk"><div class="h-block">권 구성</div></div><div class="blk"><ul class="bullets edit-list"><li data-index="0">현장 핸드북: 반기 개정, 15~25쪽</li><li data-index="1">이달의 교훈: 매달, 사례 3~5건</li><li data-index="2">제도 속보: 바뀐 행동만 4~8쪽</li><li data-index="3">법령 카드: 취지와 질문만 2~4쪽</li></ul></div><div class="blk callout is-tip"><div class="side">TIP</div><div class="body">첫 달은 핸드북 1권, 사례 3건, 체크리스트 1쪽이면 충분하다.</div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">목표는 100쪽이 아니라 출동 전에 펼치는 책 한 권이다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">14 / 19</span></div></article><article class="ebook-page" data-index="14" data-page-id="page_2zqtnmpvl"><div class="page-inner content-stack"><div class="kicker">기본 교육</div><h1 class="pg-title size-md">누가 쓰는가</h1><div class="blk point-bar"><div class="tag">POINT</div><div class="txt">현장은 짧게 적고, 담당은 문장을 자르고, 책임자는 행동 변화만 본다.</div></div><div class="blk"><div class="h-block">역할</div></div><div class="blk"><ul class="bullets edit-list"><li data-index="0">지구대: 헷갈린 점과 사례 핵심만 적는다.</li><li data-index="1">교육 담당: 마스터 프롬프트로 초안을 뽑는다.</li><li data-index="2">과 책임자: 이 페이지를 보면 행동이 바뀌는가만 확인한다.</li></ul></div><div class="blk callout is-warning"><div class="side">주의</div><div class="body">한 페이지에 문장 7개를 넘기면 아직 안 자른 것이다.</div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">작성은 짧게, 편집은 더 짧게, 배포는 행동이 바뀔 때만.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">15 / 19</span></div></article><article class="ebook-page" data-index="15" data-page-id="page_62unbcpvl"><div class="page-inner content-stack"><div class="kicker">DO / DON'T</div><h1 class="pg-title size-md">운영 DO / DON'T</h1><div class="blk"><div class="dodont"><div class="col-do"><div class="col-head">DO · 해야 할 행동</div><div class="col-body"><ul class="bullets edit-list"><li data-index="0">마스터 프롬프트에 원문을 넣고 초안을 받는다.</li><li data-index="1">검토 경고가 뜬 페이지부터 고친다.</li><li data-index="2">직무별로 책을 나눈다.</li><li data-index="3">구버전은 회수하고 버전을 표지에 남긴다.</li></ul></div></div><div class="col-dont"><div class="col-head">DON'T · 하면 안 되는 행동</div><div class="col-body"><ul class="bullets edit-list"><li data-index="0">수사매뉴얼 전체를 디지털화하지 않는다.</li><li data-index="1">한 권에 서 업무를 다 담지 않는다.</li><li data-index="2">한 번 만들고 개정하지 않은 채 두지 않는다.</li><li data-index="3">개인이 식별되는 사건을 넣지 않는다.</li></ul></div></div></div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">전자책은 쌓을수록가 아니라 줄어들수록 좋아진다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">16 / 19</span></div></article><article class="ebook-page" data-index="16" data-page-id="page_kodp26pvl"><div class="page-inner content-stack"><div class="kicker">체크리스트</div><h1 class="pg-title size-md">배포 전 체크리스트</h1><div class="blk"><div class="check-group"><h3>확인사항</h3><ul><li class=""><span class="box" data-index="0"></span><span data-index="0">한 페이지에 핵심이 하나인가</span></li><li class=""><span class="box" data-index="1"></span><span data-index="1">핵심포인트와 한줄 요약이 있는가</span></li><li class=""><span class="box" data-index="2"></span><span data-index="2">실제 이름·사건번호가 없는가</span></li></ul></div><div class="check-group"><h3>조치사항</h3><ul><li class=""><span class="box" data-index="0"></span><span data-index="0">긴 문장을 잘랐는가</span></li><li class=""><span class="box" data-index="1"></span><span data-index="1">검토 경고 페이지를 고쳤는가</span></li><li class=""><span class="box" data-index="2"></span><span data-index="2">표지 부서·날짜·버전을 넣었는가</span></li></ul></div><div class="check-group"><h3>보고사항</h3><ul><li class=""><span class="box" data-index="0"></span><span data-index="0">배포 대상 부서를 정했는가</span></li><li class=""><span class="box" data-index="1"></span><span data-index="1">구버전 회수 방법을 정했는가</span></li></ul></div><div class="check-group"><h3>증거확보</h3><ul><li class=""><span class="box" data-index="0"></span><span data-index="0">JSON 백업을 저장했는가</span></li></ul></div><div class="check-group"><h3>후속조치</h3><ul><li class=""><span class="box" data-index="0"></span><span data-index="0">다음 개정 시점을 적었는가</span></li><li class=""><span class="box" data-index="1"></span><span data-index="1">원문 매뉴얼 위치를 안내했는가</span></li></ul></div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">경고가 남은 채 배포하지 않는다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">17 / 19</span></div></article><article class="ebook-page" data-index="17" data-page-id="page_ls90i1pvl"><div class="page-inner content-stack"><div class="kicker">법령 / 참고</div><h1 class="pg-title size-md">원문은 어디에 두는가</h1><div class="blk"><div class="law-card"><div class="law-name">관련 법령</div><div class="law-grid"><div class="law-cell"><div class="lab">핵심 내용</div><div class="txt">이 전자책은 교육용 핸드북이다. 현행 법령·청 훈령·서 매뉴얼이 항상 우선한다.</div></div><div class="law-cell"><div class="lab">현장에서는 이렇게 적용</div><div class="txt">판단이 급하면 전자책의 질문부터 본다. 강제수사·긴급조치의 적법성은 최신 조문과 내부 매뉴얼로 확인한다.</div></div><div class="law-cell"><div class="lab">주의할 점</div><div class="txt">전자책 문장만으로 처분 근거를 단정하지 않는다. 구버전 자료는 교육에 쓰지 않는다.</div></div></div><details class="law-original"><summary>원문 펼치기</summary><div class="orig">원문이 있으면 여기에 붙여 넣습니다.</div></details></div></div><div class="blk summary-ribbon"><div class="tag">한줄 요약</div><div class="txt">전자책은 보조다. 최종 근거는 현행 법령과 내부 매뉴얼이다.</div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">18 / 19</span></div></article><article class="ebook-page" data-index="18" data-page-id="page_v01t9mpvl"><div class="page-inner content-stack"><div class="remember-head"><div class="remember-mark">5</div><div><div class="kicker">REMEMBER</div><h1 class="pg-title size-md">이것만은 기억하세요</h1></div></div><div class="remember-list"><div class="remember-item"><div class="n">01</div><div class="t" data-index="0">전자책은 매뉴얼 창고가 아니라 현장 판단 카드다.</div></div><div class="remember-item"><div class="n">02</div><div class="t" data-index="1">우수사례는 교훈 한 줄이 남으면 성공이다.</div></div><div class="remember-item"><div class="n">03</div><div class="t" data-index="2">매뉴얼은 자주 틀리는 구간만 잘라 넣는다.</div></div><div class="remember-item"><div class="n">04</div><div class="t" data-index="3">얇은 책을 자주 고치는 편이 한 권 대작보다 낫다.</div></div><div class="remember-item"><div class="n">05</div><div class="t" data-index="4">경고가 뜨는 페이지는 아직 배포할 것이 아니다.</div></div></div></div><div class="page-footer"><span class="brand-mini">내부 교육자료 · 운영 가이드</span><span class="pg-num">19 / 19</span></div></article></div></div><div class="r-prog"><i id="r-bar"></i></div><script>(function(){var pages=[].slice.call(document.querySelectorAll('.ebook-page'));var i=0;var swiped=false;var key='police-ebook-reader:'+"전자책은 이렇게 쓴다";function show(n){i=Math.max(0,Math.min(pages.length-1,n));pages.forEach(function(p,k){p.classList.toggle('is-current',k===i);});var pg=document.getElementById('r-pg');if(pg)pg.textContent=(i+1)+' / '+pages.length;var bar=document.getElementById('r-bar');if(bar)bar.style.width=((i+1)/pages.length*100)+'%';var on=document.querySelector('.r-toc button.is-on');if(on)on.classList.remove('is-on');var t=document.querySelector('.r-toc button[data-i="'+i+'"]');if(t)t.classList.add('is-on');try{history.replaceState(null,'','#p'+(i+1));}catch(e){}try{localStorage.setItem(key,String(i));}catch(e){}if(pages[i])pages[i].scrollTop=0;document.body.classList.remove('toc-open');}document.getElementById('r-prev').onclick=function(){show(i-1);};document.getElementById('r-next').onclick=function(){show(i+1);};document.getElementById('r-tocbtn').onclick=function(){document.body.classList.toggle('toc-open');};document.getElementById('r-night').onclick=function(){document.body.classList.toggle('is-night');try{localStorage.setItem(key+':night',document.body.classList.contains('is-night')?'1':'0');}catch(e){}};document.getElementById('r-toc').onclick=function(e){if(e.target.id==='r-toc')document.body.classList.remove('toc-open');var b=e.target.closest('button[data-i]');if(b)show(+b.getAttribute('data-i'));};document.addEventListener('keydown',function(e){if(e.target&&e.target.closest('input,textarea'))return;if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}if(e.key==='Escape')document.body.classList.remove('toc-open');});var x0=0,y0=0;var st=document.getElementById('r-stage');st.addEventListener('touchstart',function(e){x0=e.changedTouches[0].clientX;y0=e.changedTouches[0].clientY;},{passive:true});st.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-x0;var dy=e.changedTouches[0].clientY-y0;if(Math.abs(dx)<56||Math.abs(dx)<Math.abs(dy))return;swiped=true;if(dx>0)show(i-1);else show(i+1);});st.addEventListener('click',function(e){if(swiped){swiped=false;return;}if(e.target.closest('button,a,details,input,textarea,.box'))return;var r=st.getBoundingClientRect();var x=e.clientX-r.left;if(x<r.width*0.22)show(i-1);else if(x>r.width*0.78)show(i+1);});try{if(localStorage.getItem(key+':night')==='1')document.body.classList.add('is-night');}catch(e){}var h=parseInt((location.hash||'').replace('#p',''),10);var saved=0;try{saved=parseInt(localStorage.getItem(key)||'0',10)||0;}catch(e){}show(h?h-1:saved);})();</script></body></html>

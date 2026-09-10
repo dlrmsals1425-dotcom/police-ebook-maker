@@ -17,7 +17,8 @@ description: Convert police training notes, 우수사례, manuals, or reports in
 4. 실명·사건번호·연락처를 뺀다. 실사례는 `교육사례 ·` 제목으로 재구성한다.
 5. `node`로 util/model/markdown/lint를 불러 파싱한 뒤 `EB.Lint.analyze` 오류가 0인지 확인한다. 경고가 있으면 문장을 줄인다.
 6. 결과 경로를 사용자에게 알린다. 제작기에서 Markdown 불러오기로 열라고 안내한다.
+7. 배포는 제작기 **보내기 → HTML 전자책**(한 장씩 넘기는 웹 리더) 또는 **EPUB**이다. A4 HTML을 세로로 쌓아 올리지 않는다.
 
 ## 공개 배포
 
-`외부유출금지` 원문, 실사례 재구성 MD/HTML은 공개 GitHub에 올리지 않는다. 로컬 또는 사용자 USB에만 둔다. 가상 샘플(`samples/가정폭력_현장조치.md`, `samples/전자책_활용가이드.md`)만 저장소에 둔다.
+`외부유출금지` 원문, 실사례 재구성 MD/HTML/EPUB은 공개 GitHub에 올리지 않는다. 로컬 또는 사용자 USB에만 둔다. 가상 샘플(`samples/가정폭력_현장조치.md`, `samples/전자책_활용가이드.md`, `book.html`)만 저장소에 둔다.
