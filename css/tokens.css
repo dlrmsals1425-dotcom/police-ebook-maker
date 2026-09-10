@@ -1,0 +1,74 @@
+/* 경찰 교육 전자책 — 디자인 토큰
+   외부 폰트/CDN 없이 시스템 한글 폰트 fallback */
+:root {
+  --navy-950: #071221;
+  --navy-900: #0b1f3a;
+  --navy-800: #123052;
+  --navy-700: #1b4270;
+  --navy-600: #24608f;
+  --blue-500: #2e6aa6;
+  --blue-400: #4a86c1;
+  --blue-100: #e7f0f8;
+  --gold: #b8963e;
+  --gold-soft: #d4bc6a;
+
+  --ink: #1c2430;
+  --ink-2: #3a4556;
+  --muted: #6b7687;
+  --line: #e2e6ec;
+  --line-strong: #c5ced8;
+
+  --paper: #ffffff;
+  --canvas: #dfe7ee;
+  --sidebar: #f4f7fa;
+  --chrome: #0b1f3a;
+
+  --point-bg: #eef4fa;
+  --point-fg: #123052;
+  --tip-bg: #ebf7f2;
+  --tip-fg: #0b6b4f;
+  --tip-line: #1a9a72;
+  --warn-bg: #fff3eb;
+  --warn-fg: #c2410c;
+  --warn-line: #e8590c;
+  --law-bg: #f4f0e8;
+  --law-fg: #5c4a1f;
+  --law-line: #8a7340;
+  --example-bg: #f3eef8;
+  --example-fg: #5b3d8f;
+  --do-bg: #e9f6ee;
+  --do-fg: #146c3a;
+  --dont-bg: #fdecec;
+  --dont-fg: #b42318;
+  --summary-bg: #0b1f3a;
+
+  --danger: #b42318;
+  --ok: #0b6b4f;
+
+  --font: "Pretendard", "Pretendard Variable", "Noto Sans KR",
+    "Malgun Gothic", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+  --font-mono: "Cascadia Code", "D2Coding", "Consolas", monospace;
+
+  --fs-cover: 40px;
+  --fs-chapter: 34px;
+  --fs-h1: 26px;
+  --fs-h2: 18px;
+  --fs-body: 14.5px;
+  --fs-sm: 12.5px;
+  --fs-caption: 11.5px;
+  --fs-label: 11px;
+
+  --lh-tight: 1.35;
+  --lh-body: 1.7;
+  --radius: 3px;
+  --shadow-page: 0 18px 50px rgba(11, 31, 58, 0.18), 0 2px 8px rgba(11, 31, 58, 0.08);
+
+  --page-w: 210mm;
+  --page-h: 297mm;
+  --page-pad-x: 16mm;
+  --page-pad-y: 14mm;
+
+  --toolbar-h: 56px;
+  --nav-w: 268px;
+  --ins-w: 292px;
+}

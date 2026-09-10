@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>경찰 교육 전자책 제작기</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+  <div id="app">
+    <header class="toolbar">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="2"
+            d="M24 4 L42 12 V28 C42 36 33 42 24 45 C15 42 6 36 6 28 V12 Z"/>
+          <path fill="none" stroke="currentColor" stroke-width="1.6"
+            d="M16 22 L22 28 L33 16"/>
+        </svg>
+        <div class="brand-text">
+          <strong>경찰 교육 전자책 제작기</strong>
+          <span>로컬 · 내부교육 콘텐츠</span>
+        </div>
+      </div>
+
+      <div class="toolbar-group hide-in-preview">
+        <button type="button" class="btn btn-ghost" id="btn-new">새 전자책</button>
+        <button type="button" class="btn btn-gold" id="btn-prompt">마스터 프롬프트</button>
+        <button type="button" class="btn btn-primary" id="btn-md">Markdown 불러오기</button>
+      </div>
+
+      <div class="toolbar-group hide-in-preview hide-narrow">
+        <button type="button" class="btn btn-ghost" id="btn-add-page">페이지 추가</button>
+        <button type="button" class="btn btn-ghost" id="btn-dup-page">페이지 복제</button>
+        <button type="button" class="btn btn-ghost btn-danger" id="btn-del-page">페이지 삭제</button>
+      </div>
+
+      <div class="toolbar-spacer"></div>
+
+      <div class="toolbar-group">
+        <button type="button" class="btn btn-gold" id="btn-preview">미리보기</button>
+        <button type="button" class="btn btn-gold preview-exit" id="btn-preview-exit">편집으로 돌아가기</button>
+        <button type="button" class="btn btn-primary hide-in-preview" id="btn-pdf">PDF 저장</button>
+      </div>
+
+      <div class="toolbar-group hide-in-preview">
+        <div class="dd" id="dd-export">
+          <button type="button" class="btn btn-ghost" data-dd="dd-export">보내기</button>
+          <div class="dd-menu">
+            <button type="button" id="btn-html">HTML 전자책 저장</button>
+            <button type="button" id="btn-md-out">Markdown 내보내기</button>
+            <div class="sep"></div>
+            <button type="button" id="btn-json-out">JSON 백업</button>
+          </div>
+        </div>
+        <div class="dd" id="dd-backup">
+          <button type="button" class="btn btn-ghost" data-dd="dd-backup">백업</button>
+          <div class="dd-menu">
+            <button type="button" id="btn-json-in">JSON 불러오기</button>
+            <button type="button" id="btn-sample">샘플 전자책</button>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-ghost hide-in-preview" id="btn-review">
+        검토 <span class="count-badge" id="review-badge" hidden>0</span>
+      </button>
+      <span class="save-status" id="save-status">저장 대기</span>
+    </header>
+
+    <div class="workspace">
+      <aside class="nav-pane pane hide-in-preview">
+        <div class="pane-head">
+          <h2>페이지</h2>
+        </div>
+        <div class="pane-body">
+          <input type="search" class="nav-search" id="nav-search" placeholder="페이지 검색" autocomplete="off">
+          <div class="nav-tree" id="nav-tree"></div>
+          <p class="nav-hint">주황·빨간 점은 글이 길거나 빠진 칸이 있는 페이지입니다. 마스터 프롬프트로 만든 Markdown을 불러오면 전자책 양식에 맞춰 변환됩니다.</p>
+        </div>
+      </aside>
+
+      <main class="preview-pane" id="preview-pane">
+        <div class="preview-bar">
+          <button type="button" id="btn-prev">이전</button>
+          <span class="pg" id="page-indicator">1 / 1</span>
+          <button type="button" id="btn-next">다음</button>
+        </div>
+        <div class="issue-bar" id="issue-bar" hidden></div>
+        <div class="page-stage" id="page-stage">
+          <div class="page-scale-wrap" id="page-scale-wrap">
+            <div id="page-mount"></div>
+          </div>
+        </div>
+        <div class="drop-overlay">Markdown 파일을 놓으면 전자책으로 변환합니다</div>
+      </main>
+
+      <aside class="inspector-pane pane hide-in-preview">
+        <div class="pane-head">
+          <h2>페이지 설정</h2>
+        </div>
+        <div class="pane-body" id="inspector"></div>
+      </aside>
+    </div>
+  </div>
+
+  <div id="print-root" aria-hidden="true"></div>
+  <div id="toast" role="status"></div>
+  <div id="modal-root"></div>
+
+  <input type="file" id="file-md" class="hidden-file" accept=".md,.markdown,.txt,text/markdown,text/plain">
+  <input type="file" id="file-json" class="hidden-file" accept=".json,application/json">
+  <input type="file" id="file-img" class="hidden-file" accept="image/*">
+
+  <script src="js/util.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/markdown.js"></script>
+  <script src="js/lint.js"></script>
+  <script src="js/master-prompt.js"></script>
+  <script src="js/sample.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/ebook-css.js"></script>
+  <script src="js/export.js"></script>
+  <script src="js/editor.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

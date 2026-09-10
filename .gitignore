@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+*.log
+
+# 내부 우수사례 재구성 — 공개 저장소에 올리지 않음
+samples/2025상반기_현장조치_교훈.md
+samples/현장조치_교훈_카드.html
