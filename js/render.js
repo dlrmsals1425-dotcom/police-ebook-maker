@@ -525,7 +525,7 @@
       '<article class="ebook-page" data-page-id="' +
       page.id +
       '"><div class="page-inner content-stack">' +
-      '<div class="remember-head"><div class="remember-mark">5</div>' +
+      '<header class="page-head remember-head"><div class="remember-mark">5</div>' +
       '<div><div class="kicker">REMEMBER</div><h1 class="pg-title size-' +
       (page.titleSize || "md") +
       '"' +
@@ -534,15 +534,19 @@
       ed +
       ">" +
       H(page.title || "이것만은 기억하세요") +
-      "</h1></div></div>" +
-      '<div class="remember-list">' +
+      "</h1></div></header>" +
+      '<div class="page-body remember-list">' +
       list +
       "</div>" +
-      others
-        .map(function (b) {
-          return renderBlock(b, opts);
-        })
-        .join("") +
+      (others.length
+        ? '<footer class="page-end">' +
+          others
+            .map(function (b) {
+              return renderBlock(b, opts);
+            })
+            .join("") +
+          "</footer>"
+        : "") +
       "</div>" +
       footer(project, page, opts) +
       "</article>"
@@ -552,18 +556,22 @@
   function renderGeneric(project, page, opts) {
     const ed = editableAttr(opts);
     const size = page.titleSize || "md";
-    const inner = (page.blocks || [])
-      .map(function (b) {
-        return renderBlock(b, opts);
-      })
-      .join("");
+    const blocks = page.blocks || [];
+    const lead = [];
+    const body = [];
+    const end = [];
+    blocks.forEach(function (b, i) {
+      if (b.type === "summary") end.push(b);
+      else if (b.type === "point" && i === 0) lead.push(b);
+      else body.push(b);
+    });
     return (
       '<article class="ebook-page' +
       bgClass(page) +
       '" data-page-id="' +
       page.id +
       '"><div class="page-inner content-stack">' +
-      '<div class="kicker">' +
+      '<header class="page-head"><div class="kicker">' +
       H(EB.pageTypeLabel(page.type)) +
       "</div>" +
       '<h1 class="pg-title size-' +
@@ -584,7 +592,28 @@
           H(page.subtitle) +
           "</p>"
         : "") +
-      inner +
+      lead
+        .map(function (b) {
+          return renderBlock(b, opts);
+        })
+        .join("") +
+      "</header>" +
+      '<div class="page-body">' +
+      body
+        .map(function (b) {
+          return renderBlock(b, opts);
+        })
+        .join("") +
+      "</div>" +
+      (end.length
+        ? '<footer class="page-end">' +
+          end
+            .map(function (b) {
+              return renderBlock(b, opts);
+            })
+            .join("") +
+          "</footer>"
+        : "") +
       "</div>" +
       footer(project, page, opts) +
       "</article>"

@@ -49,24 +49,24 @@
     "Malgun Gothic", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
   --font-mono: "Cascadia Code", "D2Coding", "Consolas", monospace;
 
-  --fs-cover: 40px;
-  --fs-chapter: 34px;
-  --fs-h1: 26px;
-  --fs-h2: 18px;
-  --fs-body: 14.5px;
-  --fs-sm: 12.5px;
-  --fs-caption: 11.5px;
-  --fs-label: 11px;
+  --fs-cover: 48px;
+  --fs-chapter: 42px;
+  --fs-h1: 34px;
+  --fs-h2: 22px;
+  --fs-body: 17.5px;
+  --fs-sm: 15px;
+  --fs-caption: 13px;
+  --fs-label: 13px;
 
-  --lh-tight: 1.35;
-  --lh-body: 1.7;
-  --radius: 3px;
+  --lh-tight: 1.28;
+  --lh-body: 1.65;
+  --radius: 2px;
   --shadow-page: 0 18px 50px rgba(11, 31, 58, 0.18), 0 2px 8px rgba(11, 31, 58, 0.08);
 
   --page-w: 210mm;
   --page-h: 297mm;
-  --page-pad-x: 16mm;
-  --page-pad-y: 14mm;
+  --page-pad-x: 14mm;
+  --page-pad-y: 12mm;
 
   --toolbar-h: 56px;
   --nav-w: 268px;
