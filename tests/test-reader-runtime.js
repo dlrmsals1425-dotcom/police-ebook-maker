@@ -140,8 +140,8 @@ assert.equal(ids['toc-search'].focused, false, 'opening mobile TOC does not summ
 assert.equal(ids['toc-close'].focused, true);
 ids['toc-close'].onclick();
 const beforeTouch = ids.pg.textContent;
-ids.desk.events.click({target: element(), clientX: 390});
-assert.equal(ids.pg.textContent, beforeTouch, 'mobile edge tap does not turn page');
+ids.desk.events.click({target: element(), clientX: 195});
+assert.equal(ids.pg.textContent, beforeTouch, 'mobile center tap does not turn page');
 function touch(x, y, count = 1, target = element()) {
   return {touches: Array.from({length: count}, () => ({clientX: x, clientY: y})),
     changedTouches: [{clientX: x, clientY: y}], target, cancelable: true,
@@ -282,6 +282,26 @@ assert.equal(pages[0].scrollTop, 90, 'cover boundary does not reset scrolling');
 context.location.hash = '#p' + pages.length; windowEvents.hashchange();
 ids['reader-next'].onclick();
 assert.equal(layers().length, 0, 'last page cannot turn past the end');
+// Mobile edge taps share the turn animation; scroll release must not count as a tap.
+let touchClock = Date.now() + 10000;
+context.Date = {now: () => touchClock};
+ids.resetbtn.onclick();
+ids.desk.events.touchstart(touch(375, 100));
+ids.desk.events.touchend(touch(375, 100));
+ids.desk.events.click({target: element(), clientX: 375});
+assert.equal(layers().length, 1, 'right edge tap starts a page turn on mobile');
+finishTurn();
+assert.equal(ids.pg.textContent, '2 / ' + pages.length);
+touchClock += 1000;
+ids.desk.events.click({target: element(), clientX: 15});
+finishTurn();
+assert.equal(ids.pg.textContent, '1 / ' + pages.length, 'left edge tap returns to previous page');
+ids.desk.events.touchstart(touch(375, 100));
+ids.desk.events.touchmove(touch(370, 200));
+ids.desk.events.touchend(touch(370, 220));
+ids.desk.events.click({target: element(), clientX: 370});
+assert.equal(layers().length, 0, 'edge scroll release cannot become an accidental tap');
+assert.equal(ids.pg.textContent, '1 / ' + pages.length);
 context.localStorage.getItem = () => "Infinity";
 context.location.hash = "";
 vm.runInNewContext(script, context);
