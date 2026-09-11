@@ -1048,3 +1048,31 @@ body.is-preview .hide-in-preview { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* 미리보기는 내보내는 전자책과 같은 리더를 모바일 폭으로 표시한다. */
+.reader-preview[hidden] { display: none; }
+.reader-preview {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+#reader-frame {
+  display: block;
+  width: min(100%, 480px);
+  height: 100%;
+  border: 0;
+  background: var(--paper);
+  box-shadow: var(--shadow-page);
+}
+body.is-preview #app { height: 100dvh; min-height: 0; }
+body.is-preview .preview-bar,
+body.is-preview .page-stage,
+body.is-preview .toolbar .brand { display: none; }
+body.is-preview .toolbar {
+  min-height: 56px;
+  height: auto;
+  padding: 6px 12px;
+}
+body.is-preview .preview-exit { min-height: 44px; }

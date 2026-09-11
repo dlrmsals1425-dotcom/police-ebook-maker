@@ -44,7 +44,7 @@
       <div class="toolbar-spacer"></div>
 
       <div class="toolbar-group">
-        <button type="button" class="btn btn-gold hide-in-preview" id="btn-preview">미리보기</button>
+        <button type="button" class="btn btn-gold hide-in-preview" id="btn-preview">책장 넘김 미리보기</button>
         <button type="button" class="btn btn-gold preview-exit" id="btn-preview-exit">편집으로 돌아가기</button>
         <button type="button" class="btn btn-primary hide-in-preview" id="btn-pdf">PDF 저장</button>
       </div>
@@ -106,6 +106,9 @@
           <div class="page-scale-wrap" id="page-scale-wrap">
             <div id="page-mount"></div>
           </div>
+        </div>
+        <div class="reader-preview" id="reader-preview" hidden>
+          <iframe id="reader-frame" title="모바일 전자책 미리보기" sandbox="allow-scripts"></iframe>
         </div>
         <div class="drop-overlay">Markdown 파일을 놓으면 전자책으로 변환합니다</div>
       </main>

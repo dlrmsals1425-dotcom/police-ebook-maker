@@ -254,11 +254,27 @@
   }
 
   function setPreview(on) {
+    if (on === state.preview) return;
+    const frame = $("#reader-frame");
+    if (on) {
+      saveNow();
+      frame.srcdoc = EB.Export.htmlString(state.project, {
+        startIndex: EB.Editor.findPageIndex(state.project, state.currentId),
+        preview: true
+      });
+    } else {
+      frame.removeAttribute("srcdoc");
+    }
     state.preview = on;
     document.body.classList.toggle("is-preview", on);
+    $("#reader-preview").hidden = !on;
     const btn = $("#btn-preview");
-    if (btn) btn.textContent = on ? "미리보기 중" : "미리보기";
-    render();
+    if (btn) btn.textContent = on ? "미리보기 중" : "책장 넘김 미리보기";
+    if (on) frame.focus();
+    else {
+      render();
+      if (btn) btn.focus();
+    }
   }
 
   function confirmReplace() {
@@ -746,6 +762,7 @@
         if (saveNow()) EB.toast("저장했습니다.");
         return;
       }
+      if (state.preview) return;
       if ($("#modal-root").firstElementChild || document.querySelector(".dd.open")) return;
       const tag = (e.target && e.target.closest("[contenteditable], input, textarea, select"));
       if (tag) return;
