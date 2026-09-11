@@ -1,5 +1,5 @@
-/* PDF / 모바일 HTML / EPUB / Markdown / JSON
-   배포 HTML은 한 장씩 넘기는 리더가 아니라, 휴대폰에서 스크롤하는 문서다. */
+/* PDF / 전자책 HTML / EPUB / Markdown / JSON
+   배포 HTML은 표지·조판을 유지한 채, 책처럼 한 장씩 넘기는 파일이다. */
 (function (g) {
   const EB = (g.EB = g.EB || {});
 
@@ -59,70 +59,141 @@
       .replace(/(<details\b[^>]*?)\sopen(?=[\s>])/gi, '$1 open="open"');
   }
 
-  function mobileCss() {
+  function bookCss() {
     return [
-      "html,body.mbook{margin:0;background:#dfe7ee;font-family:var(--font);-webkit-text-size-adjust:100%;text-size-adjust:100%;}",
-      ".m-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));background:#0b1f3a;color:#e8eef4;}",
-      ".m-title{flex:1;min-width:0;font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}",
-      ".m-top a,.m-top button{flex:0 0 auto;height:34px;padding:0 10px;border:0;border-radius:4px;background:rgba(255,255,255,.1);color:#fff;font-weight:700;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;}",
-      ".m-book{max-width:720px;margin:0 auto;padding:12px 12px calc(28px + env(safe-area-inset-bottom));}",
-      ".m-toc{background:#fff;border-radius:10px;margin:0 0 12px;padding:2px 14px 8px;box-shadow:0 8px 24px rgba(11,31,58,.08);}",
-      ".m-toc summary{cursor:pointer;font-weight:800;padding:12px 0;color:#0b1f3a;list-style:none;}",
-      ".m-toc summary::-webkit-details-marker{display:none;}",
-      ".m-toc a{display:block;padding:9px 0;border-top:1px solid #e2e6ec;color:#123052;text-decoration:none;font-size:14px;line-height:1.4;}",
-      ".m-toc a.ch{font-weight:800;color:#0b1f3a;}",
-      "body.mbook .ebook-page{width:auto!important;height:auto!important;max-height:none!important;min-height:0;overflow:visible!important;margin:0 0 12px;box-shadow:0 8px 24px rgba(11,31,58,.08);border-radius:10px;scroll-margin-top:58px;}",
-      "body.mbook .page-inner{overflow:visible!important;flex:none!important;padding:18px 16px 14px!important;}",
-      "body.mbook .page-footer{padding:0 16px 14px;}",
-      "body.mbook .blk.summary-ribbon,body.mbook .blk.learn-box{margin-top:14px!important;}",
-      "body.mbook .cover-top{min-height:0!important;padding:28px 18px 20px!important;border-radius:10px 10px 0 0;}",
-      "body.mbook .cover-bottom{padding:14px 16px 16px!important;grid-template-columns:1fr 1fr;}",
-      "body.mbook .cover-mark{margin:16px 0 12px!important;}",
-      "body.mbook .ch-no{font-size:42px!important;}",
-      "body.mbook .dodont{grid-template-columns:1fr 1fr;flex:none;min-height:0;}",
-      "body.mbook .col-do,body.mbook .col-dont{min-height:0;}",
-      "body.mbook .img-block img{max-width:100%;height:auto;}",
+      "html,body.ebook{margin:0;height:100%;background:#071018;color:#e8eef4;font-family:var(--font);overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;}",
+      ".desk{height:100dvh;display:flex;align-items:center;justify-content:center;padding:22px 18px;padding-top:max(22px,env(safe-area-inset-top));padding-bottom:max(22px,env(safe-area-inset-bottom));background:radial-gradient(ellipse at 50% 28%,#243a58 0%,#0b1a2c 58%,#071018 100%);}",
+      ".book{display:flex;align-items:stretch;max-width:100%;filter:drop-shadow(0 28px 70px rgba(0,0,0,.5));}",
+      ".spine{width:16px;flex:0 0 16px;border-radius:5px 0 0 5px;background:linear-gradient(90deg,#050b14 0%,#123052 32%,#d4bc6a 50%,#123052 68%,#050b14 100%);box-shadow:inset -2px 0 6px rgba(0,0,0,.35);}",
+      ".leaf{background:#fff;position:relative;overflow:hidden;}",
+      ".leaf-fit{overflow:hidden;transform-origin:top left;}",
+      ".leaf-pages{width:210mm;}",
+      ".ebook-page{display:none;box-shadow:none;}",
+      ".ebook-page.is-open{display:flex;}",
+      ".hud{position:fixed;left:0;right:0;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));background:linear-gradient(to bottom,rgba(0,0,0,.5),transparent);transition:opacity .25s;}",
+      ".hud button{height:34px;padding:0 12px;border:0;border-radius:4px;background:rgba(255,255,255,.12);color:#fff;font-weight:700;font-size:13px;}",
+      ".hud-title{flex:1;min-width:0;font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}",
+      ".pg-float{position:fixed;left:50%;bottom:max(10px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:16;font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.55);font-variant-numeric:tabular-nums;pointer-events:none;}",
+      "body.hud-off .hud{opacity:0;pointer-events:none;}",
+      ".toc{display:none;position:fixed;inset:0;z-index:30;background:rgba(5,11,20,.55);}",
+      "body.toc-open .toc{display:block;}",
+      ".toc nav{position:absolute;left:0;top:0;bottom:0;width:min(86vw,340px);background:#f3efe6;color:#1c2430;overflow:auto;padding:18px 14px 32px;padding-top:max(18px,env(safe-area-inset-top));box-shadow:12px 0 40px rgba(0,0,0,.25);}",
+      ".toc h2{margin:0 0 12px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8a7340;}",
+      ".toc a{display:block;padding:10px 8px;border-top:1px solid #e6dfd0;color:#1c2430;text-decoration:none;font-size:14px;}",
+      ".toc a.ch{font-weight:800;color:#0b1f3a;margin-top:6px;border-top:0;}",
+      ".toc a.is-on{background:#0b1f3a;color:#fff;}",
       ".blk-tools{display:none!important;}",
-      "@media (max-width:640px){body.mbook .dodont,body.mbook .cover-bottom{grid-template-columns:1fr!important;}body.mbook .cover-title{font-size:28px!important;}body.mbook .pg-title{font-size:22px!important;}body.mbook .ch-title{font-size:26px!important;}body.mbook .law-grid{grid-template-columns:1fr!important;}}",
-      "@media print{html,body.mbook{background:#fff!important;} .m-top,.m-toc{display:none!important;} .m-book{max-width:none;padding:0;} body.mbook .ebook-page{display:flex!important;width:210mm!important;height:297mm!important;max-height:297mm!important;overflow:hidden!important;margin:0;border-radius:0;box-shadow:none;page-break-after:always;break-after:page;} body.mbook .ebook-page:last-child{page-break-after:auto;} body.mbook .cover-top{min-height:148mm!important;padding:22mm 16mm 16mm!important;border-radius:0;} body.mbook .page-inner{padding:var(--page-pad-y) var(--page-pad-x) 6mm!important;overflow:hidden!important;flex:1 1 0!important;} body.mbook .blk.summary-ribbon,body.mbook .blk.learn-box{margin-top:auto!important;}}"
+      "@media (max-width:720px){",
+      ".desk{padding:0;align-items:stretch;}",
+      ".book{width:100%;height:100dvh;filter:none;}",
+      ".spine{display:none;}",
+      ".leaf,.leaf-fit,.leaf-pages{width:100%!important;height:100%!important;transform:none!important;}",
+      ".ebook-page{width:100%!important;height:100dvh!important;max-height:100dvh!important;overflow:auto!important;}",
+      ".cover-top{min-height:56dvh!important;padding:32px 22px 20px!important;}",
+      ".cover-bottom{padding:16px 20px 22px!important;}",
+      ".cover-mark{margin:22px 0 14px!important;}",
+      ".cover-title{font-size:30px!important;max-width:none!important;}",
+      ".page-inner{padding:20px 18px 12px!important;}",
+      ".page-footer{padding:0 18px max(14px,env(safe-area-inset-bottom));}",
+      ".ch-no{font-size:56px!important;}",
+      ".ch-title{max-width:none!important;}",
+      ".dodont,.cover-bottom{grid-template-columns:1fr!important;}",
+      ".pg-title{font-size:22px!important;}",
+      ".law-grid{grid-template-columns:1fr!important;}",
+      ".pg-float{display:none;}",
+      "}",
+      "@media print{html,body.ebook{overflow:visible!important;height:auto!important;background:#fff!important;} .hud,.toc,.spine,.pg-float{display:none!important;} .desk,.book,.leaf,.leaf-fit,.leaf-pages{display:block!important;height:auto!important;width:auto!important;max-width:none!important;transform:none!important;filter:none!important;box-shadow:none!important;background:#fff!important;padding:0!important;} .ebook-page{display:flex!important;width:210mm!important;height:297mm!important;max-height:297mm!important;overflow:hidden!important;page-break-after:always;break-after:page;} .ebook-page:last-child{page-break-after:auto;} .cover-top{min-height:148mm!important;padding:22mm 16mm 16mm!important;} .page-inner{padding:var(--page-pad-y) var(--page-pad-x) 6mm!important;overflow:hidden!important;}}"
     ].join("");
   }
 
-  function buildMobileHtml(project, articlesHtml) {
+  function bookScript(storeKey) {
+    const key = JSON.stringify(storeKey || "ebook");
+    return (
+      "<script>(function(){" +
+      "var pages=[].slice.call(document.querySelectorAll('.ebook-page'));var i=0;var swiped=false;" +
+      "var key='police-ebook:'+" +
+      key +
+      ";" +
+      "var fitEl=document.getElementById('leaf-fit');var pagesEl=document.getElementById('leaf-pages');" +
+      "function phone(){return window.matchMedia('(max-width:720px)').matches;}" +
+      "function fit(){if(!fitEl||!pagesEl||!pages.length)return;if(phone()){fitEl.style.width='';fitEl.style.height='';pagesEl.style.transform='';return;}" +
+      "pagesEl.style.transform='none';var p=pages[i]||pages[0];var pw=p.offsetWidth||1,ph=p.offsetHeight||1;" +
+      "var desk=document.getElementById('desk');var aw=desk.clientWidth-56,ah=desk.clientHeight-36;" +
+      "var s=Math.min(aw/pw,ah/ph,1);fitEl.style.width=Math.round(pw*s)+'px';fitEl.style.height=Math.round(ph*s)+'px';" +
+      "pagesEl.style.transformOrigin='top left';pagesEl.style.transform='scale('+s+')';}" +
+      "function show(n){i=Math.max(0,Math.min(pages.length-1,n));pages.forEach(function(p,k){p.classList.toggle('is-open',k===i);});" +
+      "var pg=document.getElementById('pg');if(pg)pg.textContent=(i+1)+' / '+pages.length;" +
+      "var on=document.querySelector('.toc a.is-on');if(on)on.classList.remove('is-on');" +
+      "var t=document.querySelector('.toc a[data-i=\"'+i+'\"]');if(t)t.classList.add('is-on');" +
+      "try{history.replaceState(null,'','#p'+(i+1));}catch(e){}" +
+      "try{localStorage.setItem(key,String(i));}catch(e){}" +
+      "if(pages[i])pages[i].scrollTop=0;document.body.classList.remove('toc-open');fit();}" +
+      "document.getElementById('tocbtn').onclick=function(){document.body.classList.toggle('toc-open');};" +
+      "document.getElementById('toc').onclick=function(e){if(e.target.id==='toc')document.body.classList.remove('toc-open');" +
+      "var a=e.target.closest('a[data-i]');if(a){e.preventDefault();show(+a.getAttribute('data-i'));}};" +
+      "document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}" +
+      "if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}" +
+      "if(e.key==='Escape')document.body.classList.remove('toc-open');});" +
+      "var x0=0,y0=0,st=document.getElementById('desk');" +
+      "st.addEventListener('touchstart',function(e){x0=e.changedTouches[0].clientX;y0=e.changedTouches[0].clientY;},{passive:true});" +
+      "st.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;" +
+      "if(Math.abs(dx)<56||Math.abs(dx)<Math.abs(dy))return;swiped=true;if(dx>0)show(i-1);else show(i+1);});" +
+      "st.addEventListener('click',function(e){if(swiped){swiped=false;return;}" +
+      "if(e.target.closest('button,a,details,.box'))return;" +
+      "var r=st.getBoundingClientRect();var x=(e.clientX-r.left)/r.width;" +
+      "if(x<0.22)show(i-1);else if(x>0.78)show(i+1);else document.body.classList.toggle('hud-off');});" +
+      "window.addEventListener('resize',fit);" +
+      "var h=parseInt((location.hash||'').replace('#p',''),10);var saved=0;" +
+      "try{saved=parseInt(localStorage.getItem(key)||'0',10)||0;}catch(e){}" +
+      "show(h?h-1:saved);" +
+      "})();</script>"
+    );
+  }
+
+  function buildBookHtml(project, articlesHtml) {
     const title = (project.meta && project.meta.title) || "전자책";
     const items = project.pages
       .map(function (p, i) {
-        const cls = p.type === "chapter" ? ' class="ch"' : "";
+        const cls = p.type === "chapter" ? " ch" : "";
         return (
           '<a href="#p' +
           (i + 1) +
-          '"' +
+          '" class="' +
           cls +
-          ">" +
+          '" data-i="' +
+          i +
+          '">' +
           EB.escapeHtml(tocLabel(project, p)) +
           "</a>"
         );
       })
       .join("");
+    const opened = articlesHtml.replace('class="ebook-page', 'class="ebook-page is-open');
     return (
       "<!DOCTYPE html>\n<html lang=\"ko\"><head><meta charset=\"UTF-8\">" +
       '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">' +
-      '<meta name="theme-color" content="#0b1f3a">' +
+      '<meta name="theme-color" content="#071018">' +
+      '<meta name="apple-mobile-web-app-capable" content="yes">' +
       "<title>" +
       EB.escapeHtml(title) +
       "</title><style>" +
       (EB.EXPORT_CSS || "") +
-      mobileCss() +
-      "</style></head><body class=\"mbook\">" +
-      '<header class="m-top"><div class="m-title">' +
+      bookCss() +
+      "</style></head><body class=\"ebook\">" +
+      '<header class="hud"><button type="button" id="tocbtn">목차</button>' +
+      '<div class="hud-title">' +
       EB.escapeHtml(title) +
-      '</div><a href="#toc">목차</a>' +
-      '<button type="button" onclick="window.print()">PDF</button></header>' +
-      '<main class="m-book"><details class="m-toc" id="toc"><summary>목차</summary>' +
+      "</div></header>" +
+      '<div class="toc" id="toc"><nav><h2>목차</h2>' +
       items +
-      "</details>" +
-      articlesHtml +
-      "</main></body></html>"
+      "</nav></div>" +
+      '<div class="desk" id="desk"><div class="book" id="book"><div class="spine" aria-hidden="true"></div>' +
+      '<div class="leaf"><div class="leaf-fit" id="leaf-fit"><div class="leaf-pages" id="leaf-pages">' +
+      opened +
+      "</div></div></div></div></div>" +
+      '<div class="pg-float" id="pg">1 / 1</div>' +
+      bookScript(title) +
+      "</body></html>"
     );
   }
 
@@ -151,8 +222,8 @@
     );
   }
 
-  function mobileHtml(project) {
-    return buildMobileHtml(project, pagesMarkup(project));
+  function bookHtml(project) {
+    return buildBookHtml(project, pagesMarkup(project));
   }
 
   function epubBytes(project) {
@@ -241,11 +312,11 @@
         window.print();
       }, 60);
     },
-    htmlString: mobileHtml,
+    htmlString: bookHtml,
     html: function (project) {
       EB.downloadText(
         EB.safeFilename(project.meta.title, ".html"),
-        mobileHtml(project),
+        bookHtml(project),
         "text/html;charset=utf-8"
       );
     },
@@ -268,7 +339,7 @@
         "application/json;charset=utf-8"
       );
     },
-    buildMobileHtml: buildMobileHtml,
+    buildBookHtml: buildBookHtml,
     stripEditor: stripEditor
   };
 })(typeof window !== "undefined" ? window : global);

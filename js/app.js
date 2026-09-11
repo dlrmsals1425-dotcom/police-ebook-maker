@@ -518,7 +518,7 @@
     });
     $("#btn-html").addEventListener("click", function () {
       EB.Export.html(state.project);
-      EB.toast("휴대폰용 HTML을 저장했습니다. 브라우저로 열어 스크롤하면 됩니다.");
+      EB.toast("전자책 HTML을 저장했습니다. 브라우저로 열면 책처럼 한 장씩 넘깁니다.");
     });
     $("#btn-md-out").addEventListener("click", function () {
       EB.Export.markdown(state.project);

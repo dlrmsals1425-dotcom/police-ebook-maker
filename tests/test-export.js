@@ -20,12 +20,13 @@ const project = EB.Markdown.parse(md);
 assert(project.pages.length > 5, "활용가이드 pages > 5");
 
 const html = EB.Export.htmlString(project);
-assert(html.indexOf('class="mbook"') !== -1, "mobile book body");
-assert(html.indexOf('id="toc"') !== -1, "in-page toc");
+assert(html.indexOf('body class="ebook"') !== -1, "ebook body");
+assert(html.indexOf('class="spine"') !== -1, "book spine");
+assert(html.indexOf('id="toc"') !== -1, "toc overlay");
 assert(html.indexOf('id="p1"') !== -1, "page anchors");
-assert(html.indexOf("r-prev") === -1, "no page-turn chrome");
-assert(html.indexOf("touchend") === -1, "no swipe handler");
-assert(html.indexOf("page-fit") === -1, "no A4 scale wrapper");
+assert(html.indexOf("is-open") !== -1, "one open page");
+assert(html.indexOf("touchend") !== -1, "swipe to turn");
+assert(html.indexOf("class=\"mbook\"") === -1, "not a stacked feed");
 assert((html.match(/class="ebook-page/g) || []).length === project.pages.length, "one article per page");
 
 const zip = EB.Export.epubBytes(project);
