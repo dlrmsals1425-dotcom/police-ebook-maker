@@ -13,15 +13,35 @@
     report: null
   };
 
-  const autosave = EB.debounce(function () {
-    if (!state.project) return;
+  function saveNow() {
+    if (!state.project) return false;
     const ok = EB.Store.save(state.project);
     const el = $("#save-status");
-    if (el && ok) {
-      el.textContent = "자동 저장 " + EB.nowTime();
-      el.classList.add("is-saved");
+    if (el) {
+      el.textContent = ok ? "자동 저장 " + EB.nowTime() : "저장 실패 · JSON 백업 필요";
+      el.classList.toggle("is-saved", ok);
+      el.classList.toggle("is-error", !ok);
     }
-  }, 500);
+    return ok;
+  }
+
+  const delayedSave = EB.debounce(saveNow, 500);
+  function autosave() {
+    const el = $("#save-status");
+    if (el) {
+      el.textContent = "저장 중…";
+      el.classList.remove("is-saved", "is-error");
+    }
+    delayedSave();
+  }
+
+  function selectPanel(panel) {
+    document.body.dataset.panel = panel;
+    EB.$$("[data-panel]").forEach(function (btn) {
+      if (btn.tagName === "BUTTON") btn.setAttribute("aria-pressed", String(btn.dataset.panel === panel));
+    });
+    requestAnimationFrame(EB.Render.fit);
+  }
 
   function currentPage() {
     return EB.Editor.pageById(state.project, state.currentId);
@@ -88,6 +108,10 @@
     mount.appendChild(el);
 
     $("#page-indicator").textContent = idx + 1 + " / " + project.pages.length;
+    $("#btn-prev").disabled = idx === 0;
+    $("#btn-next").disabled = idx === project.pages.length - 1;
+    $("#document-title").textContent = project.meta.title || "제목 없는 전자책";
+    $("#document-count").textContent = project.pages.length + "페이지";
     $("#inspector").innerHTML = EB.Editor.inspectorHtml(project, page);
     bindInspector();
     requestAnimationFrame(function () {
@@ -130,6 +154,7 @@
       const q = ($("#nav-search") && $("#nav-search").value) || "";
       state.report = EB.Lint.analyze(state.project);
       updateReviewChrome(page);
+      $("#document-title").textContent = state.project.meta.title || "제목 없는 전자책";
       tree.innerHTML = "";
       tree.appendChild(EB.Render.nav(state.project, page.id, q, state.report));
     }
@@ -237,19 +262,14 @@
   }
 
   function confirmReplace() {
-    return window.confirm("현재 전자책을 바꾸고 새로 불러올까요? 지금 내용은 자동 저장된 상태입니다.");
+    return window.confirm("현재 전자책을 바꾸고 새로 불러올까요? 기존 내용이 필요하면 취소 후 JSON 백업을 먼저 저장해 주세요.");
   }
 
   function loadProject(project, toastMsg) {
     state.project = EB.ensureProjectShape(project);
     state.currentId = state.project.pages[0].id;
-    EB.Store.save(state.project);
+    saveNow();
     EB.Store.markSeen();
-    const st = $("#save-status");
-    if (st) {
-      st.textContent = "자동 저장 " + EB.nowTime();
-      st.classList.add("is-saved");
-    }
     render();
     if (toastMsg) EB.toast(toastMsg);
   }
@@ -552,6 +572,15 @@
     $("#btn-next").addEventListener("click", function () {
       go(1);
     });
+    $("#btn-fit").addEventListener("click", function () {
+      const wide = document.body.classList.toggle("fit-width");
+      this.setAttribute("aria-pressed", String(wide));
+      this.textContent = wide ? "한 쪽 맞춤" : "너비 맞춤";
+      EB.Render.fit();
+    });
+    EB.$$("button[data-panel]").forEach(function (btn) {
+      btn.addEventListener("click", function () { selectPanel(btn.dataset.panel); });
+    });
     $("#nav-search").addEventListener("input", function () {
       render();
     });
@@ -559,6 +588,7 @@
       const item = e.target.closest(".nav-item");
       if (!item) return;
       selectPage(item.dataset.pageId);
+      selectPanel("preview");
     });
 
     let dragId = null;
@@ -588,20 +618,33 @@
       onChange("structure");
     });
 
+    function closeDropdowns() {
+      document.querySelectorAll(".dd.open").forEach(function (d) {
+        d.classList.remove("open");
+        d.querySelector("[data-dd]").setAttribute("aria-expanded", "false");
+      });
+    }
     document.querySelectorAll("[data-dd]").forEach(function (btn) {
+      const menu = document.getElementById(btn.getAttribute("data-dd")).querySelector(".dd-menu");
+      menu.id = btn.getAttribute("data-dd") + "-menu";
+      btn.setAttribute("aria-controls", menu.id);
+      btn.setAttribute("aria-expanded", "false");
       btn.addEventListener("click", function (e) {
         e.stopPropagation();
         const id = btn.getAttribute("data-dd");
-        document.querySelectorAll(".dd").forEach(function (d) {
-          if (d.id !== id) d.classList.remove("open");
-        });
-        document.getElementById(id).classList.toggle("open");
+        const dropdown = document.getElementById(id);
+        const wasOpen = dropdown.classList.contains("open");
+        closeDropdowns();
+        dropdown.classList.toggle("open", !wasOpen);
+        btn.setAttribute("aria-expanded", String(!wasOpen));
       });
     });
-    document.addEventListener("click", function () {
-      document.querySelectorAll(".dd.open").forEach(function (d) {
-        d.classList.remove("open");
-      });
+    document.addEventListener("click", closeDropdowns);
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      const open = document.querySelector(".dd.open [data-dd]");
+      closeDropdowns();
+      if (open) open.focus();
     });
 
     $("#file-md").addEventListener("change", function () {
@@ -665,6 +708,8 @@
         EB.readFileAsText(file).then(function (text) {
           if (!confirmReplace()) return;
           loadProject(EB.Store.fromJSON(text), "백업을 불러왔습니다.");
+        }).catch(function (err) {
+          EB.toast(err.message || "백업 파일을 읽지 못했습니다.", true);
         });
         return;
       }
@@ -672,6 +717,8 @@
         EB.readFileAsText(file).then(function (text) {
           if (!confirmReplace()) return;
           importMarkdown(text);
+        }).catch(function () {
+          EB.toast("Markdown 파일을 읽지 못했습니다.", true);
         });
         return;
       }
@@ -679,15 +726,16 @@
     });
 
     document.addEventListener("keydown", function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+        e.preventDefault();
+        if (saveNow()) EB.toast("저장했습니다.");
+        return;
+      }
+      if ($("#modal-root").firstElementChild || document.querySelector(".dd.open")) return;
       const tag = (e.target && e.target.closest("[contenteditable], input, textarea, select"));
       if (tag) return;
       if (e.key === "ArrowLeft") go(-1);
       if (e.key === "ArrowRight") go(1);
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
-        e.preventDefault();
-        EB.Store.save(state.project);
-        EB.toast("저장했습니다.");
-      }
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "p") {
         e.preventDefault();
         EB.Export.printPdf(state.project);
@@ -695,6 +743,10 @@
     });
 
     window.addEventListener("resize", EB.debounce(EB.Render.fit, 80));
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "hidden") saveNow();
+    });
+    window.addEventListener("pagehide", saveNow);
     window.addEventListener("beforeprint", function () {
       if (state.project) EB.Export.preparePrint(state.project);
     });

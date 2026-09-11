@@ -663,7 +663,7 @@
     const meta = {
       title: extracted.meta.title || "",
       subtitle: extracted.meta.subtitle || "",
-      category: extracted.meta.category || "내부 교육자료",
+      category: extracted.meta.category || "",
       department: extracted.meta.department || "○○경찰서",
       date: extracted.meta.date || EB.today(),
       version: extracted.meta.version || "1.0"

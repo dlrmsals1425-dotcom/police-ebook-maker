@@ -1,14 +1,10 @@
-/* Markdown → 웹 리더 HTML / EPUB
-   node tests/build-reader.js [input.md] [output.html] [--epub out.epub] */
+/* Markdown → 전자책 HTML
+   node tests/build-reader.js [input.md] [output.html] */
 const fs = require("fs");
 const path = require("path");
 const { root, loadEB } = require("./load-eb");
 
-const args = process.argv.slice(2).filter(function (a) {
-  return a !== "--epub";
-});
-const epubIdx = process.argv.indexOf("--epub");
-const epubOut = epubIdx >= 0 ? process.argv[epubIdx + 1] : null;
+const args = process.argv.slice(2);
 
 const input = args[0]
   ? path.resolve(args[0])
@@ -22,12 +18,6 @@ const html = EB.Export.htmlString(project);
 fs.writeFileSync(output, html, "utf8");
 console.log("wrote", output, project.pages.length, "pages");
 
-if (epubOut) {
-  const bytes = EB.Export.epubBytes(project);
-  fs.writeFileSync(path.resolve(epubOut), Buffer.from(bytes));
-  console.log("wrote", path.resolve(epubOut), bytes.length, "bytes");
-}
-
 const extras = [
   {
     md: path.join(root, "samples", "2025상반기_현장조치_교훈.md"),
@@ -35,8 +25,7 @@ const extras = [
       path.join(root, "samples", "현장조치_교훈_카드.html"),
       "C:/Users/이근민/Downloads/현장조치_교훈_카드.html",
       "D:/지역/현장조치_교훈_카드.html"
-    ],
-    epub: "D:/지역/현장조치_교훈_카드.epub"
+    ]
   }
 ];
 
@@ -54,13 +43,5 @@ if (!args[0]) {
         console.log("skip", dest, e.message);
       }
     });
-    if (job.epub) {
-      try {
-        fs.writeFileSync(job.epub, Buffer.from(EB.Export.epubBytes(p)));
-        console.log("wrote", job.epub);
-      } catch (e) {
-        console.log("skip", job.epub, e.message);
-      }
-    }
   });
 }

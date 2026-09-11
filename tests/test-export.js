@@ -24,34 +24,20 @@ assert(html.indexOf('body class="ebook"') !== -1, "ebook body");
 assert(html.indexOf("cover-emblem") !== -1, "cover uses station emblem");
 assert(html.indexOf("cover-photo") !== -1, "cover uses station photo");
 assert(html.indexOf("고양경찰서") !== -1, "cover names 고양경찰서");
-assert(html.indexOf('class="spine"') !== -1, "book spine");
+assert(html.indexOf('class="leaf-pages"') !== -1, "book leaf");
 assert(html.indexOf('id="toc"') !== -1, "toc overlay");
 assert(html.indexOf('id="resetbtn"') !== -1, "reset to first page");
-assert(html.indexOf(">초기화<") !== -1, "reset labeled 초기화");
+assert(html.indexOf(">처음<") !== -1, "reset button is labelled");
 assert(html.indexOf('id="p1"') !== -1, "page anchors");
 assert(html.indexOf("is-open") !== -1, "one open page");
 assert(html.indexOf("touchend") !== -1, "swipe to turn");
+assert(html.indexOf("is-spread") !== -1, "two-page spread on wide screens");
+assert(html.indexOf('id="fontbtn"') !== -1, "reader can change text size");
+assert(html.indexOf('id="bar"') !== -1, "reading progress bar");
+assert(html.indexOf("(max-width:720px)") !== -1, "phone layout rules");
+assert(!/epub/i.test(html), "no epub leftovers");
 assert(html.indexOf("class=\"mbook\"") === -1, "not a stacked feed");
 assert((html.match(/class="ebook-page/g) || []).length === project.pages.length, "one article per page");
-
-const zip = EB.Export.epubBytes(project);
-assert(zip instanceof Uint8Array, "epub is bytes");
-assert(zip[0] === 0x50 && zip[1] === 0x4b, "zip magic PK");
-const mimeName = "mimetype";
-const nameAt = 30;
-const gotName = String.fromCharCode.apply(null, zip.slice(nameAt, nameAt + mimeName.length));
-assert(gotName === mimeName, "mimetype is first zip entry, extra=0");
-const mimeData = String.fromCharCode.apply(
-  null,
-  zip.slice(nameAt + mimeName.length, nameAt + mimeName.length + "application/epub+zip".length)
-);
-assert(mimeData === "application/epub+zip", "mimetype payload");
-
-const asText = Buffer.from(zip).toString("utf8");
-assert(asText.indexOf("application/epub+zip") !== -1, "epub mimetype inside zip");
-assert(asText.indexOf("OEBPS/content.opf") !== -1, "container points to opf");
-assert(asText.indexOf("epub:type=\"toc\"") !== -1, "nav toc");
-assert(asText.indexOf("<html xmlns=\"http://www.w3.org/1999/xhtml\"") !== -1, "xhtml pages");
 
 const sample = EB.buildSampleProject();
 const sampleHtml = EB.Export.htmlString(sample);

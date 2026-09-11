@@ -142,7 +142,7 @@
           b.id +
           '">' +
           tools(b.id) +
-          '<div class="learn-label">이 Chapter에서 배울 내용</div>' +
+          '<div class="learn-label">이 장에서 배울 것</div>' +
           '<div class="learn-items">' +
           (b.items || [])
             .map(function (t, i) {
@@ -315,20 +315,24 @@
     }
   }
 
+  /* 쪽번호만 남긴다. 책에는 분류·문서종류를 매 쪽 찍지 않는다. */
   function footer(project, page, opts) {
     if (page.showPageNumber === false) return "";
     const idx = (opts.pageIndex || 0) + 1;
-    const total = opts.total || 1;
-    const brand = H((project.meta && project.meta.category) || "내부 교육자료");
-    return (
-      '<div class="page-footer"><span class="brand-mini">' +
-      brand +
-      '</span><span class="pg-num">' +
-      EB.pad2(idx) +
-      " / " +
-      EB.pad2(total) +
-      "</span></div>"
-    );
+    return '<div class="page-footer"><span class="folio">' + idx + "</span></div>";
+  }
+
+  /* 러닝헤드 — 지금 읽는 쪽이 속한 장의 제목. 없으면 책 제목. */
+  function runningHead(project, opts) {
+    const index = opts.pageIndex || 0;
+    const pages = project.pages || [];
+    let head = "";
+    for (let i = 0; i < index && i < pages.length; i++) {
+      const p = pages[i];
+      if (p.type === "chapter") head = p.title || "";
+      else if (p.type === "cover" || p.type === "toc") head = "";
+    }
+    return head || (project.meta && project.meta.title) || "";
   }
 
   function bgClass(page) {
@@ -364,15 +368,13 @@
       '">' +
       '<div class="cover-top">' +
       coverPhotoHtml() +
-      '<div class="cover-brand"><div class="cover-badge">내부 교육자료</div>' +
-      '<div class="cover-org">고양경찰서</div></div>' +
       coverEmblemHtml() +
       '<div class="cover-kicker"' +
       bind("meta") +
       ' data-field="category"' +
       ed +
       ">" +
-      H(m.category || "내부 교육자료") +
+      H(m.category || "") +
       "</div>" +
       '<h1 class="cover-title"' +
       bind("meta") +
@@ -390,29 +392,25 @@
       "</p></div>" +
       '<hr class="cover-rule">' +
       '<div class="cover-bottom">' +
-      '<div class="meta-cell"><span class="k">제작부서</span><span class="v"' +
+      '<div class="cover-org"' +
       bind("meta") +
       ' data-field="department"' +
       ed +
       ">" +
       H(m.department || "") +
-      "</span></div>" +
-      '<div class="meta-cell"><span class="k">제작일</span><span class="v"' +
+      "</div>" +
+      '<div class="cover-imprint"><span class="v"' +
       bind("meta") +
       ' data-field="date"' +
       ed +
       ">" +
       H(m.date || "") +
-      "</span></div>" +
-      '<div class="meta-cell"><span class="k">버전</span><span class="v"' +
+      '</span><span class="dot"></span><span class="v"' +
       bind("meta") +
       ' data-field="version"' +
       ed +
       ">" +
       H(m.version || "") +
-      "</span></div>" +
-      '<div class="meta-cell"><span class="k">분류</span><span class="v">' +
-      H(m.category || "") +
       "</span></div>" +
       "</div></article>"
     );
@@ -459,7 +457,7 @@
     return (
       '<article class="ebook-page" data-page-id="' +
       page.id +
-      '"><div class="page-inner"><div class="toc-head"><h1 class="pg-title">목차</h1><span class="kicker">CONTENTS</span></div><div class="toc-list">' +
+      '"><div class="page-inner"><div class="toc-head"><h1 class="pg-title">차 례</h1><div class="kicker">CONTENTS</div></div><div class="toc-list">' +
       body +
       "</div></div>" +
       footer(project, page, opts) +
@@ -480,14 +478,14 @@
       '" data-page-id="' +
       page.id +
       '"><div class="page-inner">' +
-      '<div class="ch-index">CHAPTER</div>' +
-      '<div class="ch-no"' +
+      '<div class="ch-mark"><span class="k">제</span><span class="ch-no"' +
       bind("page") +
       ' data-field="chapterNo"' +
       ed +
       ">" +
       H(page.chapterNo || "01") +
-      "</div>" +
+      '</span><span class="k">장</span></div>' +
+      '<div class="ch-rule"></div>' +
       '<h1 class="ch-title"' +
       bind("page") +
       ' data-field="title"' +
@@ -545,8 +543,8 @@
       '<article class="ebook-page" data-page-id="' +
       page.id +
       '"><div class="page-inner content-stack">' +
-      '<header class="page-head remember-head"><div class="remember-mark">5</div>' +
-      '<div><div class="kicker">REMEMBER</div><h1 class="pg-title size-' +
+      '<header class="page-head remember-head">' +
+      '<div class="kicker">REMEMBER</div><h1 class="pg-title size-' +
       (page.titleSize || "md") +
       '"' +
       bind("page") +
@@ -554,7 +552,7 @@
       ed +
       ">" +
       H(page.title || "이것만은 기억하세요") +
-      "</h1></div></header>" +
+      "</h1></header>" +
       '<div class="page-body remember-list">' +
       list +
       "</div>" +
@@ -592,7 +590,7 @@
       page.id +
       '"><div class="page-inner content-stack">' +
       '<header class="page-head"><div class="kicker">' +
-      H(EB.pageTypeLabel(page.type)) +
+      H(runningHead(project, opts)) +
       "</div>" +
       '<h1 class="pg-title size-' +
       size +
@@ -683,6 +681,8 @@
         (chapterish ? " is-chapter" : "") +
         (inChapter && !chapterish && p.type !== "cover" && p.type !== "toc" ? " is-child" : "");
       btn.dataset.pageId = p.id;
+      if (p.id === currentId) btn.setAttribute("aria-current", "page");
+      btn.title = label;
       btn.draggable = true;
       const flag = EB.Lint ? EB.Lint.worstLevel(byPage[p.id]) : "";
       btn.innerHTML =
@@ -700,6 +700,12 @@
       if (chapterish) inChapter = true;
       if (p.type === "cover" || p.type === "toc") inChapter = false;
     });
+    if (!frag.childNodes.length) {
+      const empty = document.createElement("p");
+      empty.className = "nav-empty";
+      empty.textContent = "검색 결과가 없습니다. 다른 페이지 제목으로 검색해 보세요.";
+      frag.appendChild(empty);
+    }
     return frag;
   }
 
@@ -711,11 +717,13 @@
     page.style.transform = "none";
     wrap.style.width = "";
     wrap.style.height = "";
-    const sw = stage.clientWidth - 36;
-    const sh = stage.clientHeight - 16;
+    const sw = Math.max(1, stage.clientWidth - 36);
+    const sh = Math.max(1, stage.clientHeight - 32);
     const pw = page.offsetWidth || 1;
     const ph = page.offsetHeight || 1;
-    const scale = Math.min(sw / pw, sh / ph, 1);
+    const scale = document.body.classList.contains("fit-width")
+      ? Math.min(sw / pw, 1)
+      : Math.min(sw / pw, sh / ph, 1);
     wrap.style.width = Math.round(pw * scale) + "px";
     wrap.style.height = Math.round(ph * scale) + "px";
     page.style.transformOrigin = "top left";

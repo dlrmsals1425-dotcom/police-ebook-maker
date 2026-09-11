@@ -1,0 +1,111 @@
+/* books/ 에 넣어 둔 전자책 HTML을 읽어 books/index.html(서가)을 다시 만든다.
+   node tests/build-shelf.js */
+const fs = require("fs");
+const path = require("path");
+
+const root = path.join(__dirname, "..");
+const dir = path.join(root, "books");
+
+function pick(html, re) {
+  const m = html.match(re);
+  return m ? m[1].replace(/<[^>]+>/g, "").trim() : "";
+}
+
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function read(dirPath, file, href) {
+  const html = fs.readFileSync(path.join(dirPath, file), "utf8");
+  return {
+    href: href,
+    title: pick(html, /<title>([\s\S]*?)<\/title>/i) || file,
+    sub: pick(html, /class="cover-sub"[^>]*>([\s\S]*?)<\/p>/i),
+    org: pick(html, /class="cover-org"[^>]*>([\s\S]*?)<\/div>/i),
+    date: pick(html, /class="cover-imprint"[^>]*><span class="v"[^>]*>([\s\S]*?)<\/span>/i),
+    pages: (html.match(/class="ebook-page/g) || []).length
+  };
+}
+
+if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+
+const books = fs
+  .readdirSync(dir)
+  .filter(function (f) {
+    return /\.html$/i.test(f) && f !== "index.html";
+  })
+  .map(function (file) {
+    return read(dir, file, encodeURI(file));
+  })
+  .sort(function (a, b) {
+    return b.date.localeCompare(a.date) || a.title.localeCompare(b.title);
+  });
+
+/* 저장소에 있는 샘플 전자책은 서가 맨 아래에 붙인다 */
+if (fs.existsSync(path.join(root, "book.html"))) {
+  const s = read(root, "book.html", "../book.html");
+  s.tag = "샘플";
+  books.push(s);
+}
+
+const cards = books.length
+  ? books
+      .map(function (b) {
+        return (
+          '<a class="card" href="' +
+          esc(b.href) +
+          '">' +
+          '<span class="spine" aria-hidden="true"></span>' +
+          '<span class="body">' +
+          '<strong class="t">' +
+          esc(b.title) +
+          (b.tag ? '<span class="tag">' + esc(b.tag) + "</span>" : "") +
+          "</strong>" +
+          (b.sub ? '<span class="s">' + esc(b.sub) + "</span>" : "") +
+          '<span class="m">' +
+          [b.org, b.date, b.pages ? b.pages + "쪽" : ""].filter(Boolean).map(esc).join(" · ") +
+          "</span></span></a>"
+        );
+      })
+      .join("\n")
+  : '<p class="empty">아직 올린 전자책이 없습니다. 제작기에서 <b>내보내기 → HTML 저장</b>으로 받은 파일을 <code>books/</code> 폴더에 넣고 push 하세요.</p>';
+
+const page =
+  '<!DOCTYPE html>\n<html lang="ko"><head><meta charset="UTF-8">' +
+  '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">' +
+  '<meta name="theme-color" content="#17130f">' +
+  "<title>전자책 서가</title><style>" +
+  ":root{--paper:#fbf8f1;--ink:#23252b;--muted:#7b8290;--gold:#96763a;--navy:#12263f;}" +
+  "*{box-sizing:border-box}" +
+  "body{margin:0;color:#e8e2d6;font-family:'Pretendard','Malgun Gothic','Apple SD Gothic Neo',sans-serif;" +
+  "background:#16120e radial-gradient(ellipse at 50% 0%,#3a342c 0%,#211c17 60%,#16120e 100%);min-height:100vh;}" +
+  ".wrap{max-width:760px;margin:0 auto;padding:48px 18px 64px;}" +
+  "h1{font-family:'Nanum Myeongjo','Batang',serif;font-size:26px;letter-spacing:.3em;text-indent:.3em;text-align:center;margin:0;font-weight:600;}" +
+  "h1::after{content:'';display:block;width:36px;height:1px;background:var(--gold);margin:16px auto 0;}" +
+  ".lead{text-align:center;color:#b6ad9c;font-size:14px;margin:14px 0 34px;line-height:1.7;}" +
+  ".card{display:flex;margin:0 0 12px;background:var(--paper);color:var(--ink);text-decoration:none;" +
+  "border-radius:2px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.45);transition:transform .15s;}" +
+  ".card:hover{transform:translateY(-2px);}" +
+  ".spine{width:9px;flex:0 0 9px;background:linear-gradient(90deg,var(--navy) 62%,var(--gold));}" +
+  ".body{padding:16px 18px;display:flex;flex-direction:column;gap:5px;min-width:0;}" +
+  ".t{font-size:17px;font-weight:700;color:var(--navy);line-height:1.35;}" +
+  ".tag{margin-left:8px;font-size:11px;font-weight:700;color:var(--gold);border:1px solid var(--gold);" +
+  "border-radius:2px;padding:1px 5px;vertical-align:middle;}" +
+  ".s{font-size:14px;color:#4a4f5a;line-height:1.5;}" +
+  ".m{font-size:12px;color:var(--muted);letter-spacing:.03em;}" +
+  ".empty{background:rgba(255,255,255,.06);border:1px dashed rgba(255,255,255,.2);padding:22px;border-radius:4px;line-height:1.8;font-size:14px;}" +
+  ".empty code{background:rgba(0,0,0,.3);padding:2px 6px;border-radius:3px;}" +
+  ".back{display:block;text-align:center;margin-top:30px;color:#b6ad9c;font-size:13px;}" +
+  '</style></head><body><div class="wrap">' +
+  "<h1>전 자 책</h1>" +
+  '<p class="lead">읽고 싶은 책을 고르세요.<br>휴대폰에서는 한 쪽씩, PC에서는 두 쪽 펼침으로 열립니다.</p>' +
+  cards +
+  '<a class="back" href="../">전자책 제작기 열기 →</a>' +
+  "</div></body></html>\n";
+
+fs.writeFileSync(path.join(dir, "index.html"), page, "utf8");
+console.log("wrote books/index.html —", books.length, "books");

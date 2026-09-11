@@ -35,10 +35,10 @@ function loadEB() {
   load("js/model.js");
   load("js/markdown.js");
   load("js/lint.js");
+  load("js/master-prompt.js");
   load("js/sample.js");
   load("js/render.js");
   load("js/ebook-css.js");
-  load("js/zip.js");
   load("js/export.js");
   return context.EB;
 }

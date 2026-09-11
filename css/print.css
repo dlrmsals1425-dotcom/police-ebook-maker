@@ -1,7 +1,7 @@
-/* PDF / 인쇄: 크롬 숨기고 A4 페이지 단위로 분리 */
+/* PDF / 인쇄: 크롬 숨기고 책 판형(신국판) 한 쪽씩 분리 */
 
 @page {
-  size: A4;
+  size: 152mm 225mm;
   margin: 0;
 }
 
@@ -27,9 +27,9 @@
   }
 
   #print-root .ebook-page {
-    width: 210mm;
-    height: 297mm;
-    max-height: 297mm;
+    width: var(--page-w);
+    height: var(--page-h);
+    max-height: var(--page-h);
     box-shadow: none !important;
     margin: 0;
     page-break-after: always;

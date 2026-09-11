@@ -5,13 +5,13 @@
   EB.PAGE_TYPES = [
     { id: "cover", label: "표지" },
     { id: "toc", label: "목차" },
-    { id: "chapter", label: "Chapter 시작" },
-    { id: "content", label: "기본 교육" },
+    { id: "chapter", label: "장 표지" },
+    { id: "content", label: "본문" },
     { id: "case", label: "사건 사례" },
     { id: "dodont", label: "DO / DON'T" },
     { id: "checklist", label: "체크리스트" },
     { id: "law", label: "법령 / 참고" },
-    { id: "summary", label: "핵심 요약" }
+    { id: "summary", label: "기억할 것" }
   ];
 
   EB.BLOCK_TYPES = [
@@ -181,19 +181,19 @@
   };
 
   EB.createBlankProject = function () {
-    const cover = EB.createPage("cover", "새 교육 전자책");
+    const cover = EB.createPage("cover", "새 전자책");
     const toc = EB.createPage("toc", "목차");
     const ch = EB.createPage("chapter", "현장조치");
     ch.chapterNo = "01";
     ch.blocks = EB.defaultBlocksFor("chapter");
-    const body = EB.createPage("content", "핵심 교육");
+    const body = EB.createPage("content", "첫 번째 이야기");
     body.blocks = EB.defaultBlocksFor("content");
     return {
       id: EB.uid("book"),
       meta: {
-        title: "새 교육 전자책",
-        subtitle: "직원 교육용 디지털 핸드북",
-        category: "내부 교육자료",
+        title: "새 전자책",
+        subtitle: "현장에서 꺼내 보는 핸드북",
+        category: "",
         department: "○○경찰서 ○○과",
         date: EB.today(),
         version: "1.0"
@@ -220,7 +220,7 @@
     raw.id = raw.id || EB.uid("book");
     raw.meta.title = raw.meta.title || "제목 없음";
     raw.meta.subtitle = raw.meta.subtitle || "";
-    raw.meta.category = raw.meta.category || "내부 교육자료";
+    raw.meta.category = raw.meta.category || "";
     raw.meta.department = raw.meta.department || "";
     raw.meta.date = raw.meta.date || EB.today();
     raw.meta.version = raw.meta.version || "1.0";

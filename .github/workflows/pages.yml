@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+# main 에 push 하면 저장소를 그대로 GitHub Pages 로 올린다.
+# 빌드 도구가 없다. HTML/CSS/JS 파일이 곧 배포물이다.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 변환·내보내기 테스트
+        run: |
+          node tests/test-markdown.js
+          node tests/test-export.js
+          node tests/test-reader-runtime.js
+          node tests/test-app-save.js
+
+      - name: 서가(books/index.html) 다시 만들기
+        run: node tests/build-shelf.js
+
+      - name: 배포할 파일 모으기
+        run: |
+          mkdir -p _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' \
+                --exclude 'tests' --exclude '.grok' ./ _site/
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

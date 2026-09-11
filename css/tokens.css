@@ -1,72 +1,81 @@
 /* 경찰 교육 전자책 — 디자인 토큰
-   외부 폰트/CDN 없이 시스템 한글 폰트 fallback */
+   외부 폰트/CDN 없이 시스템 한글 폰트 fallback
+   본문은 명조(바탕) 계열, 제목·라벨은 고딕 계열이다. */
 :root {
+  /* 잉크 — 순검정 대신 따뜻한 먹색 */
+  --ink: #23252b;
+  --ink-2: #474d58;
+  --muted: #7b8290;
+  --line: #ddd6c7;
+  --line-soft: #e9e3d6;
+  --line-strong: #c3bba8;
+
+  /* 종이 — 미색 */
+  --paper: #fbf8f1;
+  --paper-2: #f5f1e6;
+  --paper-edge: #efe9db;
+
+  /* 표제 색 */
   --navy-950: #071221;
-  --navy-900: #0b1f3a;
-  --navy-800: #123052;
-  --navy-700: #1b4270;
-  --navy-600: #24608f;
-  --blue-500: #2e6aa6;
-  --blue-400: #4a86c1;
-  --blue-100: #e7f0f8;
-  --gold: #b8963e;
-  --gold-soft: #d4bc6a;
+  --navy-900: #12263f;
+  --navy-800: #1b3a5c;
+  --navy-700: #27537f;
+  --navy-600: #34689a;
+  --blue-500: #3d6f9f;
+  --blue-400: #5e8cb6;
+  --blue-100: #e6eef5;
+  --gold: #96763a;
+  --gold-soft: #c9ad6e;
 
-  --ink: #1c2430;
-  --ink-2: #3a4556;
-  --muted: #6b7687;
-  --line: #e2e6ec;
-  --line-strong: #c5ced8;
+  /* 편집기 크롬 */
+  --canvas: #2e2a26;
+  --sidebar: #f5f3ee;
+  --chrome: #12263f;
 
-  --paper: #ffffff;
-  --canvas: #dfe7ee;
-  --sidebar: #f4f7fa;
-  --chrome: #0b1f3a;
+  /* 본문 장치 — 종이 위에 얹은 느낌으로 채도를 낮춘다 */
+  --point-bg: #eef1ea;
+  --point-fg: #12263f;
+  --tip-bg: #eef3ec;
+  --tip-fg: #3c6a4a;
+  --tip-line: #7fa389;
+  --warn-bg: #f8efe6;
+  --warn-fg: #9a5a22;
+  --warn-line: #c99a68;
+  --law-bg: #f4efe2;
+  --law-fg: #6b5526;
+  --law-line: #b8a06a;
+  --example-bg: #f1eef3;
+  --example-fg: #5c4a76;
+  --do-bg: #eef3ec;
+  --do-fg: #3c6a4a;
+  --dont-bg: #f7ecea;
+  --dont-fg: #93443a;
+  --summary-bg: #12263f;
 
-  --point-bg: #eef4fa;
-  --point-fg: #123052;
-  --tip-bg: #ebf7f2;
-  --tip-fg: #0b6b4f;
-  --tip-line: #1a9a72;
-  --warn-bg: #fff3eb;
-  --warn-fg: #c2410c;
-  --warn-line: #e8590c;
-  --law-bg: #f4f0e8;
-  --law-fg: #5c4a1f;
-  --law-line: #8a7340;
-  --example-bg: #f3eef8;
-  --example-fg: #5b3d8f;
-  --do-bg: #e9f6ee;
-  --do-fg: #146c3a;
-  --dont-bg: #fdecec;
-  --dont-fg: #b42318;
-  --summary-bg: #0b1f3a;
-
-  --danger: #b42318;
-  --ok: #0b6b4f;
+  --danger: #a4382c;
+  --ok: #3c6a4a;
 
   --font: "Pretendard", "Pretendard Variable", "Noto Sans KR",
     "Malgun Gothic", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+  --font-serif: "Noto Serif KR", "Nanum Myeongjo", "나눔명조", "함초롬바탕",
+    "Batang", "바탕", "AppleMyungjo", "Times New Roman", serif;
   --font-mono: "Cascadia Code", "D2Coding", "Consolas", monospace;
 
-  --fs-cover: 48px;
-  --fs-chapter: 42px;
-  --fs-h1: 34px;
-  --fs-h2: 22px;
-  --fs-body: 17.5px;
-  --fs-sm: 15px;
-  --fs-caption: 13px;
-  --fs-label: 13px;
+  /* 독자가 조절하는 배율 — 리더에서 --fs-scale 만 바꾸면 책 전체가 따라 커진다 */
+  --fs-scale: 1;
+  --fs-body: calc(15.5px * var(--fs-scale));
 
-  --lh-tight: 1.28;
-  --lh-body: 1.65;
+  --lh-tight: 1.25;
+  --lh-body: 1.78;
   --radius: 2px;
-  --shadow-page: 0 18px 50px rgba(11, 31, 58, 0.18), 0 2px 8px rgba(11, 31, 58, 0.08);
+  --shadow-page: 0 16px 42px rgba(35, 30, 22, 0.22), 0 2px 6px rgba(35, 30, 22, 0.1);
 
-  --page-w: 210mm;
-  --page-h: 297mm;
-  --page-pad-x: 14mm;
-  --page-pad-y: 12mm;
+  /* 신국판 152 × 225mm */
+  --page-w: 152mm;
+  --page-h: 225mm;
+  --page-pad-x: 15mm;
+  --page-pad-y: 13mm;
+  --page-pad-bottom: 8mm;
 
   --toolbar-h: 56px;
   --nav-w: 268px;

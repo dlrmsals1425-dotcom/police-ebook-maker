@@ -22,35 +22,36 @@
         </svg>
         <div class="brand-text">
           <strong>경찰 교육 전자책 제작기</strong>
-          <span>로컬 · 내부교육 콘텐츠</span>
+          <span>브라우저에서 만들어 바로 배포</span>
         </div>
       </div>
 
       <div class="toolbar-group hide-in-preview">
-        <button type="button" class="btn btn-ghost" id="btn-new">새 전자책</button>
-        <button type="button" class="btn btn-ghost btn-danger" id="btn-reset">초기화</button>
+        <div class="dd" id="dd-project">
+          <button type="button" class="btn btn-ghost" data-dd="dd-project">파일 ▾</button>
+          <div class="dd-menu">
+            <button type="button" id="btn-new">새 전자책</button>
+            <button type="button" id="btn-json-in">JSON 불러오기</button>
+            <button type="button" id="btn-sample">샘플 전자책</button>
+            <div class="sep"></div>
+            <button type="button" class="btn-danger" id="btn-reset">초기화</button>
+          </div>
+        </div>
         <button type="button" class="btn btn-gold" id="btn-prompt">마스터 프롬프트</button>
         <button type="button" class="btn btn-primary" id="btn-md">Markdown 불러오기</button>
-      </div>
-
-      <div class="toolbar-group hide-in-preview hide-narrow">
-        <button type="button" class="btn btn-ghost" id="btn-add-page">페이지 추가</button>
-        <button type="button" class="btn btn-ghost" id="btn-dup-page">페이지 복제</button>
-        <button type="button" class="btn btn-ghost btn-danger" id="btn-del-page">페이지 삭제</button>
       </div>
 
       <div class="toolbar-spacer"></div>
 
       <div class="toolbar-group">
-        <a class="btn btn-ghost hide-in-preview hide-narrow" href="book.html">샘플 읽기</a>
-        <button type="button" class="btn btn-gold" id="btn-preview">미리보기</button>
+        <button type="button" class="btn btn-gold hide-in-preview" id="btn-preview">미리보기</button>
         <button type="button" class="btn btn-gold preview-exit" id="btn-preview-exit">편집으로 돌아가기</button>
         <button type="button" class="btn btn-primary hide-in-preview" id="btn-pdf">PDF 저장</button>
       </div>
 
       <div class="toolbar-group hide-in-preview">
         <div class="dd" id="dd-export">
-          <button type="button" class="btn btn-ghost" data-dd="dd-export">보내기</button>
+          <button type="button" class="btn btn-ghost" data-dd="dd-export">내보내기 ▾</button>
           <div class="dd-menu">
             <button type="button" id="btn-html">HTML 저장</button>
             <button type="button" id="btn-md-out">Markdown 내보내기</button>
@@ -58,28 +59,36 @@
             <button type="button" id="btn-json-out">JSON 백업</button>
           </div>
         </div>
-        <div class="dd" id="dd-backup">
-          <button type="button" class="btn btn-ghost" data-dd="dd-backup">백업</button>
-          <div class="dd-menu">
-            <button type="button" id="btn-json-in">JSON 불러오기</button>
-            <button type="button" id="btn-sample">샘플 전자책</button>
-          </div>
-        </div>
       </div>
 
       <button type="button" class="btn btn-ghost hide-in-preview" id="btn-review">
         검토 <span class="count-badge" id="review-badge" hidden>0</span>
       </button>
-      <span class="save-status" id="save-status">저장 대기</span>
     </header>
 
+    <div class="document-bar hide-in-preview">
+      <div class="document-info"><span class="document-label">편집 중인 전자책</span><strong id="document-title">전자책</strong></div>
+      <span class="document-count" id="document-count"></span>
+      <a href="books/" target="_blank" rel="noopener" class="sample-link">서가 열기 ↗</a>
+      <span class="save-status" id="save-status" role="status">저장 대기</span>
+    </div>
+    <nav class="mobile-panels hide-in-preview" aria-label="편집 화면 선택">
+      <button type="button" data-panel="nav" aria-controls="nav-pane" aria-pressed="false">페이지 목록</button>
+      <button type="button" data-panel="preview" aria-controls="preview-pane" aria-pressed="true">본문 편집</button>
+      <button type="button" data-panel="inspector" aria-controls="inspector-pane" aria-pressed="false">페이지 설정</button>
+    </nav>
     <div class="workspace">
-      <aside class="nav-pane pane hide-in-preview">
+      <aside class="nav-pane pane hide-in-preview" id="nav-pane" aria-label="페이지 목록">
         <div class="pane-head">
           <h2>페이지</h2>
         </div>
         <div class="pane-body">
-          <input type="search" class="nav-search" id="nav-search" placeholder="페이지 검색" autocomplete="off">
+          <div class="page-actions">
+            <button type="button" id="btn-add-page">＋ 추가</button>
+            <button type="button" id="btn-dup-page">복제</button>
+            <button type="button" id="btn-del-page">삭제</button>
+          </div>
+          <input type="search" class="nav-search" id="nav-search" aria-label="페이지 검색" placeholder="페이지 검색" autocomplete="off">
           <div class="nav-tree" id="nav-tree"></div>
           <p class="nav-hint">주황·빨간 점은 글이 길거나 빠진 칸이 있는 페이지입니다. 마스터 프롬프트로 만든 Markdown을 불러오면 전자책 양식에 맞춰 변환됩니다.</p>
         </div>
@@ -88,10 +97,11 @@
       <main class="preview-pane" id="preview-pane">
         <div class="preview-bar">
           <button type="button" id="btn-prev">이전</button>
-          <span class="pg" id="page-indicator">1 / 1</span>
+          <span class="pg" id="page-indicator" aria-live="polite">1 / 1</span>
           <button type="button" id="btn-next">다음</button>
+          <button type="button" id="btn-fit" aria-pressed="false">너비 맞춤</button>
         </div>
-        <div class="issue-bar" id="issue-bar" hidden></div>
+        <button type="button" class="issue-bar" id="issue-bar" hidden></button>
         <div class="page-stage" id="page-stage">
           <div class="page-scale-wrap" id="page-scale-wrap">
             <div id="page-mount"></div>
@@ -100,7 +110,7 @@
         <div class="drop-overlay">Markdown 파일을 놓으면 전자책으로 변환합니다</div>
       </main>
 
-      <aside class="inspector-pane pane hide-in-preview">
+      <aside class="inspector-pane pane hide-in-preview" id="inspector-pane" aria-label="페이지 설정">
         <div class="pane-head">
           <h2>페이지 설정</h2>
         </div>
@@ -127,7 +137,6 @@
   <script src="js/store.js"></script>
   <script src="js/render.js"></script>
   <script src="js/ebook-css.js"></script>
-  <script src="js/zip.js"></script>
   <script src="js/export.js"></script>
   <script src="js/editor.js"></script>
   <script src="js/app.js"></script>
