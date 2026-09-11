@@ -28,14 +28,14 @@ const doc = {
   querySelectorAll: () => [],
   addEventListener(k, fn) { (events[k] ||= []).push(fn); }
 };
-let ok = false, change;
+let ok = false, change, pageRenders = 0;
 const EB = loadEB();
 EB.$ = doc.querySelector;
 EB.$$ = () => [];
 EB.debounce = fn => fn;
 EB.toast = () => {};
 EB.Store = { load: () => null, save: () => ok, markSeen() {} };
-EB.Render = { nav() {}, page() {}, fit() {} };
+EB.Render = { nav() {}, page() { pageRenders++; }, fit() {} };
 EB.Editor = {
   pageById: (p, id) => p.pages.find(x => x.id === id),
   findPageIndex: (p, id) => p.pages.findIndex(x => x.id === id),
@@ -52,7 +52,9 @@ assert.match(status.textContent, /저장 실패/);
 assert.equal(status.classList.contains("is-saved"), false, "boot must not claim failed save succeeded");
 assert.equal(status.classList.contains("is-error"), true);
 ok = true;
+const beforeTextEdit = pageRenders;
 change("text");
+assert.equal(pageRenders, beforeTextEdit, "text edits must preserve the mounted editor and caret");
 assert.match(status.textContent, /자동 저장/);
 assert.equal(status.classList.contains("is-error"), false);
 ok = false;

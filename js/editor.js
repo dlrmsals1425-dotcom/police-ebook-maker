@@ -30,6 +30,7 @@
 
     bindMount: function (root, project, onChange) {
       if (!root) return;
+      let composing = false;
 
       function syncField(el) {
         const bind = el.getAttribute("data-bind");
@@ -43,7 +44,8 @@
             })[0];
             if (cover) cover.title = text;
           }
-          onChange("meta");
+          // Keep the live contenteditable and its selection intact while typing.
+          onChange("text");
           return;
         }
         if (bind === "page") {
@@ -51,7 +53,7 @@
           const page = pageById(project, pageEl && pageEl.getAttribute("data-page-id"));
           if (!page) return;
           page[el.getAttribute("data-field")] = text;
-          onChange("page");
+          onChange("text");
           return;
         }
         const bid = el.getAttribute("data-block-id");
@@ -94,13 +96,25 @@
         document.execCommand("insertText", false, text);
       });
 
+      root.addEventListener("compositionstart", function () {
+        composing = true;
+      });
+      root.addEventListener("compositionend", function (e) {
+        composing = false;
+        const el = e.target.closest("[data-bind]");
+        if (el && root.contains(el)) syncField(el);
+      });
+
       root.addEventListener("input", function (e) {
+        if (composing || e.isComposing) return;
         const el = e.target.closest("[data-bind]");
         if (!el) return;
         syncField(el);
       });
 
       root.addEventListener("keydown", function (e) {
+        // Enter/Backspace may belong to the IME, not to list editing.
+        if (composing || e.isComposing || e.keyCode === 229) return;
         const el = e.target.closest("[data-bind]");
         if (!el) return;
         if (e.key === "Enter" && (el.getAttribute("data-bind") === "item" || el.getAttribute("data-bind") === "check-item")) {
