@@ -24,6 +24,7 @@ assert(html.indexOf('body class="ebook"') !== -1, "ebook body");
 assert(html.indexOf('class="spine"') !== -1, "book spine");
 assert(html.indexOf('id="toc"') !== -1, "toc overlay");
 assert(html.indexOf('id="resetbtn"') !== -1, "reset to first page");
+assert(html.indexOf(">초기화<") !== -1, "reset labeled 초기화");
 assert(html.indexOf('id="p1"') !== -1, "page anchors");
 assert(html.indexOf("is-open") !== -1, "one open page");
 assert(html.indexOf("touchend") !== -1, "swipe to turn");

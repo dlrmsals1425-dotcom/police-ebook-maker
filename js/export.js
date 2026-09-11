@@ -79,7 +79,8 @@
       ".hud button{height:34px;padding:0 12px;border:0;border-radius:4px;background:rgba(255,255,255,.12);color:#fff;font-weight:700;font-size:13px;}",
       ".hud-title{flex:1;min-width:0;font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}",
       ".pg-float{position:fixed;left:50%;bottom:max(10px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:16;font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.55);font-variant-numeric:tabular-nums;pointer-events:none;}",
-      "body.hud-off .hud{opacity:0;pointer-events:none;}",
+      "body.hud-off .hud{background:transparent;}",
+      "body.hud-off .hud-title{opacity:0;}",
       ".toc{display:none;position:fixed;inset:0;z-index:30;background:rgba(5,11,20,.55);}",
       "body.toc-open .toc{display:block;}",
       ".toc nav{position:absolute;left:0;top:0;bottom:0;width:min(86vw,340px);background:#f3efe6;color:#1c2430;overflow:auto;padding:18px 14px 32px;padding-top:max(18px,env(safe-area-inset-top));box-shadow:12px 0 40px rgba(0,0,0,.25);}",
@@ -187,7 +188,7 @@
       '<header class="hud"><button type="button" id="tocbtn">목차</button>' +
       '<div class="hud-title">' +
       EB.escapeHtml(title) +
-      '</div><button type="button" id="resetbtn">처음</button></header>' +
+      '</div><button type="button" id="resetbtn">초기화</button></header>' +
       '<div class="toc" id="toc"><nav><h2>목차</h2>' +
       items +
       "</nav></div>" +
