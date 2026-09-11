@@ -132,6 +132,7 @@
       "try{localStorage.setItem(key,String(i));}catch(e){}" +
       "if(pages[i])pages[i].scrollTop=0;document.body.classList.remove('toc-open');fit();}" +
       "document.getElementById('tocbtn').onclick=function(){document.body.classList.toggle('toc-open');};" +
+      "document.getElementById('resetbtn').onclick=function(){try{localStorage.removeItem(key);}catch(e){}show(0);};" +
       "document.getElementById('toc').onclick=function(e){if(e.target.id==='toc')document.body.classList.remove('toc-open');" +
       "var a=e.target.closest('a[data-i]');if(a){e.preventDefault();show(+a.getAttribute('data-i'));}};" +
       "document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}" +
@@ -186,7 +187,7 @@
       '<header class="hud"><button type="button" id="tocbtn">목차</button>' +
       '<div class="hud-title">' +
       EB.escapeHtml(title) +
-      "</div></header>" +
+      '</div><button type="button" id="resetbtn">처음</button></header>' +
       '<div class="toc" id="toc"><nav><h2>목차</h2>' +
       items +
       "</nav></div>" +

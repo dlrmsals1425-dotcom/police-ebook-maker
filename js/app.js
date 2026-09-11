@@ -477,6 +477,17 @@
       if (!confirmReplace()) return;
       loadProject(EB.createBlankProject(), "새 전자책을 만들었습니다. 표지부터 수정하세요.");
     });
+    $("#btn-reset").addEventListener("click", function () {
+      if (
+        !window.confirm(
+          "저장된 작업을 지우고 처음 상태(샘플 전자책)로 되돌릴까요? JSON 백업이 없으면 복구할 수 없습니다."
+        )
+      ) {
+        return;
+      }
+      EB.Store.clear();
+      loadProject(EB.buildSampleProject(), "처음 상태로 되돌렸습니다.");
+    });
     $("#btn-prompt").addEventListener("click", openPromptModal);
     $("#btn-review").addEventListener("click", function () {
       openReviewModal(false);
