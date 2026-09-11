@@ -29,6 +29,8 @@ jobs:
           node tests/test-export.js
           node tests/test-reader-runtime.js
           node tests/test-app-save.js
+          node tests/test-editor-ime.js
+          node tests/test-learning-prompt.js
 
       - name: 서가(books/index.html) 다시 만들기
         run: node tests/build-shelf.js
@@ -37,7 +39,7 @@ jobs:
         run: |
           mkdir -p _site
           rsync -a --exclude '.git' --exclude '.github' --exclude '_site' \
-                --exclude 'tests' --exclude '.grok' ./ _site/
+                --exclude 'tests' --exclude '.grok' --exclude 'reviews' ./ _site/
           touch _site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3

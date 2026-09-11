@@ -295,10 +295,16 @@
       '<header><h3 id="prompt-title">마스터 프롬프트</h3>' +
       '<button type="button" class="btn" id="prompt-close">닫기</button></header>' +
       '<div class="body">' +
-      '<div class="steps"><div class="step"><div class="n">1 받기</div><p>아래 버튼으로 프롬프트를 복사하거나 파일로 저장합니다.</p></div>' +
-      '<div class="step"><div class="n">2 AI에 넣기</div><p>다른 AI 대화창에 프롬프트를 넣고, 맨 아래 [원본자료]에 내 자료를 붙입니다.</p></div>' +
-      '<div class="step"><div class="n">3 불러오기</div><p>AI가 준 Markdown을 이 프로그램의 「Markdown 불러오기」로 열면 전자책 양식에 맞춰 나옵니다.</p></div></div>' +
-      '<p class="ins-help">프롬프트에는 페이지 문법, 글자 수 제한, 사례·DO/DON\'T·체크리스트·법령 양식이 들어 있습니다. 이 제한을 지키면 한 페이지가 잘리지 않습니다.</p>' +
+      '<div class="steps"><div class="step"><div class="n">1 자료 넣기</div><p>정리되지 않은 메모나 원문도 괜찮습니다. 아래에 붙여넣으세요.</p></div>' +
+      '<div class="step"><div class="n">2 AI에 전달</div><p>입력한 자료가 포함된 프롬프트를 복사해 사용 가능한 AI에 전달합니다.</p></div>' +
+      '<div class="step"><div class="n">3 책으로 읽기</div><p>AI의 Markdown을 불러오면 상황·판단·행동·자기점검 순서의 책으로 읽습니다.</p></div></div>' +
+      '<p class="ins-help">필수는 원본자료뿐입니다. 지금 비워 두면 AI 대화에서 나중에 붙일 수 있습니다. 자료는 여기서 AI로 자동 전송되지 않으며, 아래 입력은 창을 닫으면 지워집니다.</p>' +
+      '<div class="field"><label for="prompt-material">원본자료</label><textarea id="prompt-material" rows="7" placeholder="전달할 보고서·사례·지침·메모를 붙여넣으세요. 요건과 예외도 함께 넣어 주세요."></textarea></div>' +
+      '<div class="field"><label for="prompt-goal">읽은 뒤 달라졌으면 하는 행동 · 선택</label><input id="prompt-goal" placeholder="예: 인계할 때 끝낸 일과 남은 일을 구분한다"></div>' +
+      '<div class="field"><label for="prompt-audience">대상 직원 · 선택</label><select id="prompt-audience"><option>지구대·파출소 지역경찰</option><option>신규 전입·신임 지역경찰</option><option>현장 경험이 있는 지역경찰</option><option>팀장·선임과 함께 읽는 지역경찰</option></select></div>' +
+      '<div class="field"><label for="prompt-kind">자료 성격 · 선택</label><select id="prompt-kind"><option>원문에 맞춰 자동 선택</option><option>반복 실수 예방</option><option>사례 복기</option><option>변경 지침</option><option>신규자 안내</option></select></div>' +
+      '<div class="field"><label for="prompt-sources">출처·시행일·적용 범위·확인 담당 · 선택</label><textarea id="prompt-sources" rows="2" placeholder="아는 정보만 적으세요. 없는 날짜·조치 요건은 추정하지 않습니다."></textarea></div>' +
+      '<p class="ins-help">승인된 AI에서 취급 가능한 자료만 사용하고 식별정보는 먼저 제거하세요. 가상 사례는 기본으로 만들지 않습니다. 복사 후 AI에 명시적으로 요청한 경우만 사용합니다. 결과물은 근거와 실제 화면·PDF를 확인한 뒤 배포하세요.</p>' +
       "</div>" +
       '<footer><button type="button" class="btn" id="prompt-copy">복사하기</button>' +
       '<button type="button" class="btn btn-primary" id="prompt-dl">파일로 저장</button></footer></div></div>';
@@ -306,12 +312,21 @@
       root.innerHTML = "";
     }
     $("#prompt-close").onclick = close;
+    function preparedPrompt() {
+      return EB.buildMasterPrompt({
+        audience: $("#prompt-audience").value,
+        goal: $("#prompt-goal").value.trim(),
+        kind: $("#prompt-kind").value,
+        sources: $("#prompt-sources").value.trim(),
+        material: $("#prompt-material").value.trim()
+      });
+    }
     $("#prompt-dl").onclick = function () {
-      EB.downloadText(EB.MASTER_PROMPT_FILENAME, EB.MASTER_PROMPT, "text/markdown;charset=utf-8");
+      EB.downloadText(EB.MASTER_PROMPT_FILENAME, preparedPrompt(), "text/markdown;charset=utf-8");
       EB.toast("마스터 프롬프트를 저장했습니다. AI 대화창에 붙여넣으세요.");
     };
     $("#prompt-copy").onclick = function () {
-      EB.copyText(EB.MASTER_PROMPT).then(
+      EB.copyText(preparedPrompt()).then(
         function () {
           EB.toast("클립보드에 복사했습니다. AI 대화창에 붙여넣으세요.");
         },
