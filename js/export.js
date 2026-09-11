@@ -1,5 +1,5 @@
-/* PDF / 웹 리더 / EPUB / Markdown / JSON
-   웹 리더는 한 장씩 넘기는 전자책 (Book Author Digital Web Reader 개념을 현장 핸드북에 맞게 적용) */
+/* PDF / 모바일 HTML / EPUB / Markdown / JSON
+   배포 HTML은 한 장씩 넘기는 리더가 아니라, 휴대폰에서 스크롤하는 문서다. */
 (function (g) {
   const EB = (g.EB = g.EB || {});
 
@@ -32,7 +32,7 @@
         });
         return stripEditor(html).replace(
           /class="ebook-page([^"]*)"/,
-          'class="ebook-page$1" data-index="' + i + '"'
+          'class="ebook-page$1" id="p' + (i + 1) + '" data-index="' + i + '"'
         );
       })
       .join("");
@@ -59,133 +59,70 @@
       .replace(/(<details\b[^>]*?)\sopen(?=[\s>])/gi, '$1 open="open"');
   }
 
-  function readerChromeCss() {
+  function mobileCss() {
     return [
-      "html,body.reader{margin:0;height:100%;background:#0b1f3a;font-family:var(--font);overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;}",
-      ".r-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:6px;padding:8px 10px;padding-top:max(8px,env(safe-area-inset-top));background:#0b1f3a;color:#e8eef4;}",
-      ".r-top button{height:34px;padding:0 10px;border:0;border-radius:4px;background:rgba(255,255,255,.08);color:#fff;font-weight:700;font-size:13px;}",
-      ".r-title{flex:1;min-width:0;font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}",
-      ".r-pg{font-variant-numeric:tabular-nums;font-size:12px;color:#9bb0c4;white-space:nowrap;}",
-      ".r-stage{position:relative;height:calc(100dvh - 50px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));background:#dfe7ee;}",
-      ".r-view{height:100%;overflow:hidden;display:flex;justify-content:center;}",
-      ".r-view .ebook-page{display:none;width:min(100%,720px)!important;height:100%!important;max-height:100%!important;margin:0 auto;overflow:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;box-shadow:none;border-radius:0;}",
-      ".r-view .ebook-page.is-current{display:flex;}",
-      ".r-view .cover-top{min-height:42vh!important;padding:22px 18px 16px!important;}",
-      ".r-view .cover-bottom{padding:14px 18px 18px!important;}",
-      ".r-view .page-inner{overflow:visible!important;padding:16px 16px 12px!important;}",
-      ".r-view .page-footer{padding-bottom:max(12px,env(safe-area-inset-bottom));}",
-      ".r-view .ch-no{font-size:48px!important;}",
-      ".r-view .cover-mark{margin:18px 0 12px!important;}",
-      ".r-prog{position:fixed;left:0;right:0;bottom:0;height:3px;background:#123052;z-index:21;}",
-      ".r-prog i{display:block;height:100%;width:0;background:#d4bc6a;}",
-      ".r-toc{display:none;position:fixed;inset:0;z-index:30;background:rgba(7,18,33,.45);}",
-      "body.toc-open .r-toc{display:block;}",
-      ".r-toc nav{position:absolute;left:0;top:0;bottom:0;width:min(86vw,320px);background:#f4f7fa;overflow:auto;padding:16px 12px 32px;padding-top:max(16px,env(safe-area-inset-top));}",
-      ".r-toc h2{margin:0 0 10px;font-size:13px;letter-spacing:.08em;color:#6b7687;}",
-      ".r-toc button{display:block;width:100%;text-align:left;border:0;background:none;padding:9px 8px;border-radius:4px;font-size:14px;color:#1c2430;}",
-      ".r-toc button.is-on{background:#0b1f3a;color:#fff;}",
-      ".r-toc .ch{font-weight:800;margin-top:8px;}",
+      "html,body.mbook{margin:0;background:#dfe7ee;font-family:var(--font);-webkit-text-size-adjust:100%;text-size-adjust:100%;}",
+      ".m-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));background:#0b1f3a;color:#e8eef4;}",
+      ".m-title{flex:1;min-width:0;font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}",
+      ".m-top a,.m-top button{flex:0 0 auto;height:34px;padding:0 10px;border:0;border-radius:4px;background:rgba(255,255,255,.1);color:#fff;font-weight:700;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;}",
+      ".m-book{max-width:720px;margin:0 auto;padding:12px 12px calc(28px + env(safe-area-inset-bottom));}",
+      ".m-toc{background:#fff;border-radius:10px;margin:0 0 12px;padding:2px 14px 8px;box-shadow:0 8px 24px rgba(11,31,58,.08);}",
+      ".m-toc summary{cursor:pointer;font-weight:800;padding:12px 0;color:#0b1f3a;list-style:none;}",
+      ".m-toc summary::-webkit-details-marker{display:none;}",
+      ".m-toc a{display:block;padding:9px 0;border-top:1px solid #e2e6ec;color:#123052;text-decoration:none;font-size:14px;line-height:1.4;}",
+      ".m-toc a.ch{font-weight:800;color:#0b1f3a;}",
+      "body.mbook .ebook-page{width:auto!important;height:auto!important;max-height:none!important;min-height:0;overflow:visible!important;margin:0 0 12px;box-shadow:0 8px 24px rgba(11,31,58,.08);border-radius:10px;scroll-margin-top:58px;}",
+      "body.mbook .page-inner{overflow:visible!important;flex:none!important;padding:18px 16px 14px!important;}",
+      "body.mbook .page-footer{padding:0 16px 14px;}",
+      "body.mbook .blk.summary-ribbon,body.mbook .blk.learn-box{margin-top:14px!important;}",
+      "body.mbook .cover-top{min-height:0!important;padding:28px 18px 20px!important;border-radius:10px 10px 0 0;}",
+      "body.mbook .cover-bottom{padding:14px 16px 16px!important;grid-template-columns:1fr 1fr;}",
+      "body.mbook .cover-mark{margin:16px 0 12px!important;}",
+      "body.mbook .ch-no{font-size:42px!important;}",
+      "body.mbook .dodont{grid-template-columns:1fr 1fr;flex:none;min-height:0;}",
+      "body.mbook .col-do,body.mbook .col-dont{min-height:0;}",
+      "body.mbook .img-block img{max-width:100%;height:auto;}",
       ".blk-tools{display:none!important;}",
-      "body.reader.is-night{background:#071018;}",
-      "body.reader.is-night .r-stage{background:#0a1522;}",
-      "body.reader.is-night .r-view .ebook-page{background:#101820;color:#e8eef4;}",
-      "body.reader.is-night .r-view .ebook-page.is-navy{background:#0b1f3a;}",
-      "body.reader.is-night .r-view .cover-bottom{background:#152238;color:#e8eef4;}",
-      "body.reader.is-night .r-view .meta-cell .v,body.reader.is-night .r-view .pg-title,body.reader.is-night .r-view .h-block,body.reader.is-night .r-view .p-block{color:#e8eef4;}",
-      "body.reader.is-night .r-toc nav{background:#101820;}",
-      "body.reader.is-night .r-toc button{color:#e8eef4;}",
-      "body.reader.is-night .r-toc button.is-on{background:#d4bc6a;color:#0b1f3a;}",
-      "@media (max-width:720px){.r-view .dodont{grid-template-columns:1fr!important;} .r-view .cover-bottom{grid-template-columns:1fr!important;} .r-view .cover-title{font-size:28px!important;} .r-view .pg-title{font-size:22px!important;} .r-view .law-grid{grid-template-columns:1fr!important;}}",
-      "@media print{html,body.reader{overflow:visible!important;height:auto!important;background:#fff!important;} .r-top,.r-toc,.r-prog{display:none!important;} .r-stage{height:auto!important;background:#fff!important;} .r-view{display:block;height:auto;} .r-view .ebook-page{display:flex!important;width:210mm!important;height:297mm!important;max-height:297mm!important;overflow:hidden!important;page-break-after:always;break-after:page;} .r-view .ebook-page:last-child{page-break-after:auto;} .r-view .cover-top{min-height:148mm!important;padding:22mm 16mm 16mm!important;} .r-view .page-inner{padding:var(--page-pad-y) var(--page-pad-x) 6mm!important;overflow:hidden!important;}}"
+      "@media (max-width:640px){body.mbook .dodont,body.mbook .cover-bottom{grid-template-columns:1fr!important;}body.mbook .cover-title{font-size:28px!important;}body.mbook .pg-title{font-size:22px!important;}body.mbook .ch-title{font-size:26px!important;}body.mbook .law-grid{grid-template-columns:1fr!important;}}",
+      "@media print{html,body.mbook{background:#fff!important;} .m-top,.m-toc{display:none!important;} .m-book{max-width:none;padding:0;} body.mbook .ebook-page{display:flex!important;width:210mm!important;height:297mm!important;max-height:297mm!important;overflow:hidden!important;margin:0;border-radius:0;box-shadow:none;page-break-after:always;break-after:page;} body.mbook .ebook-page:last-child{page-break-after:auto;} body.mbook .cover-top{min-height:148mm!important;padding:22mm 16mm 16mm!important;border-radius:0;} body.mbook .page-inner{padding:var(--page-pad-y) var(--page-pad-x) 6mm!important;overflow:hidden!important;flex:1 1 0!important;} body.mbook .blk.summary-ribbon,body.mbook .blk.learn-box{margin-top:auto!important;}}"
     ].join("");
   }
 
-  function readerScript(storeKey) {
-    const key = JSON.stringify(storeKey || "ebook");
-    return (
-      "<script>(function(){" +
-      "var pages=[].slice.call(document.querySelectorAll('.ebook-page'));var i=0;var swiped=false;" +
-      "var key='police-ebook-reader:'+" +
-      key +
-      ";" +
-      "function show(n){i=Math.max(0,Math.min(pages.length-1,n));pages.forEach(function(p,k){p.classList.toggle('is-current',k===i);});" +
-      "var pg=document.getElementById('r-pg');if(pg)pg.textContent=(i+1)+' / '+pages.length;" +
-      "var bar=document.getElementById('r-bar');if(bar)bar.style.width=((i+1)/pages.length*100)+'%';" +
-      "var on=document.querySelector('.r-toc button.is-on');if(on)on.classList.remove('is-on');" +
-      "var t=document.querySelector('.r-toc button[data-i=\"'+i+'\"]');if(t)t.classList.add('is-on');" +
-      "try{history.replaceState(null,'','#p'+(i+1));}catch(e){}" +
-      "try{localStorage.setItem(key,String(i));}catch(e){}" +
-      "if(pages[i])pages[i].scrollTop=0;document.body.classList.remove('toc-open');}" +
-      "document.getElementById('r-prev').onclick=function(){show(i-1);};" +
-      "document.getElementById('r-next').onclick=function(){show(i+1);};" +
-      "document.getElementById('r-tocbtn').onclick=function(){document.body.classList.toggle('toc-open');};" +
-      "document.getElementById('r-night').onclick=function(){document.body.classList.toggle('is-night');try{localStorage.setItem(key+':night',document.body.classList.contains('is-night')?'1':'0');}catch(e){}};" +
-      "document.getElementById('r-toc').onclick=function(e){if(e.target.id==='r-toc')document.body.classList.remove('toc-open');" +
-      "var b=e.target.closest('button[data-i]');if(b)show(+b.getAttribute('data-i'));};" +
-      "document.addEventListener('keydown',function(e){if(e.target&&e.target.closest('input,textarea'))return;" +
-      "if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(i+1);}" +
-      "if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}" +
-      "if(e.key==='Escape')document.body.classList.remove('toc-open');});" +
-      "var x0=0,y0=0;var st=document.getElementById('r-stage');" +
-      "st.addEventListener('touchstart',function(e){x0=e.changedTouches[0].clientX;y0=e.changedTouches[0].clientY;},{passive:true});" +
-      "st.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-x0;var dy=e.changedTouches[0].clientY-y0;" +
-      "if(Math.abs(dx)<56||Math.abs(dx)<Math.abs(dy))return;swiped=true;if(dx>0)show(i-1);else show(i+1);});" +
-      "st.addEventListener('click',function(e){if(swiped){swiped=false;return;}" +
-      "if(e.target.closest('button,a,details,input,textarea,.box'))return;" +
-      "var r=st.getBoundingClientRect();var x=e.clientX-r.left;if(x<r.width*0.22)show(i-1);else if(x>r.width*0.78)show(i+1);});" +
-      "try{if(localStorage.getItem(key+':night')==='1')document.body.classList.add('is-night');}catch(e){}" +
-      "var h=parseInt((location.hash||'').replace('#p',''),10);var saved=0;" +
-      "try{saved=parseInt(localStorage.getItem(key)||'0',10)||0;}catch(e){}" +
-      "show(h?h-1:saved);" +
-      "})();</script>"
-    );
-  }
-
-  function buildReaderHtml(project, articlesHtml) {
+  function buildMobileHtml(project, articlesHtml) {
     const title = (project.meta && project.meta.title) || "전자책";
     const items = project.pages
       .map(function (p, i) {
-        const cls = p.type === "chapter" ? " ch" : "";
+        const cls = p.type === "chapter" ? ' class="ch"' : "";
         return (
-          '<button type="button" class="' +
+          '<a href="#p' +
+          (i + 1) +
+          '"' +
           cls +
-          '" data-i="' +
-          i +
-          '">' +
+          ">" +
           EB.escapeHtml(tocLabel(project, p)) +
-          "</button>"
+          "</a>"
         );
       })
       .join("");
     return (
       "<!DOCTYPE html>\n<html lang=\"ko\"><head><meta charset=\"UTF-8\">" +
       '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">' +
-      '<meta name="apple-mobile-web-app-capable" content="yes">' +
       '<meta name="theme-color" content="#0b1f3a">' +
       "<title>" +
       EB.escapeHtml(title) +
       "</title><style>" +
       (EB.EXPORT_CSS || "") +
-      readerChromeCss() +
-      "</style></head><body class=\"reader\">" +
-      '<header class="r-top"><button type="button" id="r-tocbtn">목차</button>' +
-      '<div class="r-title">' +
+      mobileCss() +
+      "</style></head><body class=\"mbook\">" +
+      '<header class="m-top"><div class="m-title">' +
       EB.escapeHtml(title) +
-      "</div>" +
-      '<span class="r-pg" id="r-pg">1 / 1</span>' +
-      '<button type="button" id="r-prev">이전</button>' +
-      '<button type="button" id="r-next">다음</button>' +
-      '<button type="button" id="r-night">밤</button>' +
+      '</div><a href="#toc">목차</a>' +
       '<button type="button" onclick="window.print()">PDF</button></header>' +
-      '<div class="r-toc" id="r-toc"><nav><h2>목차</h2>' +
+      '<main class="m-book"><details class="m-toc" id="toc"><summary>목차</summary>' +
       items +
-      "</nav></div>" +
-      '<div class="r-stage" id="r-stage"><div class="r-view" id="r-view">' +
+      "</details>" +
       articlesHtml +
-      "</div></div>" +
-      '<div class="r-prog"><i id="r-bar"></i></div>' +
-      readerScript(title) +
-      "</body></html>"
+      "</main></body></html>"
     );
   }
 
@@ -214,8 +151,8 @@
     );
   }
 
-  function readerHtml(project) {
-    return buildReaderHtml(project, pagesMarkup(project));
+  function mobileHtml(project) {
+    return buildMobileHtml(project, pagesMarkup(project));
   }
 
   function epubBytes(project) {
@@ -304,11 +241,11 @@
         window.print();
       }, 60);
     },
-    htmlString: readerHtml,
+    htmlString: mobileHtml,
     html: function (project) {
       EB.downloadText(
         EB.safeFilename(project.meta.title, ".html"),
-        readerHtml(project),
+        mobileHtml(project),
         "text/html;charset=utf-8"
       );
     },
@@ -331,7 +268,7 @@
         "application/json;charset=utf-8"
       );
     },
-    buildReaderHtml: buildReaderHtml,
+    buildMobileHtml: buildMobileHtml,
     stripEditor: stripEditor
   };
 })(typeof window !== "undefined" ? window : global);

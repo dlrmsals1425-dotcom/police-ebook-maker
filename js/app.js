@@ -518,15 +518,7 @@
     });
     $("#btn-html").addEventListener("click", function () {
       EB.Export.html(state.project);
-      EB.toast("한 장씩 넘기는 HTML 전자책을 저장했습니다.");
-    });
-    $("#btn-epub").addEventListener("click", function () {
-      if (!EB.zipStore || !EB.Export.epub) {
-        EB.toast("EPUB 모듈을 불러오지 못했습니다. 페이지를 새로고침해 주세요.", true);
-        return;
-      }
-      EB.Export.epub(state.project);
-      EB.toast("EPUB을 저장했습니다. 책 앱에서 여세요.");
+      EB.toast("휴대폰용 HTML을 저장했습니다. 브라우저로 열어 스크롤하면 됩니다.");
     });
     $("#btn-md-out").addEventListener("click", function () {
       EB.Export.markdown(state.project);
