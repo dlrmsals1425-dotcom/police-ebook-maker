@@ -337,6 +337,19 @@
     return "";
   }
 
+  function coverEmblemHtml() {
+    if (EB.COVER_EMBLEM) {
+      return (
+        '<img class="cover-emblem" src="' +
+        EB.COVER_EMBLEM +
+        '" alt="고양경찰서 휘장">'
+      );
+    }
+    return (
+      '<svg class="cover-mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M24 4 L42 12 V28 C42 36 33 42 24 45 C15 42 6 36 6 28 V12 Z"/><path fill="none" stroke="currentColor" stroke-width="1.6" d="M16 22 L22 28 L33 16"/></svg>'
+    );
+  }
+
   function renderCover(project, page, opts) {
     const m = project.meta;
     const ed = editableAttr(opts);
@@ -345,8 +358,9 @@
       page.id +
       '">' +
       '<div class="cover-top">' +
-      '<div class="cover-badge">INTERNAL TRAINING · HANDBOOK</div>' +
-      '<svg class="cover-mark" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-width="2" d="M24 4 L42 12 V28 C42 36 33 42 24 45 C15 42 6 36 6 28 V12 Z"/><path fill="none" stroke="currentColor" stroke-width="1.6" d="M16 22 L22 28 L33 16"/></svg>' +
+      '<div class="cover-brand"><div class="cover-badge">내부 교육자료</div>' +
+      '<div class="cover-org">고양경찰서</div></div>' +
+      coverEmblemHtml() +
       '<div class="cover-kicker"' +
       bind("meta") +
       ' data-field="category"' +

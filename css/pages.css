@@ -217,19 +217,30 @@
   pointer-events: none;
 }
 
+.cover-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  z-index: 1;
+}
+
 .cover-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  align-self: flex-start;
   border: 1px solid rgba(212, 188, 106, 0.55);
   color: var(--gold-soft);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
   padding: 7px 12px;
-  z-index: 1;
+}
+
+.cover-org {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--gold-soft);
 }
 
 .cover-mark {
@@ -238,6 +249,20 @@
   color: var(--gold-soft);
   margin: auto 0 8mm;
   z-index: 1;
+}
+
+.cover-emblem {
+  width: 42mm;
+  height: 42mm;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+  margin: auto 0 9mm;
+  z-index: 1;
+  align-self: flex-start;
+  box-shadow:
+    0 0 0 3px rgba(212, 188, 106, 0.7),
+    0 14px 36px rgba(0, 0, 0, 0.28);
 }
 
 .cover-kicker {

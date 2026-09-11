@@ -454,7 +454,7 @@
         title: "112 중요사건 현장조치 가이드",
         subtitle: "지역경찰 초동조치 핵심 핸드북",
         category: "내부 교육자료 · 현장조치",
-        department: "○○경찰서 지역경찰과",
+        department: "고양경찰서 지역경찰과",
         date: "2026.03.01",
         version: "1.0"
       },

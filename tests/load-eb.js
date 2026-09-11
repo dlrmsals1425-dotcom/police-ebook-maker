@@ -31,6 +31,7 @@ function loadEB() {
     vm.runInNewContext(fs.readFileSync(file, "utf8"), context, { filename: file });
   }
   load("js/util.js");
+  load("js/cover-emblem.js");
   load("js/model.js");
   load("js/markdown.js");
   load("js/lint.js");

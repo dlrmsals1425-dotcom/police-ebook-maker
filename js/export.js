@@ -98,6 +98,7 @@
       ".cover-top{min-height:0!important;padding:28px 20px 18px!important;flex:none!important;}",
       ".cover-bottom{padding:16px 20px 20px!important;flex:none!important;}",
       ".cover-mark{margin:20px 0 16px!important;}",
+      ".cover-emblem{width:92px!important;height:92px!important;margin:18px 0 16px!important;}",
       ".cover-title{max-width:none!important;}",
       ".page-inner{padding:18px 16px 10px!important;}",
       ".page-footer{padding:0 16px max(12px,env(safe-area-inset-bottom));}",

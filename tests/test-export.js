@@ -21,6 +21,8 @@ assert(project.pages.length > 5, "활용가이드 pages > 5");
 
 const html = EB.Export.htmlString(project);
 assert(html.indexOf('body class="ebook"') !== -1, "ebook body");
+assert(html.indexOf("cover-emblem") !== -1, "cover uses station emblem");
+assert(html.indexOf("고양경찰서") !== -1, "cover names 고양경찰서");
 assert(html.indexOf('class="spine"') !== -1, "book spine");
 assert(html.indexOf('id="toc"') !== -1, "toc overlay");
 assert(html.indexOf('id="resetbtn"') !== -1, "reset to first page");
