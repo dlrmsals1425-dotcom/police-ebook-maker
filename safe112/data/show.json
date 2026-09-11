@@ -1,0 +1,20 @@
+{
+  "updatedAt": "2026-09-11",
+  "phrases": [
+    { "id": "scammed", "urgent": true },
+    { "id": "transferred", "urgent": true },
+    { "id": "cash-delivery", "urgent": true },
+    { "id": "account-request", "urgent": true },
+    { "id": "fake-police", "urgent": true },
+    { "id": "followed", "urgent": true },
+    { "id": "danger-now", "urgent": true },
+    { "id": "interpreter", "urgent": false },
+    { "id": "filmed", "urgent": true },
+    { "id": "stalking", "urgent": true },
+    { "id": "account-frozen", "urgent": false },
+    { "id": "unknown-parcel", "urgent": true },
+    { "id": "malware-app", "urgent": true },
+    { "id": "need-station", "urgent": false },
+    { "id": "embassy", "urgent": false }
+  ]
+}

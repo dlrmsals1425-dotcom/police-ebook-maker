@@ -1,0 +1,688 @@
+{
+  "app": {
+    "shortName": "SAFE112",
+    "copied": "Đã sao chép",
+    "close": "Đóng",
+    "yes": "CÓ",
+    "no": "KHÔNG",
+    "searchPlaceholder": "Tìm loại tội phạm",
+    "searchEmpty": "Không có kết quả. Thử từ khác.",
+    "back": "Quay lại",
+    "updated": "Cập nhật:",
+    "noPersonalData": "Trang này không thu thập đăng ký, vị trí hay số điện thoại.",
+    "notLegalAdvice": "Nếu nguy hiểm, gọi 112. Đây là hướng dẫn phòng tội phạm, không phải tư vấn pháp lý."
+  },
+  "lang": {
+    "choose": "Chọn ngôn ngữ / Language"
+  },
+  "nav": {
+    "menu": "Menu",
+    "home": "Trang chủ",
+    "check": "Kiểm tra",
+    "show": "Đưa cảnh sát xem",
+    "report": "Báo cáo"
+  },
+  "home": {
+    "title": "Sống an toàn tại Hàn Quốc",
+    "subtitle": "Hướng dẫn phòng tội phạm cho du học sinh",
+    "call112": "Đang nguy hiểm? Gọi 112",
+    "knowTitle": "Ba điều cảnh sát muốn bạn biết",
+    "know1": "Viện kiểm sát, cảnh sát và ngân hàng không bao giờ gọi điện bảo chuyển tiền vào “tài khoản an toàn”.",
+    "know2": "Việc làm thêm trả lương cao chỉ để chạy việc vặt có thể là tội phạm.",
+    "know3": "Đừng cho mượn tài khoản hay thẻ — kể cả bạn bè.",
+    "recentCrimes": "Tội phạm đang xảy ra nhiều",
+    "quick": "Truy cập nhanh",
+    "checkTitle": "Kiểm tra nguy hiểm 30 giây",
+    "checkDesc": "Nếu ai đó nhờ bạn làm việc này, hãy kiểm tra ngay",
+    "jobsTitle": "Khoan — đây có thể không phải việc làm thêm",
+    "jobsDesc": "Bạn có thể thành nghi phạm, không chỉ là nạn nhân",
+    "showTitle": "Đưa câu này cho cảnh sát",
+    "showDesc": "Nếu không nói được tiếng Hàn, hãy đưa câu tiếng Hàn",
+    "reportTitle": "Cách báo cáo",
+    "reportDesc": "Gọi 112. Bạn có thể yêu cầu phiên dịch",
+    "embassyTitle": "Đại sứ quán / lãnh sự",
+    "embassyDesc": "Nguy hiểm thì gọi 112 trước. Hộ chiếu, bị tạm giữ: sứ quán nước mình"
+  },
+  "check": {
+    "title": "Kiểm tra nguy cơ tội phạm 30 giây",
+    "lead": "Chỉ cần một câu CÓ thì hãy dừng lại. Đừng chuyển tiền, đừng chuyển đồ, đừng cho mượn tài khoản.",
+    "stopBody": "Đây không phải việc làm thêm. Dừng chuyển tiền, giao tiền mặt, cho mượn tài khoản, cài ứng dụng. Gọi 112.",
+    "okBody": "Hiện chưa có tín hiệu nguy hiểm. Vẫn hãy từ chối việc chạy việc lương cao, cho mượn tài khoản và nhận bưu kiện lạ.",
+    "q": {
+      "money": "Có ai bảo bạn chuyển tiền không?",
+      "account": "Họ có xin mượn tài khoản hoặc thẻ ghi nợ không?",
+      "cash": "Họ có bảo bạn nhận tiền mặt rồi đưa cho người khác không?",
+      "parcel": "Họ có nhờ bạn mang đồ của người lạ không?",
+      "police-money": "Có ai tự xưng cảnh sát hoặc kiểm sát rồi đòi tiền không?",
+      "app": "Họ có bảo bạn cài ứng dụng không?",
+      "unclear-job": "Việc lương cao nhưng công việc không rõ ràng?"
+    },
+    "stopTitle": "Hãy dừng lại"
+  },
+  "jobs": {
+    "title": "Khoan đã! Đây có thể không phải việc làm thêm",
+    "lead": "Nói “tôi tưởng chỉ là làm thêm” không tự động bảo vệ bạn. Cảnh sát vẫn liên tục cảnh báo du học sinh về việc này.",
+    "banner": "Lương cao + việc dễ + tuyển qua chat + chỉ Telegram → bạn có thể đang chuyển tiền lừa đảo.",
+    "risk": "Rủi ro",
+    "why": "Vì sao nguy hiểm",
+    "refuse": "Cách từ chối",
+    "ifAlready": "Nếu đã làm rồi",
+    "ifAlreadyBody": "Đừng chuyển thêm tiền. Đừng xóa chat và lịch sử chuyển khoản. Gọi 112. Báo càng sớm càng tốt.",
+    "cards": {
+      "cash": {
+        "title": "Giao tiền mặt",
+        "risk": "Bạn có thể đang chuyển tiền bị đánh cắp",
+        "why": "Số tiền mặt đó thường là tiền của nạn nhân bị lừa.",
+        "refuse": "“Tôi không nhận việc giao tiền mặt. Nếu phạm pháp tôi sẽ hỏi cảnh sát.”"
+      },
+      "account": {
+        "title": "Đưa tài khoản",
+        "risk": "Tên bạn bị dùng vào tội phạm",
+        "why": "Cho mượn tài khoản ngân hàng có thể bất hợp pháp. Tiền lừa vào tài khoản sẽ bị đóng băng.",
+        "refuse": "“Tôi không thể cho mượn tài khoản. Ở Hàn Quốc việc đó là bất hợp pháp.”"
+      },
+      "card": {
+        "title": "Đưa thẻ",
+        "risk": "Thẻ ghi nợ và mã PIN",
+        "why": "Thẻ cũng như tài khoản. Người khác dùng, bạn có thể bị điều tra.",
+        "refuse": "“Tôi không đưa thẻ hay PIN cho ai.”"
+      },
+      "phone": {
+        "title": "Mở thuê bao điện thoại",
+        "risk": "Máy có thể dùng để lừa đảo",
+        "why": "Điện thoại đứng tên bạn dùng cho lừa đảo sẽ khiến bạn thành nghi phạm.",
+        "refuse": "“Tôi sẽ không mở thuê bao rồi đưa cho người khác.”"
+      },
+      "parcel": {
+        "title": "Nhận hộ bưu kiện",
+        "risk": "Có thể là ma túy hoặc hàng phạm pháp",
+        "why": "Nhận bưu kiện không rõ nội dung có thể bị xem là vận chuyển ma túy.",
+        "refuse": "“Tôi không nhận bưu kiện giúp người không quen.”"
+      },
+      "name": {
+        "title": "Cho mượn danh nghĩa",
+        "risk": "CMND/CCCD và mã xác nhận",
+        "why": "Khoản vay, tài khoản hoặc điện thoại có thể được mở bằng tên bạn.",
+        "refuse": "“Giấy tờ và mã xác nhận chỉ dành cho tôi.”"
+      },
+      "coin": {
+        "title": "Mua tiền điện tử",
+        "risk": "Giấu tiền tội phạm",
+        "why": "Dùng tiền người khác mua coin có thể bị xem là rửa tiền.",
+        "refuse": "“Tôi không mua crypto bằng tiền của người khác.”"
+      },
+      "remit": {
+        "title": "Chuyển tiền ra nước ngoài",
+        "risk": "Đổi tiền chui hoặc tiền lừa đảo",
+        "why": "Lời mời “tỷ giá tốt hơn” có thể là chuyển tiền bất hợp pháp.",
+        "refuse": "“Tôi không chuyển tiền của người khác ra nước ngoài. Hãy dùng ngân hàng.”"
+      }
+    }
+  },
+  "show": {
+    "title": "Đưa những câu này cho cảnh sát",
+    "lead": "Nếu tiếng Hàn khó, hãy phóng to câu tiếng Hàn hoặc sao chép để đưa.",
+    "bigKo": "Phóng to tiếng Hàn",
+    "copy": "Sao chép",
+    "phrases": {
+      "scammed": "Tôi nghĩ mình bị lừa.",
+      "transferred": "Tôi đã chuyển tiền cho kẻ lừa đảo.",
+      "cash-delivery": "Có người bảo tôi nhận tiền mặt rồi giao đi.",
+      "account-request": "Có người xin mượn tài khoản hoặc thẻ của tôi.",
+      "fake-police": "Có người tự xưng cảnh sát hoặc kiểm sát rồi đòi tiền.",
+      "followed": "Có người đang theo tôi.",
+      "danger-now": "Tôi đang gặp nguy hiểm. Tôi cần giúp đỡ.",
+      "interpreter": "Tôi cần phiên dịch.",
+      "filmed": "Tôi nghĩ mình bị quay lén.",
+      "stalking": "Tôi muốn tố giác việc bị theo dõi, quấy rối.",
+      "account-frozen": "Tài khoản ngân hàng của tôi bị đóng băng.",
+      "unknown-parcel": "Có người nhờ tôi nhận bưu kiện không rõ.",
+      "malware-app": "Tôi đã cài ứng dụng mà họ bảo cài.",
+      "need-station": "Tôi muốn đến đồn cảnh sát gần nhất.",
+      "embassy": "Tôi muốn liên hệ đại sứ quán của tôi."
+    }
+  },
+  "report": {
+    "title": "Cách nhờ giúp đỡ",
+    "lead": "Đừng nghĩ phức tạp. Nếu nguy hiểm hoặc đã xảy ra tội phạm, gọi 112.",
+    "emergency": "Nếu nguy hiểm hoặc đã bị hại",
+    "emergencyBody": "Gọi 112 ở bất cứ đâu tại Hàn Quốc. Người nước ngoài cũng gọi được.",
+    "how112": "Khi gọi 112",
+    "how112Steps": [
+      "Nói trước bạn có đang nguy hiểm không, và đang ở đâu.",
+      "Dùng câu ngắn. Nếu không nói được tiếng Hàn, nói English.",
+      "Yêu cầu phiên dịch, hoặc đưa câu từ màn hình Đưa cảnh sát xem.",
+      "Tên tòa nhà, ga tàu điện hoặc cửa hàng tiện lợi là đủ."
+    ],
+    "interpreter": "Hỗ trợ ngôn ngữ",
+    "interpreterBody": "Cảnh sát Hàn Quốc cho biết 112 có thể nối phiên dịch. Tiếng Anh và tiếng Trung thường có trước. Ngôn ngữ khác có thể mất thời gian hơn — đưa câu tiếng Hàn sẽ nhanh hơn.",
+    "ifSilent": "Nếu không nói được",
+    "ifSilentBody": "Đến đồn/cảnh sát khu vực gần nhất (지구대 / 파출소) và đưa màn hình này. Ứng dụng Emergency Call của Bộ Hành chính An toàn có thể gửi hình hoặc chữ. Nếu khẩn cấp, vẫn gọi 112.",
+    "moneySent": "Nếu đã chuyển tiền, làm ngay bây giờ",
+    "moneySentSteps": [
+      "Gọi tổng đài ngân hàng ngay và yêu cầu đóng băng (지급정지).",
+      "Báo Ủy ban Giám sát Tài chính 1332 (ngày làm việc).",
+      "Gọi 112. Thời gian rất quan trọng.",
+      "Đừng xóa tin nhắn, cuộc gọi, tài khoản, màn hình ứng dụng. Hãy chụp lại."
+    ],
+    "contactsTitle": "Số đã được xác minh",
+    "c112": {
+      "name": "Cảnh sát khẩn cấp",
+      "desc": "Tội phạm và nguy hiểm · 24 giờ · có thể yêu cầu phiên dịch"
+    },
+    "c119": {
+      "name": "Cứu hỏa và cấp cứu",
+      "desc": "Cháy hoặc cấp cứu y tế · 24 giờ"
+    },
+    "c1332": {
+      "name": "Ủy ban Giám sát Tài chính",
+      "desc": "Lừa đảo điện thoại và đóng băng tài khoản (ngày làm việc)"
+    },
+    "c118": {
+      "name": "KISA",
+      "desc": "Tin nhắn lừa và ứng dụng độc hại"
+    },
+    "c117": {
+      "name": "Tư vấn bạo lực",
+      "desc": "Tư vấn tội phạm tình dục và stalking"
+    },
+    "appsTitle": "Trang chính thức",
+    "appsBody": "Bạn có thể kiểm tra số đáng ngờ tại trang chống lừa đảo của cảnh sát counterscam112.go.kr. Trang này không đưa số điện thoại chưa xác minh."
+  },
+  "crimePage": {
+    "what": "Đây là tội gì?",
+    "approach": "Chúng tiếp cận bạn như thế này",
+    "suspect": "Nghe những lời này thì hãy nghi ngờ",
+    "dont": "Tuyệt đối đừng làm",
+    "ifHarmed": "Nếu đã xảy ra",
+    "callPolice": "Báo cảnh sát",
+    "policeTip": "Lời khuyên của cảnh sát"
+  },
+  "crimes": {
+    "voice-phishing": {
+      "title": "Lừa đảo điện thoại / tin nhắn",
+      "short": "Giả kiểm sát, cảnh sát, người nhà",
+      "what": "Kẻ lừa gọi, nhắn tin hoặc chat giả làm kiểm sát, cảnh sát, ngân hàng, xuất nhập cảnh, công an Trung Quốc hoặc người nhà. Chúng muốn bạn chuyển tiền hoặc cài ứng dụng. Việc này xảy ra nhiều với du học sinh tại Hàn Quốc.",
+      "examples": [
+        {
+          "lines": [
+            "📞 “Đây là Viện kiểm sát trung ương Seoul.”",
+            "“Tài khoản đứng tên bạn bị dùng vào tội phạm.”",
+            "“Hãy chuyển tiền sang tài khoản an toàn.”"
+          ],
+          "stop": "DỪNG LẠI. Cảnh sát và kiểm sát thật không bao giờ gọi điện bảo chuyển vào “tài khoản an toàn”.",
+          "dont": [
+            "Đừng chuyển tiền",
+            "Đừng cài ứng dụng của họ",
+            "Đừng đưa mật khẩu hay mã"
+          ],
+          "do": [
+            "Cúp máy",
+            "Tự gọi 112 hoặc gọi ngân hàng",
+            "Nếu đã chuyển, gọi 112 ngay"
+          ]
+        },
+        {
+          "lines": [
+            "📞 “Đây là công an / đại sứ quán.”",
+            "“Tài khoản bạn liên quan rửa tiền. Phải chuyển sang tài khoản an toàn.”",
+            "“Gia đình có chuyện. Đừng cúp máy.”"
+          ],
+          "stop": "DỪNG LẠI. Công an, đại sứ quán, xuất nhập cảnh không gọi điện bắt bạn chuyển tiền.",
+          "dont": [
+            "Đừng chuyển sang WeChat hay WhatsApp",
+            "Đừng giấu gia đình theo lời họ"
+          ],
+          "do": [
+            "Cúp máy rồi gọi người nhà bằng số khác",
+            "Việc thị thực hãy tự gọi 1345"
+          ]
+        },
+        {
+          "lines": [
+            "📱 “Bưu kiện thất bại. Bấm link này.”",
+            "“Cài ứng dụng an toàn của kiểm sát.”",
+            "🔊 Giọng AI: “Là mình đây. Có chuyện lớn. Chuyển tiền giúp.”"
+          ],
+          "stop": "DỪNG LẠI. Link, ứng dụng giả và giọng người nhà AI là công cụ lừa tiền.",
+          "dont": [
+            "Đừng bấm link trong tin nhắn",
+            "Đừng cài ứng dụng lạ"
+          ],
+          "do": [
+            "Báo phần mềm độc hại tới 118",
+            "Xác nhận giọng người nhà bằng video call hoặc số khác"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "tài khoản an toàn",
+        "tài khoản dính án",
+        "kiểm sát / cảnh sát / công an",
+        "phạt xuất nhập cảnh",
+        "cài ứng dụng",
+        "mã xác nhận",
+        "đừng cúp máy",
+        "giấu gia đình"
+      ],
+      "dont": [
+        "Đừng chuyển vào tài khoản được đọc qua điện thoại",
+        "Đừng cài ứng dụng họ gửi",
+        "Đừng đọc OTP, mật khẩu hay mã SMS",
+        "Đừng rút tiền mặt rồi giao",
+        "Đừng để họ điều khiển điện thoại bằng chia sẻ màn hình"
+      ],
+      "actions": [
+        "Gọi ngân hàng ngay để đóng băng tiền",
+        "Gọi 1332",
+        "Gọi 112",
+        "Chụp tin nhắn, cuộc gọi và màn hình tài khoản",
+        "Nếu đã cài ứng dụng, báo 118 và kiểm tra máy"
+      ],
+      "policeTip": "Điều tra viên thật không bảo bạn chuyển tiền qua điện thoại. Nếu thấy lạ, cúp máy rồi tự gọi 112."
+    },
+    "cash-job": {
+      "title": "Việc làm thêm lương cao",
+      "short": "Nhận-giao tiền mặt có thể là tội phạm",
+      "what": "Công việc trông như chạy việc dễ, 200.000–300.000 won/ngày, thường là chuyển tiền lừa đảo điện thoại. Cảnh sát nhiều lần cảnh báo du học sinh tưởng chỉ làm thêm rồi bị xử lý hình sự.",
+      "examples": [
+        {
+          "lines": [
+            "💬 Telegram: “Thu-chi hộ, tuyển online, 300.000 won/ngày.”",
+            "“Rút ở ATM rồi mang tới địa chỉ này.”",
+            "“Bạn chỉ chạy việc. Hợp pháp.”"
+          ],
+          "stop": "DỪNG LẠI. Nếu việc là chuyển tiền mặt, tài khoản, thẻ hoặc crypto thì không phải việc làm thêm bình thường.",
+          "dont": [
+            "Đừng nhận rồi giao tiền mặt",
+            "Đừng chuyển tiền sang tài khoản khác",
+            "Đừng mua crypto giúp họ"
+          ],
+          "do": [
+            "Lưu tin tuyển dụng",
+            "Ngừng làm theo chỉ đạo",
+            "Hỏi hoặc báo 112"
+          ]
+        },
+        {
+          "lines": [
+            "💬 “Chỉ cần mở thẻ và điện thoại giúp.”",
+            "💬 “Cho mượn tài khoản một ngày. Chúng tôi trả lãi.”"
+          ],
+          "stop": "DỪNG LẠI. Mở tài khoản hoặc thuê bao rồi đưa cho người khác là bất hợp pháp.",
+          "dont": [
+            "Đừng đưa tài khoản hoặc SIM đứng tên bạn"
+          ],
+          "do": [
+            "Từ chối và lưu chat",
+            "Nếu đã đưa, báo ngân hàng và 112 ngay"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "việc ngắn lương cao",
+        "chỉ tuyển online",
+        "chỉ Telegram",
+        "thu-chi hộ",
+        "nhận tiền mặt",
+        "mua coin rồi giao",
+        "không cần lộ danh tính"
+      ],
+      "dont": [
+        "Đừng mang tiền mặt hoặc séc tới nơi họ chỉ",
+        "Đừng rút ATM rồi giao",
+        "Đừng chuyển tiếp tiền vừa vào tài khoản bạn",
+        "Đừng giao đồ, thẻ, điện thoại giúp người lạ",
+        "Đừng chuyển tiền ra nước ngoài hoặc mua crypto giúp"
+      ],
+      "actions": [
+        "Dừng việc đó ngay",
+        "Giữ chat, lịch sử chuyển khoản và rút tiền",
+        "Nói thật với 112. Giấu đi sẽ tệ hơn",
+        "Nếu chưa chuyển tiền, dừng ngay — điều đó rất có ích"
+      ],
+      "policeTip": "Dù quảng cáo ghi “công việc hợp pháp”, chuyển tiền của người khác có thể bị xem là đồng phạm lừa đảo. “Tôi không biết” không tự động được miễn trách."
+    },
+    "account-lend": {
+      "title": "Tài khoản, thẻ, điện thoại",
+      "short": "Cho mượn là tên bạn dính vào tội phạm",
+      "what": "Nếu bạn đưa tài khoản, thẻ ghi nợ, mật khẩu ngân hàng, điện thoại, SIM, giấy tờ hoặc mã SMS cho người khác, chúng có thể dùng để lừa đảo, cờ bạc hoặc ma túy. Ở Hàn Quốc, chuyển nhượng hoặc cho mượn sổ/thẻ ngân hàng vốn đã có thể là tội.",
+      "question": "Bạn nhờ mượn tài khoản một ngày thì sao?",
+      "questionAnswer": "Hãy từ chối. Bạn thân, đàn anh chị hay người cùng nước cũng không ngoại lệ. Nếu tiền lừa vào tài khoản, tên bạn sẽ vào hồ sơ điều tra, tài khoản bị đóng, giao dịch ngân hàng sau này có thể bị chặn.",
+      "examples": [
+        {
+          "lines": [
+            "💬 “Mượn tài khoản một ngày. Trễ tiền nhà.”",
+            "💬 “Cho mượn thẻ ghi nợ. Không ảnh hưởng tín dụng.”",
+            "💬 “Chỉ cần đọc mã SMS. Tôi xử lý.”"
+          ],
+          "stop": "DỪNG LẠI. Chỉ một ngày, là bạn, hay không nhận tiền vẫn nguy hiểm.",
+          "dont": [
+            "Đừng đưa tài khoản hoặc thẻ",
+            "Đừng đọc mã xác nhận"
+          ],
+          "do": [
+            "Từ chối rõ ràng",
+            "Nếu họ còn nài, gọi 112"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "chỉ một ngày",
+        "trả lãi",
+        "giới thiệu việc",
+        "đọc mã xác nhận",
+        "mở SIM giúp",
+        "bán tài khoản"
+      ],
+      "dont": [
+        "Đừng cho mượn hoặc bán tài khoản",
+        "Đừng đưa thẻ ghi nợ hay PIN",
+        "Đừng mở điện thoại/SIM rồi đưa",
+        "Đừng gửi ảnh giấy tờ",
+        "Đừng chia sẻ tài khoản internet banking"
+      ],
+      "actions": [
+        "Nếu đã cho mượn, báo ngân hàng và đóng tài khoản/thẻ ngay",
+        "Gọi 112",
+        "Giữ chat cho thấy ai nhờ và cách bạn đưa"
+      ],
+      "legalLine": "Luật Giao dịch tài chính điện tử: chuyển nhượng hoặc cho mượn công cụ truy cập như sổ tiết kiệm, thẻ ghi nợ có thể bị phạt tù đến 5 năm hoặc phạt tiền đến 30 triệu won. Hứa cho vay hoặc giới thiệu việc vẫn có thể bị xem là có thù lao.",
+      "policeTip": "Nghĩ “tài khoản của tôi, muốn cho mượn thì cho” là nguy hiểm nhất. Tổ chức tội phạm chủ động tìm tài khoản du học sinh."
+    },
+    "sns-fraud": {
+      "title": "Lừa đảo SNS và trực tuyến",
+      "short": "Đồ cũ, vé, đổi tiền, vay",
+      "what": "Trên WeChat, WhatsApp, Telegram, LINE, Instagram và app đồ cũ, kẻ lừa rao đồ rẻ, đổi tiền chui, cho vay hoặc đầu tư. Du học sinh Trung Quốc cũng từng bị đóng tài khoản sau khi nhờ người đổi tiền không chính thức để đóng học phí.",
+      "examples": [
+        {
+          "lines": [
+            "💬 WeChat: “Tỷ giá tốt hơn ngân hàng. Gửi KRW, tôi đưa RMB.”",
+            "💬 “Vé concert rẻ hơn giá gốc. Chuyển trước.”",
+            "💬 “Mua chung. Gửi tiền, tôi mua giúp.”"
+          ],
+          "stop": "DỪNG LẠI. Bảo trả trước mà không cho xem hàng là lừa điển hình.",
+          "dont": [
+            "Đừng chuyển hết tiền trước khi gặp",
+            "Đừng giao học phí cho người đổi tiền tư nhân"
+          ],
+          "do": [
+            "Đổi tiền và đóng học phí qua trường hoặc ngân hàng",
+            "Đồ cũ nên gặp mặt hoặc dùng thanh toán an toàn"
+          ]
+        },
+        {
+          "lines": [
+            "💬 Telegram: “Vay không cần việc. Trả phí trước.”",
+            "💬 “Vào nhóm đầu tư. Lãi mỗi ngày.”"
+          ],
+          "stop": "DỪNG LẠI. Vay thu phí trước và nhóm cam kết lãi là bất hợp pháp hoặc lừa đảo.",
+          "dont": [
+            "Đừng chuyển phí trước",
+            "Đừng đầu tư trên website họ gửi"
+          ],
+          "do": [
+            "Lưu chat và liên hệ 112 hoặc 1332"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "rẻ bất thường",
+        "trả trước",
+        "đổi tiền tư nhân",
+        "từ chối thanh toán an toàn",
+        "chuyển sang app khác",
+        "cam kết lãi",
+        "vay thu phí trước"
+      ],
+      "dont": [
+        "Đừng chuyển số tiền lớn trước khi xem đồ hoặc phòng",
+        "Đừng đổi học phí qua người trên WeChat/WhatsApp",
+        "Đừng trả trước chỉ vì vé hoặc vật phẩm game",
+        "Đừng tin nhóm đầu tư Telegram"
+      ],
+      "actions": [
+        "Nếu đã trả, đóng băng với ngân hàng và gọi 112",
+        "Chụp tài khoản, chat và thông tin chuyển khoản",
+        "Báo trên nền tảng nữa"
+      ],
+      "policeTip": "“Tỷ giá tốt hơn” có thể là mồi để chuyển tiền lừa qua tài khoản du học sinh. Tài khoản bị đóng thì học phí và sinh hoạt phí cũng tắc."
+    },
+    "romance-scam": {
+      "title": "Lừa tình rồi lừa đầu tư",
+      "short": "Trước là tình cảm, sau là tiền và crypto",
+      "what": "Ai đó trên SNS hoặc app hẹn hò gây thiện cảm, rồi yêu cầu đầu tư, phí nhập cảnh hoặc phí. Cảnh sát xem đây là tội phạm tài chính. Trông như tình yêu. Mục tiêu là tiền của bạn.",
+      "steps": [
+        "Hồ sơ đẹp nhắn trước trên SNS hoặc app hẹn hò",
+        "Nói chuyện mỗi ngày, thân rất nhanh, gọi “em yêu”",
+        "Rủ chuyển sang Telegram, WhatsApp hoặc app khác",
+        "Nói họ giàu nhờ crypto hoặc cổ phiếu và sẽ dạy bạn",
+        "Khoản nhỏ trông như có lãi",
+        "Bảo nộp số lớn. Muốn rút thì đòi thuế hoặc phí thêm",
+        "Nếu ngừng chuyển, họ đe dọa hoặc mất liên lạc"
+      ],
+      "warningSigns": [
+        "không chịu gặp mặt",
+        "chuyển app khác",
+        "link đầu tư",
+        "phí rút tiền",
+        "chuyển tiền vé/visa",
+        "bảo giữ bí mật"
+      ],
+      "dont": [
+        "Đừng chuyển tiền cho người chỉ quen online",
+        "Đừng đăng ký hay nạp vào “sàn” họ gửi",
+        "Đừng trả thêm thuế hay phí để rút",
+        "Đừng cài ứng dụng họ bảo cài"
+      ],
+      "actions": [
+        "Đừng chuyển thêm. Không có “lần cuối”",
+        "Lưu chat, hồ sơ, địa chỉ ví và lịch sử chuyển",
+        "Yêu cầu ngân hàng đóng băng và gọi 112",
+        "Đừng xấu hổ. Đây là tội phạm có tổ chức"
+      ],
+      "policeTip": "Người chưa từng gặp mặt nói về tình cảm rồi đòi tiền thì hãy coi là lừa đảo từ lúc đó."
+    },
+    "housing-scam": {
+      "title": "Lừa thuê nhà",
+      "short": "Tin giả và chuyển tiền trước khi xem phòng",
+      "what": "Với du học sinh, nguy hiểm là phòng rẻ bất thường, “chuyển hôm nay mới giữ phòng”, hoặc chỉ ký qua SNS. Đây không phải bài luật. Đây là cách dừng trước khi mất tiền cọc.",
+      "examples": [
+        {
+          "lines": [
+            "💬 “Phòng trong ảnh 300.000 won/tháng, cọc rẻ. Chuyển hôm nay thì giữ.”",
+            "💬 “Tôi ở nước ngoài, không gặp được. Chuyển cọc trước.”",
+            "💬 “Đừng qua môi giới. Giao dịch trực tiếp rẻ hơn.”"
+          ],
+          "stop": "DỪNG LẠI. Chuyển tiền trước khi xem phòng và xác nhận chủ nhà là rất nguy hiểm.",
+          "dont": [
+            "Đừng trả trước khi có hợp đồng",
+            "Đừng trả khi không có hợp đồng giấy"
+          ],
+          "do": [
+            "Tự đi xem phòng",
+            "Ký tại văn phòng môi giới có giấy phép",
+            "Kiểm tra giấy tờ chủ nhà và quyền sở hữu"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "rẻ hơn thị trường nhiều",
+        "giục chuyển ngay",
+        "chỉ dùng SNS",
+        "chủ ở nước ngoài",
+        "không hợp đồng",
+        "đưa chìa trước"
+      ],
+      "dont": [
+        "Đừng chuyển cọc trước khi xem phòng",
+        "Đừng ký chỉ dựa vào ảnh KakaoTalk hay WeChat",
+        "Đừng ký với người không phải chủ nhà",
+        "Đừng vội vì giá quá hời"
+      ],
+      "actions": [
+        "Nếu đã chuyển, đóng băng và gọi 112",
+        "Chụp chat, tài khoản và tin đăng giả",
+        "Báo phòng hợp tác quốc tế nhà trường. Cùng một kiểu lừa thường lặp lại"
+      ],
+      "policeTip": "Chủ nhà thật không đòi số tiền lớn trước khi cho xem phòng. Họ càng gấp, bạn càng phải dừng."
+    },
+    "sexual-crime": {
+      "title": "Tội phạm tình dục và stalking",
+      "short": "Quay lén, đe dọa phát tán, bạo lực hẹn hò",
+      "what": "Gồm quay lén, đe dọa phát tán ảnh, stalking, bạo lực khi hẹn hò, và đe dọa tình dục trên SNS. Chúng tôi không mô tả gây sốc. Điều quan trọng là bạn có thể làm gì ngay bây giờ. Lỗi thuộc về kẻ gây hại, không phải bạn.",
+      "examples": [
+        {
+          "lines": [
+            "Bạn thấy camera nhỏ hoặc lỗ lạ trong phòng, nhà vệ sinh hoặc taxi.",
+            "Sau khi chia tay, có người nói sẽ đăng ảnh nếu không đưa tiền.",
+            "Bạn đã từ chối nhưng họ vẫn theo hoặc nhắn tin không ngừng."
+          ],
+          "stop": "Đừng tự đi gặp để chất vấn. Hãy tới nơi an toàn trước.",
+          "dont": [
+            "Đừng xóa tin nhắn",
+            "Đừng gặp người đó một mình",
+            "Đừng chuyển tiền theo yêu cầu"
+          ],
+          "do": [
+            "Tới nơi an toàn",
+            "Gọi 112",
+            "Giữ bằng chứng"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "nghi bị quay lén",
+        "đe dọa đăng ảnh",
+        "đợi trước nhà hoặc trường",
+        "theo dõi vị trí",
+        "mất trí nhớ sau khi uống",
+        "tin nhắn không dừng"
+      ],
+      "dont": [
+        "Đừng đưa tiền vì bị đe dọa",
+        "Đừng xóa chat và tài khoản ngay",
+        "Đừng gặp họ một mình ở nơi nguy hiểm"
+      ],
+      "actions": [
+        "Tới nơi an toàn: cửa hàng tiện lợi, chỗ đông người, hoặc đồn cảnh sát",
+        "Nếu nguy hiểm gọi 112. Nếu bị thương gọi 119",
+        "Chụp tin nhắn, tài khoản, chuyển khoản. Đừng xóa",
+        "Ghi nhớ địa điểm và khả năng có camera",
+        "Cần tư vấn gọi 117. Muốn tố giác gọi 112"
+      ],
+      "policeTip": "Quay lén và stalking là tội phạm. Dù tiếng Hàn khó, vẫn gọi 112 và dùng câu ở mục Đưa cảnh sát xem."
+    },
+    "drugs": {
+      "title": "Tội phạm ma túy",
+      "short": "Không mang đồ không rõ bên trong",
+      "banner": "Không biết bên trong là gì thì đừng vận chuyển hoặc giữ hộ.",
+      "what": "Hàn Quốc xử lý ma túy rất nghiêm, kể cả cần sa. “Ở Hàn Quốc không sao”, “là thực phẩm chức năng”, “chỉ chạy việc” có thể là nói dối. Chỉ nhận hoặc mang bưu kiện không rõ cũng có thể bị điều tra.",
+      "examples": [
+        {
+          "lines": [
+            "💬 “Nhận hộ bưu kiện. Tôi trả công.”",
+            "💬 “Chỉ cần đưa túi này cho ai đó trên tàu điện.”",
+            "🎉 “Tiệc này uống cái này sẽ phê. Ở Hàn Quốc ổn.”"
+          ],
+          "stop": "DỪNG LẠI. Không biết bên trong thì đừng nhận. Cần sa cũng bất hợp pháp tại Hàn Quốc.",
+          "dont": [
+            "Đừng nhận, mang hay giữ hộ",
+            "Đừng uống thuốc không rõ nguồn"
+          ],
+          "do": [
+            "Từ chối",
+            "Nếu đã nhận, đừng mở. Gọi 112"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "nhận hộ bưu kiện",
+        "tiền công cao bất thường",
+        "không nói là gì",
+        "thuốc trong tiệc",
+        "nhận thư quốc tế hộ"
+      ],
+      "dont": [
+        "Đừng nhận thư hoặc bưu kiện quốc tế giúp người lạ",
+        "Đừng mang túi hoặc thùng nếu không biết bên trong",
+        "Đừng dùng thuốc lạ trong tiệc",
+        "Đừng mua hoặc lấy ma túy theo lời nhờ trên SNS"
+      ],
+      "actions": [
+        "Nếu đã nhận đồ đáng ngờ, đừng mở",
+        "Nói thật với 112",
+        "Giữ chat của người nhờ bạn"
+      ],
+      "policeTip": "Tội ma túy có thể khiến bạn phải thôi học và bị trục xuất. Dù là bạn nhờ, không biết bên trong thì hãy từ chối."
+    }
+  },
+  "embassy": {
+    "title": "Nhờ đại sứ quán giúp",
+    "lead": "Nếu tội phạm đang xảy ra tại Hàn Quốc, gọi 112 trước sứ quán. Cơ quan đại diện có thể giúp hộ chiếu, thông báo khi bị tạm giữ, liên hệ gia đình và thông tin luật sư.",
+    "first112": "Nếu đang nguy hiểm hoặc đã bị hại, gọi 112. Đại sứ quán không thay cảnh sát Hàn Quốc.",
+    "can": "Việc sứ quán thường giúp được",
+    "cannot": "Việc thường không làm thay",
+    "canItems": [
+      "Hỗ trợ hộ chiếu mất hoặc hỏng",
+      "Báo gia đình và thăm nếu bạn bị bắt",
+      "Cung cấp thông tin luật sư, phiên dịch địa phương",
+      "Hướng dẫn tới bệnh viện hoặc đồn cảnh sát"
+    ],
+    "cannotItems": [
+      "Không thể dừng điều tra hay xét xử của cảnh sát Hàn Quốc",
+      "Không nộp phạt hay tiền bảo lãnh thay bạn",
+      "Thường không trả tiền khách sạn hay sinh hoạt phí",
+      "Điều xe khẩn cấp là 112 và 119"
+    ],
+    "website": "Mở trang chính thức",
+    "findOthers": "Tìm sứ quán nước khác trên trang Bộ Ngoại giao Hàn Quốc.",
+    "hours": {
+      "24h": "24 giờ",
+      "weekday": "Giờ hành chính ngày thường",
+      "after-hours": "Ngoài giờ (Bộ Ngoại giao nước mình)"
+    },
+    "missions": {
+      "cn": {
+        "name": "Đại sứ quán Trung Quốc / đường dây 12308",
+        "help": "Công dân Trung Quốc có thể gọi đường dây bảo hộ lãnh sự 24 giờ +86-10-12308 từ Hàn Quốc.",
+        "warn": "Nếu 12308 gọi đến trước và đòi chuyển tiền thì đó là lừa đảo. Cúp máy và tự bấm số. Nguy hiểm tại Hàn Quốc thì gọi 112.",
+        "phones": {
+          "12308": "Đường dây bảo hộ lãnh sự Bộ Ngoại giao Trung Quốc",
+          "12308b": "Số dự phòng 12308"
+        }
+      },
+      "th": {
+        "name": "Đại sứ quán Thái Lan tại Seoul",
+        "help": "Công dân Thái. Liên hệ sứ quán Hannam-dong về hộ chiếu và bảo hộ.",
+        "phones": {
+          "main": "Tổng đài sứ quán",
+          "consular": "Phòng lãnh sự"
+        }
+      },
+      "vn": {
+        "name": "Đại sứ quán Việt Nam tại Hàn Quốc",
+        "help": "Công dân Việt Nam. Gọi số đại diện và yêu cầu bảo hộ công dân.",
+        "phones": {
+          "main": "Điện thoại đại diện sứ quán"
+        }
+      },
+      "my": {
+        "name": "Đại sứ quán Malaysia tại Seoul",
+        "help": "Công dân Malaysia. Sứ quán Seoul và đường dây Bộ Ngoại giao Malaysia.",
+        "phones": {
+          "main": "Sứ quán tại Seoul",
+          "hq": "Đường dây Bộ Ngoại giao Malaysia",
+          "duty": "Trực ngoài giờ của Bộ"
+        }
+      },
+      "us": {
+        "name": "Đại sứ quán Hoa Kỳ tại Seoul",
+        "help": "Công dân Hoa Kỳ. Quốc tịch nói tiếng Anh khác hãy xem trang sứ quán nước mình.",
+        "phones": {
+          "emergency": "Hỗ trợ khẩn cấp công dân Hoa Kỳ"
+        }
+      }
+    }
+  }
+}

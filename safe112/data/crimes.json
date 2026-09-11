@@ -1,0 +1,211 @@
+{
+  "updatedAt": "2026-09-11",
+  "order": [
+    "voice-phishing",
+    "cash-job",
+    "account-lend",
+    "sns-fraud",
+    "romance-scam",
+    "housing-scam",
+    "sexual-crime",
+    "drugs"
+  ],
+  "crimes": [
+    {
+      "id": "voice-phishing",
+      "icon": "📞",
+      "priority": 1,
+      "category": "fraud",
+      "updatedAt": "2026-09-11",
+      "tags": [
+        "보이스피싱",
+        "메신저피싱",
+        "voice phishing",
+        "telecom fraud",
+        "电信诈骗",
+        "검찰",
+        "경찰",
+        "공안",
+        "출입국",
+        "안전계좌",
+        "악성앱",
+        "AI"
+      ],
+      "sources": [
+        "경찰청",
+        "금융감독원",
+        "대전동부경찰서 외국인 유학생 보이스피싱 예방 홍보(2025.05)",
+        "전기통신금융사기 통합대응단 counterscam112.go.kr"
+      ],
+      "hasExamples": true
+    },
+    {
+      "id": "cash-job",
+      "icon": "💰",
+      "priority": 2,
+      "category": "involvement",
+      "updatedAt": "2026-09-11",
+      "tags": [
+        "고액알바",
+        "수거책",
+        "cash mule",
+        "part-time",
+        "兼职",
+        "텔레그램",
+        "현금전달",
+        "ATM",
+        "코인"
+      ],
+      "sources": [
+        "경찰청 보이스피싱 범죄 가담 주의 안내(대학 공지 배포)",
+        "대전동부경찰서·대전자치경찰위원회 유학생 대상 고수익 아르바이트 주의(2025.05)",
+        "경찰청 공개 사례: 고액 아르바이트로 가담한 외국인 유학생 수거책 검거"
+      ],
+      "hasExamples": true,
+      "highlight": true
+    },
+    {
+      "id": "account-lend",
+      "icon": "🏦",
+      "priority": 3,
+      "category": "involvement",
+      "updatedAt": "2026-09-11",
+      "tags": [
+        "대포통장",
+        "계좌양도",
+        "체크카드",
+        "유심",
+        "명의",
+        "bank account",
+        "전자금융거래법"
+      ],
+      "sources": [
+        "전자금융거래법 제6조·제49조(접근매체 양도·대여 금지 및 벌칙)",
+        "찾기쉬운 생활법령정보(전자금융거래법 개정: 5년 이하 징역 또는 3천만원 이하 벌금)",
+        "금융감독원 보이스피싱·대포통장 관련 소비자 경보"
+      ],
+      "legal": {
+        "law": "전자금융거래법 제49조제4항",
+        "summaryKo": "통장·체크카드·보안매체 등을 양도하거나 빌려주면 5년 이하의 징역 또는 3천만원 이하의 벌금에 처할 수 있습니다."
+      },
+      "hasQuestion": true
+    },
+    {
+      "id": "sns-fraud",
+      "icon": "📱",
+      "priority": 4,
+      "category": "fraud",
+      "updatedAt": "2026-09-11",
+      "tags": [
+        "중고거래",
+        "티켓",
+        "위챗",
+        "WeChat",
+        "WhatsApp",
+        "Telegram",
+        "LINE",
+        "Instagram",
+        "환전",
+        "환치기",
+        "대출",
+        "투자방"
+      ],
+      "sources": [
+        "경찰청 사이버범죄 예방 안내",
+        "대학·은행 안내: 불법 환전(환치기)로 유학생 계좌가 사기 이용 계좌로 신고되는 사례",
+        "금융감독원 불법사금융·투자사기 소비자 경보"
+      ],
+      "hasExamples": true
+    },
+    {
+      "id": "romance-scam",
+      "icon": "❤️",
+      "priority": 5,
+      "category": "fraud",
+      "updatedAt": "2026-09-11",
+      "tags": [
+        "로맨스스캠",
+        "romance scam",
+        "투자사기",
+        "리딩방",
+        "코인",
+        "데이팅앱",
+        "Telegram"
+      ],
+      "sources": [
+        "경찰청: 로맨스스캠을 금융범죄로 관리·경고",
+        "금융감독원 가상자산 로맨스스캠 주의 안내",
+        "서울경찰청 로맨스스캠 예방 당부"
+      ],
+      "hasSteps": true
+    },
+    {
+      "id": "housing-scam",
+      "icon": "🏠",
+      "priority": 6,
+      "category": "fraud",
+      "updatedAt": "2026-09-11",
+      "tags": [
+        "전세사기",
+        "월세",
+        "보증금",
+        "허위매물",
+        "room",
+        "deposit",
+        "Airbnb",
+        "고시원"
+      ],
+      "sources": [
+        "국토교통부 전세사기 예방 안내",
+        "경찰 수사 사례: 허위 매물·중복 임대·계약 전 송금 사기",
+        "대학 국제교류 실무에서 반복 확인되는 유학생 주거 사기 유형(계약 전 송금, SNS 직거래)"
+      ],
+      "hasExamples": true
+    },
+    {
+      "id": "sexual-crime",
+      "icon": "⚠️",
+      "priority": 7,
+      "category": "violence",
+      "updatedAt": "2026-09-11",
+      "tags": [
+        "불법촬영",
+        "스토킹",
+        "데이트폭력",
+        "성범죄",
+        "유포협박",
+        "hidden camera",
+        "stalking"
+      ],
+      "sources": [
+        "경찰청 여성대상범죄 신고 안내(112, 117)",
+        "성폭력범죄의 처벌 등에 관한 특례법(카메라등이용촬영)",
+        "스토킹범죄의 처벌 등에 관한 법률"
+      ],
+      "tone": "calm-victim-first"
+    },
+    {
+      "id": "drugs",
+      "icon": "💊",
+      "priority": 8,
+      "category": "involvement",
+      "updatedAt": "2026-09-11",
+      "tags": [
+        "마약",
+        "대마",
+        "cannabis",
+        "택배",
+        "운반",
+        "파티",
+        "필로폰",
+        "엑스터시"
+      ],
+      "sources": [
+        "경찰청·부산경찰청 외국인 유학생 마약범죄 예방 교육",
+        "마약류 관리에 관한 법률",
+        "대학 국제교류센터 반복 경고: 모르는 택배·물건 대신 수령/운반"
+      ],
+      "banner": true
+    }
+  ]
+}

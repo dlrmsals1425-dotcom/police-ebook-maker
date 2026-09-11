@@ -1,0 +1,43 @@
+{
+  "updatedAt": "2026-09-11",
+  "note": "Only numbers verified from official Korean government / police / FSS / KISA sources. Do not add unverified numbers.",
+  "items": [
+    {
+      "id": "112",
+      "tel": "112",
+      "sms": "112",
+      "emergency": true,
+      "alwaysShow": true,
+      "hours": "24h",
+      "source": "경찰청"
+    },
+    {
+      "id": "119",
+      "tel": "119",
+      "emergency": true,
+      "hours": "24h",
+      "source": "소방청"
+    },
+    {
+      "id": "1332",
+      "tel": "1332",
+      "emergency": false,
+      "hours": "weekday",
+      "source": "금융감독원"
+    },
+    {
+      "id": "118",
+      "tel": "118",
+      "emergency": false,
+      "hours": "24h",
+      "source": "한국인터넷진흥원(KISA)"
+    },
+    {
+      "id": "117",
+      "tel": "117",
+      "emergency": false,
+      "hours": "24h",
+      "source": "경찰청 여성·학교폭력 등 상담"
+    }
+  ]
+}

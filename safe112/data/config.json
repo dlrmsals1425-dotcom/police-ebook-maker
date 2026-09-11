@@ -1,0 +1,22 @@
+{
+  "appId": "safe112",
+  "updatedAt": "2026-09-11",
+  "emergencyTel": "112",
+  "ambulanceTel": "119",
+  "supportedLangs": ["ko", "en", "zh-CN", "th", "ms", "vi"],
+  "defaultLang": "en",
+  "storageKey": "safe112_lang",
+  "officialLinks": [
+    {
+      "id": "counterscam",
+      "url": "https://www.counterscam112.go.kr",
+      "org": "경찰청 전기통신금융사기 통합대응단"
+    },
+    {
+      "id": "fss",
+      "url": "https://www.fss.or.kr",
+      "org": "금융감독원"
+    }
+  ],
+  "disclaimer": "This site does not collect personal information. It is a crime-prevention guide, not legal advice."
+}

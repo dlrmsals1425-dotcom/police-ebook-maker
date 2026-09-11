@@ -1,0 +1,688 @@
+{
+  "app": {
+    "shortName": "SAFE112",
+    "copied": "Disalin",
+    "close": "Tutup",
+    "yes": "YA",
+    "no": "TIDAK",
+    "searchPlaceholder": "Cari jenis jenayah",
+    "searchEmpty": "Tiada hasil. Cuba perkataan lain.",
+    "back": "Kembali",
+    "updated": "Dikemas kini:",
+    "noPersonalData": "Halaman ini tidak mengumpul pendaftaran, lokasi atau nombor telefon.",
+    "notLegalAdvice": "Jika bahaya, telefon 112. Ini panduan pencegahan jenayah, bukan nasihat undang-undang."
+  },
+  "lang": {
+    "choose": "Pilih bahasa / Language"
+  },
+  "nav": {
+    "menu": "Menu",
+    "home": "Utama",
+    "check": "Semak risiko",
+    "show": "Tunjuk polis",
+    "report": "Lapor"
+  },
+  "home": {
+    "title": "Hidup selamat di Korea",
+    "subtitle": "Panduan pencegahan jenayah untuk pelajar antarabangsa",
+    "call112": "Bahaya sekarang? Telefon 112",
+    "knowTitle": "Tiga perkara yang mahu diberitahu polis",
+    "know1": "Peguam negara, polis dan bank tidak pernah telefon untuk minta pindahkan wang ke “akaun selamat”.",
+    "know2": "Kerja sambilan yang bayar tinggi untuk kerja hantar barang mudah mungkin jenayah.",
+    "know3": "Jangan pinjamkan akaun atau kad — walaupun kepada kawan.",
+    "recentCrimes": "Jenayah yang kerap berlaku",
+    "quick": "Akses pantas",
+    "checkTitle": "Semak bahaya 30 saat",
+    "checkDesc": "Jika seseorang minta anda buat ini, semak sekarang",
+    "jobsTitle": "Tunggu — ini mungkin bukan kerja sambilan",
+    "jobsDesc": "Anda boleh jadi suspek, bukan hanya mangsa",
+    "showTitle": "Tunjuk ini kepada polis",
+    "showDesc": "Guna ayat Korea jika susah nak terangkan",
+    "reportTitle": "Cara laporkan",
+    "reportDesc": "Telefon 112. Anda boleh minta jurubahasa",
+    "embassyTitle": "Kedutaan / konsular",
+    "embassyDesc": "Bahaya, telefon 112 dulu. Pasport dan tahanan: kedutaan anda"
+  },
+  "check": {
+    "title": "Semak risiko jenayah 30 saat",
+    "lead": "Jika mana-mana jawapan YA, berhenti. Jangan hantar wang, pindah barang, atau pinjamkan akaun.",
+    "stopBody": "Ini bukan kerja sambilan. Berhenti hantar wang, hantar tunai, pinjamkan akaun, atau pasang aplikasi. Telefon 112.",
+    "okBody": "Tiada isyarat bahaya sekarang. Tetap tolak kerja hantar barang bergaji tinggi, pinjaman akaun, dan bungkusan orang tidak dikenali.",
+    "q": {
+      "money": "Ada orang suruh anda hantar wang?",
+      "account": "Mereka minta pinjam akaun atau kad debit anda?",
+      "cash": "Mereka minta anda terima tunai lalu serah kepada orang lain?",
+      "parcel": "Mereka minta anda bawa bungkusan orang asing?",
+      "police-money": "Ada orang mengaku polis atau peguam negara lalu minta wang?",
+      "app": "Mereka suruh anda pasang aplikasi?",
+      "unclear-job": "Kerja gaji tinggi tetapi tugas tidak jelas?"
+    },
+    "stopTitle": "Berhenti sekarang"
+  },
+  "jobs": {
+    "title": "Tunggu! Ini mungkin bukan kerja sambilan",
+    "lead": "Kata “saya ingat ini kerja sambilan” tidak semestinya melindungi anda. Polis terus memberi amaran kepada pelajar antarabangsa.",
+    "banner": "Gaji tinggi + kerja mudah + ambil kerja melalui sembang sahaja + Telegram sahaja → anda mungkin sedang pindahkan wang scam.",
+    "risk": "Risiko",
+    "why": "Kenapa berbahaya",
+    "refuse": "Cara menolak",
+    "ifAlready": "Jika sudah buat",
+    "ifAlreadyBody": "Jangan pindah wang lagi. Jangan padam sembang dan rekod pindahan. Telefon 112. Semakin cepat laporkan, semakin membantu.",
+    "cards": {
+      "cash": {
+        "title": "Hantar tunai",
+        "risk": "Anda mungkin pindahkan wang curi",
+        "why": "Tunai itu sering wang mangsa yang sudah ditipu.",
+        "refuse": "“Saya tidak buat kerja hantar tunai. Jika haram, saya akan tanya polis.”"
+      },
+      "account": {
+        "title": "Beri akaun",
+        "risk": "Nama anda digunakan dalam jenayah",
+        "why": "Meminjamkan akaun bank boleh jadi haram. Wang scam masuk akaun boleh membekukan akaun.",
+        "refuse": "“Saya tidak boleh pinjamkan akaun. Itu haram di Korea.”"
+      },
+      "card": {
+        "title": "Serah kad",
+        "risk": "Kad debit dan PIN",
+        "why": "Kad sama seperti akaun. Jika orang lain guna, anda boleh disiasat.",
+        "refuse": "“Saya tidak beri kad atau PIN kepada sesiapa.”"
+      },
+      "phone": {
+        "title": "Buka talian telefon",
+        "risk": "Telefon boleh digunakan untuk scam",
+        "why": "Telefon atas nama anda yang digunakan untuk penipuan menjadikan anda suspek.",
+        "refuse": "“Saya tidak akan buka talian telefon lalu serah kepada orang lain.”"
+      },
+      "parcel": {
+        "title": "Terima bungkusan",
+        "risk": "Mungkin dadah atau barang jenayah",
+        "why": "Menerima bungkusan yang tidak diketahui boleh dianggap mengangkut dadah.",
+        "refuse": "“Saya tidak terima bungkusan untuk orang yang tidak dikenali.”"
+      },
+      "name": {
+        "title": "Beri identiti",
+        "risk": "Gambar IC dan kod SMS",
+        "why": "Pinjaman, akaun atau telefon boleh dibuka atas nama anda.",
+        "refuse": "“IC dan kod pengesahan hanya untuk saya.”"
+      },
+      "coin": {
+        "title": "Beli kripto",
+        "risk": "Menyembunyikan wang jenayah",
+        "why": "Beli syiling dengan wang orang lain boleh dianggap pengubahan wang haram.",
+        "refuse": "“Saya tidak beli kripto dengan wang orang lain.”"
+      },
+      "remit": {
+        "title": "Hantar wang ke luar negara",
+        "risk": "Tukaran haram atau wang scam",
+        "why": "Tawaran “kadar lebih baik” boleh jadi pergerakan wang haram.",
+        "refuse": "“Saya tidak hantar wang orang lain ke luar negara. Guna bank.”"
+      }
+    }
+  },
+  "show": {
+    "title": "Tunjuk ini kepada polis",
+    "lead": "Jika bahasa Korea susah, besarkan ayat Korea atau salin untuk ditunjukkan.",
+    "bigKo": "Korea besar",
+    "copy": "Salin",
+    "phrases": {
+      "scammed": "Saya rasa saya ditipu.",
+      "transferred": "Saya sudah pindahkan wang kepada penipu.",
+      "cash-delivery": "Seseorang suruh saya terima tunai lalu hantar.",
+      "account-request": "Seseorang minta pinjam akaun atau kad saya.",
+      "fake-police": "Seseorang mengaku polis atau peguam negara lalu minta wang.",
+      "followed": "Saya sedang diikuti.",
+      "danger-now": "Saya dalam bahaya sekarang. Saya perlukan bantuan.",
+      "interpreter": "Saya perlukan jurubahasa.",
+      "filmed": "Saya rasa saya dirakam tanpa izin.",
+      "stalking": "Saya mahu laporkan gangguan stalking.",
+      "account-frozen": "Akaun bank saya dibekukan.",
+      "unknown-parcel": "Seseorang minta saya terima bungkusan yang tidak dikenali.",
+      "malware-app": "Saya pasang aplikasi yang mereka suruh pasang.",
+      "need-station": "Saya mahu pergi ke balai polis terdekat.",
+      "embassy": "Saya mahu hubungi kedutaan saya."
+    }
+  },
+  "report": {
+    "title": "Cara dapatkan bantuan",
+    "lead": "Jangan rumitkan. Jika bahaya atau jenayah berlaku, telefon 112.",
+    "emergency": "Jika bahaya atau sudah jadi mangsa",
+    "emergencyBody": "112 berfungsi di seluruh Korea. Warganegara asing boleh telefon.",
+    "how112": "Apabila telefon 112",
+    "how112Steps": [
+      "Cakap dulu sama ada anda bahaya, dan di mana anda berada.",
+      "Guna ayat pendek. Jika tidak boleh bahasa Korea, cakap English.",
+      "Minta jurubahasa, atau tunjuk ayat dari skrin Tunjuk Polis.",
+      "Nama bangunan, stesen subway atau kedai serbaneka sudah cukup."
+    ],
+    "interpreter": "Bantuan bahasa",
+    "interpreterBody": "Agensi Polis Negara Korea menyatakan 112 boleh sambungkan jurubahasa. Bahasa Inggeris dan Cina sering lebih awal. Bahasa lain mungkin lebih lama — tunjuk ayat Korea lebih cepat.",
+    "ifSilent": "Jika tidak boleh bercakap",
+    "ifSilentBody": "Pergi ke pondok polis terdekat (지구대 / 파출소) dan tunjuk skrin ini. Aplikasi Emergency Call kerajaan Korea boleh hantar gambar atau teks. Jika kecemasan, tetap telefon 112.",
+    "moneySent": "Jika sudah hantar wang, buat sekarang",
+    "moneySentSteps": [
+      "Telefon pusat pelanggan bank segera dan minta bekukan pindahan (지급정지).",
+      "Beritahu juga Perkhidmatan Penyeliaan Kewangan 1332 (hari bekerja).",
+      "Telefon 112. Masa penting.",
+      "Jangan padam mesej, panggilan, akaun atau skrin aplikasi. Ambil tangkapan skrin."
+    ],
+    "contactsTitle": "Nombor yang disahkan",
+    "c112": {
+      "name": "Kecemasan polis",
+      "desc": "Jenayah dan bahaya · 24 jam · boleh minta jurubahasa"
+    },
+    "c119": {
+      "name": "Bomba dan ambulans",
+      "desc": "Kebakaran atau kecemasan perubatan · 24 jam"
+    },
+    "c1332": {
+      "name": "Penyeliaan kewangan",
+      "desc": "Voice phishing dan pembekuan akaun (hari bekerja)"
+    },
+    "c118": {
+      "name": "KISA",
+      "desc": "SMS phishing dan aplikasi hasad"
+    },
+    "c117": {
+      "name": "Kaunseling keganasan",
+      "desc": "Kaunseling jenayah seksual dan stalking"
+    },
+    "appsTitle": "Laman rasmi",
+    "appsBody": "Anda boleh semak nombor mencurigakan di laman anti-scam polis counterscam112.go.kr. Halaman ini tidak senaraikan nombor yang tidak disahkan."
+  },
+  "crimePage": {
+    "what": "Jenayah apakah ini?",
+    "approach": "Begini mereka menghampiri anda",
+    "suspect": "Jika dengar ini, curiga",
+    "dont": "Jangan sekali-kali",
+    "ifHarmed": "Jika sudah berlaku",
+    "callPolice": "Telefon polis",
+    "policeTip": "Tip polis"
+  },
+  "crimes": {
+    "voice-phishing": {
+      "title": "Voice / messenger phishing",
+      "short": "Pura-pura peguam negara, polis, keluarga",
+      "what": "Penipu telefon, mesej atau sembang sebagai peguam negara, polis, bank, imigresen, polis China atau keluarga anda. Mereka mahu anda hantar wang atau pasang aplikasi. Ini kerap berlaku kepada pelajar antarabangsa di Korea.",
+      "examples": [
+        {
+          "lines": [
+            "📞 “Ini Pejabat Peguam Negara Seoul Pusat.”",
+            "“Akaun atas nama anda digunakan dalam jenayah.”",
+            "“Pindahkan wang ke akaun selamat.”"
+          ],
+          "stop": "BERHENTI. Polis dan peguam negara sebenar tidak pernah minta pindah wang ke “akaun selamat” melalui telefon.",
+          "dont": [
+            "Jangan pindah wang",
+            "Jangan pasang aplikasi mereka",
+            "Jangan beri kata laluan atau kod"
+          ],
+          "do": [
+            "Tutup telefon",
+            "Telefon 112 sendiri atau bank anda",
+            "Jika wang sudah bergerak, telefon 112 sekarang"
+          ]
+        },
+        {
+          "lines": [
+            "📞 “Ini keselamatan awam / kedutaan.”",
+            "“Akaun anda terlibat pengubahan wang haram. Pindah ke akaun selamat.”",
+            "“Keluarga ada masalah. Jangan tutup telefon.”"
+          ],
+          "stop": "BERHENTI. Keselamatan awam, kedutaan dan imigresen tidak suruh anda hantar wang melalui telefon.",
+          "dont": [
+            "Jangan teruskan di WeChat atau WhatsApp",
+            "Jangan rahsiakan daripada keluarga"
+          ],
+          "do": [
+            "Tutup telefon dan hubungi keluarga dengan nombor lain",
+            "Isu visa, telefon 1345 sendiri"
+          ]
+        },
+        {
+          "lines": [
+            "📱 “Bungkusan gagal. Tekan pautan ini.”",
+            "“Pasang aplikasi keselamatan peguam negara.”",
+            "🔊 Suara AI: “Saya. Ada masalah besar. Hantar wang.”"
+          ],
+          "stop": "BERHENTI. Pautan, aplikasi palsu dan suara keluarga AI adalah alat untuk menipu.",
+          "dont": [
+            "Jangan tekan pautan SMS",
+            "Jangan pasang aplikasi tidak dikenali"
+          ],
+          "do": [
+            "Lapor perisian hasad ke 118",
+            "Sahkan suara keluarga dengan panggilan video atau nombor lain"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "akaun selamat",
+        "akaun anda terlibat",
+        "peguam negara / polis",
+        "denda imigresen",
+        "pasang aplikasi",
+        "kod pengesahan",
+        "jangan tutup telefon",
+        "rahsia daripada keluarga"
+      ],
+      "dont": [
+        "Jangan hantar wang ke akaun yang diberi melalui telefon",
+        "Jangan pasang aplikasi yang mereka hantar",
+        "Jangan baca OTP, kata laluan atau kod SMS",
+        "Jangan keluarkan tunai lalu hantar",
+        "Jangan biarkan mereka kawal telefon melalui kongsi skrin"
+      ],
+      "actions": [
+        "Telefon bank sekarang dan minta bekukan wang",
+        "Telefon 1332",
+        "Telefon 112",
+        "Tangkap skrin mesej, panggilan dan akaun",
+        "Jika sudah pasang aplikasi, beritahu 118 dan periksa telefon"
+      ],
+      "policeTip": "Penyiasat sebenar tidak pindahkan wang anda melalui telefon. Jika terasa pelik, tutup telefon dan dail 112 sendiri."
+    },
+    "cash-job": {
+      "title": "Kerja sambilan gaji tinggi",
+      "short": "Ambil dan hantar tunai boleh jadi jenayah",
+      "what": "Kerja yang nampak seperti tugas mudah RM/won yang tinggi sehari sering memindahkan wang voice phishing. Polis berulang kali memberi amaran pelajar antarabangsa menyertai kerana ingat kerja biasa, kemudian dikenakan tindakan.",
+      "examples": [
+        {
+          "lines": [
+            "💬 Telegram: “Terima/keluar wang. Ambil kerja dalam talian. 300,000 won sehari.”",
+            "“Keluarkan di ATM dan bawa ke alamat ini.”",
+            "“Anda cuma buat kerja hantar. Ianya sah.”"
+          ],
+          "stop": "BERHENTI. Jika kerja ialah gerakkan tunai, akaun, kad atau kripto, itu bukan kerja biasa.",
+          "dont": [
+            "Jangan terima lalu hantar tunai",
+            "Jangan pindah wang ke akaun lain",
+            "Jangan beli kripto untuk mereka"
+          ],
+          "do": [
+            "Simpan iklan kerja",
+            "Berhenti ikut arahan",
+            "Tanya atau laporkan 112"
+          ]
+        },
+        {
+          "lines": [
+            "💬 “Buka kad dan telefon untuk kami.”",
+            "💬 “Pinjam akaun sehari. Kami bayar faedah.”"
+          ],
+          "stop": "BERHENTI. Membuka akaun atau telefon untuk orang lain adalah haram.",
+          "dont": [
+            "Jangan serahkan akaun atau SIM atas nama anda"
+          ],
+          "do": [
+            "Tolak dan simpan sembang",
+            "Jika sudah beri, beritahu bank dan 112 sekarang"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "kerja pendek gaji tinggi",
+        "ambil kerja dalam talian sahaja",
+        "Telegram sahaja",
+        "terima/keluar wang",
+        "ambil tunai",
+        "beli kripto lalu hantar",
+        "tak perlu tunjuk muka"
+      ],
+      "dont": [
+        "Jangan bawa tunai atau cek ke tempat yang mereka pilih",
+        "Jangan keluarkan di ATM lalu hantar",
+        "Jangan pindahkan wang yang masuk akaun anda",
+        "Jangan hantar barang, kad atau telefon untuk orang asing",
+        "Jangan hantar wang ke luar negara atau beli kripto untuk mereka"
+      ],
+      "actions": [
+        "Hentikan kerja itu segera",
+        "Simpan sembang, pindahan dan rekod ATM",
+        "Beritahu 112 dengan jujur. Menyembunyikan boleh memburukkan",
+        "Jika belum gerakkan wang, berhenti sekarang — itu sangat membantu"
+      ],
+      "policeTip": "Walaupun iklan kata “kerja sah”, memindahkan wang orang lain boleh dianggap menyertai jenayah phishing. “Saya tak tahu” bukan pembelaan automatik."
+    },
+    "account-lend": {
+      "title": "Akaun, kad, telefon",
+      "short": "Pinjamkan, nama anda masuk jenayah",
+      "what": "Jika anda beri akaun, kad debit, log masuk bank, telefon, SIM, IC atau kod SMS kepada orang lain, ia boleh digunakan untuk penipuan, judi atau dadah. Di Korea, memindah atau meminjamkan buku akaun/kad itu sendiri boleh jadi jenayah.",
+      "question": "Kawan minta pinjam akaun sehari. Apa patut dibuat?",
+      "questionAnswer": "Tolak. Kawan rapat, senior atau orang negara sama pun bukan pengecualian. Jika wang scam masuk, nama anda dalam siasatan, akaun boleh dibekukan, dan urusan bank seterusnya boleh tersekat.",
+      "examples": [
+        {
+          "lines": [
+            "💬 “Pinjam akaun sehari. Sewa lewat.”",
+            "💬 “Pinjam kad debit. Tak rosakkan kredit.”",
+            "💬 “Bagitahu kod SMS je. Saya uruskan.”"
+          ],
+          "stop": "BERHENTI. “Sehari je”, “kawan kita”, atau “tak ada bayaran” masih berbahaya.",
+          "dont": [
+            "Jangan serah akaun atau kad",
+            "Jangan baca kod pengesahan"
+          ],
+          "do": [
+            "Tolak dengan jelas",
+            "Jika mereka terus minta, telefon 112"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "sehari je",
+        "saya bayar faedah",
+        "saya carikan kerja",
+        "bagitahu kod",
+        "buka SIM",
+        "jual akaun"
+      ],
+      "dont": [
+        "Jangan pinjam atau jual akaun",
+        "Jangan beri kad debit atau PIN",
+        "Jangan buka telefon/SIM lalu serah",
+        "Jangan hantar gambar IC",
+        "Jangan kongsikan log masuk internet banking"
+      ],
+      "actions": [
+        "Jika sudah pinjamkan, beritahu bank dan bekukan akaun/kad sekarang",
+        "Telefon 112",
+        "Simpan sembang siapa yang minta dan bagaimana ia diserahkan"
+      ],
+      "legalLine": "Akta Transaksi Kewangan Elektronik: memindah atau meminjamkan alat akses seperti buku akaun atau kad debit boleh membawa penjara sehingga 5 tahun atau denda sehingga 30 juta won. Janji pinjaman atau kerja masih boleh dikira sebagai bayaran.",
+      "policeTip": "Fikiran “akaun saya, saya boleh pinjamkan” paling berbahaya. Kumpulan jenayah secara aktif mencari akaun pelajar."
+    },
+    "sns-fraud": {
+      "title": "Scam SNS dan dalam talian",
+      "short": "Barang terpakai, tiket, tukaran, pinjaman",
+      "what": "Di WeChat, WhatsApp, Telegram, LINE, Instagram dan aplikasi barang terpakai, penipu tawarkan barang murah, tukaran wang tidak rasmi, pinjaman atau pelaburan. Pelajar China juga ada akaun dibekukan selepas guna penukar tidak rasmi untuk yuran.",
+      "examples": [
+        {
+          "lines": [
+            "💬 WeChat: “Kadar lebih baik daripada bank. Hantar KRW, saya bagi RMB.”",
+            "💬 “Tiket konsert lebih murah. Bayar dulu.”",
+            "💬 “Beli berkumpulan. Hantar wang, saya belikan.”"
+          ],
+          "stop": "BERHENTI. Bayar dulu tanpa tunjuk barang ialah scam klasik.",
+          "dont": [
+            "Jangan hantar bayaran penuh sebelum jumpa",
+            "Jangan beri yuran pengajian kepada penukar peribadi"
+          ],
+          "do": [
+            "Guna universiti atau bank untuk tukaran dan yuran",
+            "Barang terpakai, jumpa sendiri atau guna bayaran selamat"
+          ]
+        },
+        {
+          "lines": [
+            "💬 Telegram: “Pinjaman tanpa kerja. Bayar fi dulu.”",
+            "💬 “Masuk bilik pelaburan. Untung setiap hari.”"
+          ],
+          "stop": "BERHENTI. Pinjaman fi awal dan bilik “untung dijamin” ialah haram atau scam.",
+          "dont": [
+            "Jangan hantar fi awal",
+            "Jangan labur di tapak yang mereka hantar"
+          ],
+          "do": [
+            "Simpan sembang dan hubungi 112 atau 1332"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "terlalu murah",
+        "bayar dulu",
+        "tukaran peribadi",
+        "tolak bayaran selamat",
+        "pindah ke aplikasi lain",
+        "untung dijamin",
+        "pinjaman fi dulu"
+      ],
+      "dont": [
+        "Jangan hantar wang besar sebelum nampak barang atau bilik",
+        "Jangan tukar yuran melalui orang WeChat/WhatsApp",
+        "Jangan bayar awal untuk tiket atau item permainan sahaja",
+        "Jangan percaya bilik pelaburan Telegram"
+      ],
+      "actions": [
+        "Jika sudah bayar, bekukan dengan bank dan telefon 112",
+        "Tangkap akaun, sembang dan butiran bank",
+        "Laporkan di platform juga"
+      ],
+      "policeTip": "“Kadar tukaran lebih baik” boleh jadi umpan untuk gerakkan wang scam melalui akaun pelajar. Akaun kemudian dibekukan, yuran dan belanja harian tersekat."
+    },
+    "romance-scam": {
+      "title": "Scam cinta dan pelaburan",
+      "short": "Cinta dulu, kemudian wang dan kripto",
+      "what": "Seseorang di SNS atau aplikasi dating bina perasaan, kemudian minta pelaburan, kos perjalanan atau fi. Polis anggap ini jenayah kewangan. Nampak macam cinta. Matlamatnya wang anda.",
+      "steps": [
+        "Profil kacak/cantik mesej dulu di SNS atau aplikasi dating",
+        "Sembang setiap hari, rapat cepat, panggil “sayang”",
+        "Minta pindah ke Telegram, WhatsApp atau aplikasi lain",
+        "Kata mereka kaya dari kripto atau saham dan mahu ajar",
+        "Jumlah kecil nampak macam beruntung",
+        "Suruh deposit besar. Nak keluarkan, minta cukai atau fi tambahan",
+        "Jika berhenti bayar, mereka ugut atau hilang"
+      ],
+      "warningSigns": [
+        "tak pernah jumpa",
+        "pindah aplikasi",
+        "pautan pelaburan",
+        "fi pengeluaran",
+        "hantar wang untuk visa/tiket",
+        "simpan rahsia"
+      ],
+      "dont": [
+        "Jangan hantar wang kepada orang yang hanya jumpa dalam talian",
+        "Jangan daftar atau deposit di “exchange” yang mereka hantar",
+        "Jangan bayar cukai atau fi tambahan untuk keluarkan",
+        "Jangan pasang aplikasi yang mereka suruh"
+      ],
+      "actions": [
+        "Jangan hantar wang lagi. Tiada “kali terakhir”",
+        "Simpan sembang, profil, alamat dompet dan pindahan",
+        "Minta bank bekukan dan telefon 112",
+        "Jangan malu. Ini jenayah terancang"
+      ],
+      "policeTip": "Jika orang yang tidak pernah jumpa cakap tentang cinta lalu minta wang, anggap itu scam dari saat itu."
+    },
+    "housing-scam": {
+      "title": "Scam sewa rumah",
+      "short": "Iklan palsu dan bayar sebelum tengok",
+      "what": "Bagi pelajar, bahaya ialah bilik terlalu murah, “bayar hari ini untuk tempah”, atau kontrak hanya di SNS. Ini bukan kelas undang-undang. Ini cara berhenti sebelum hilang deposit.",
+      "examples": [
+        {
+          "lines": [
+            "💬 “Bilik dalam gambar 300,000 won sebulan, deposit kecil. Bayar hari ini untuk tempah.”",
+            "💬 “Saya di luar negara. Hantar deposit dulu.”",
+            "💬 “Jangan guna ejen. Deal terus lebih murah.”"
+          ],
+          "stop": "BERHENTI. Hantar wang sebelum tengok bilik dan sahkan tuan rumah adalah berbahaya.",
+          "dont": [
+            "Jangan bayar sebelum kontrak",
+            "Jangan bayar tanpa kontrak bertulis"
+          ],
+          "do": [
+            "Tengok bilik sendiri",
+            "Tandatangan di pejabat ejen hartanah berlesen",
+            "Semak IC tuan rumah dan hak milik"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "jauh bawah harga pasaran",
+        "gesa bayar",
+        "SNS sahaja",
+        "tuan rumah di luar negara",
+        "tiada kontrak",
+        "kunci dulu"
+      ],
+      "dont": [
+        "Jangan hantar deposit sebelum tengok bilik",
+        "Jangan kontrak dari foto KakaoTalk atau WeChat sahaja",
+        "Jangan kontrak dengan orang yang bukan pemilik",
+        "Jangan terburu-buru kerana harga terlalu baik"
+      ],
+      "actions": [
+        "Jika sudah bayar, bekukan pindahan dan telefon 112",
+        "Tangkap sembang, akaun dan iklan palsu",
+        "Beritahu pejabat antarabangsa universiti. Scam sama kerap berulang"
+      ],
+      "policeTip": "Tuan rumah sebenar tidak tuntut bayaran besar sebelum tunjuk bilik. Semakin mendesak, semakin anda harus berhenti."
+    },
+    "sexual-crime": {
+      "title": "Jenayah seksual dan stalking",
+      "short": "Kamera tersembunyi, ugutan, keganasan dating",
+      "what": "Ini termasuk rakaman tersembunyi, ugutan kongsi foto, stalking, keganasan dating, dan ugutan seksual di SNS. Kami tidak akan terangkan secara mengejutkan. Yang penting ialah apa yang anda boleh buat sekarang. Kesalahan ada pada pelaku, bukan anda.",
+      "examples": [
+        {
+          "lines": [
+            "Anda nampak kamera kecil atau lubang pelik di bilik, tandas atau teksi.",
+            "Selepas putus, seseorang kata akan siar foto jika tidak bayar.",
+            "Anda sudah tolak, tetapi mereka terus ikut atau mesej."
+          ],
+          "stop": "Jangan pergi berhadapan sendirian. Pergi ke tempat selamat dulu.",
+          "dont": [
+            "Jangan padam mesej",
+            "Jangan jumpa orang itu sendirian",
+            "Jangan bayar wang yang dituntut"
+          ],
+          "do": [
+            "Pergi tempat selamat",
+            "Telefon 112",
+            "Simpan bukti"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "mungkin kamera tersembunyi",
+        "ugutan siar foto",
+        "tunggu di rumah atau kampus",
+        "jejak lokasi",
+        "hilang ingatan selepas minum",
+        "mesej tidak berhenti"
+      ],
+      "dont": [
+        "Jangan bayar kerana ugutan",
+        "Jangan padam sembang dan akaun segera",
+        "Jangan jumpa mereka sendirian di tempat berisiko"
+      ],
+      "actions": [
+        "Pergi tempat selamat: kedai serbaneka, tempat ramai orang, atau pondok polis",
+        "Jika bahaya, telefon 112. Jika cedera, telefon 119",
+        "Tangkap skrin mesej, akaun dan pindahan. Jangan padam",
+        "Ingat tempat itu dan sama ada mungkin ada CCTV",
+        "Untuk kaunseling telefon 117. Untuk laporkan, telefon 112"
+      ],
+      "policeTip": "Rakaman tersembunyi dan stalking adalah jenayah. Jika bahasa Korea susah, tetap telefon 112 dan guna ayat Tunjuk Polis."
+    },
+    "drugs": {
+      "title": "Jenayah dadah",
+      "short": "Jangan bawa bungkusan yang tidak diketahui",
+      "banner": "Jangan bawa atau simpan bungkusan jika anda tidak tahu apa di dalamnya.",
+      "what": "Korea menghukum jenayah dadah dengan ketat, termasuk kanabis. “Di Korea tak apa”, “ini produk kesihatan”, atau “cuma kerja hantar” boleh jadi pembohongan. Malah menerima atau membawa bungkusan tidak dikenali boleh membawa kepada siasatan.",
+      "examples": [
+        {
+          "lines": [
+            "💬 “Terima bungkusan saya. Saya bayar.”",
+            "💬 “Hantar beg ini kepada seseorang dalam subway.”",
+            "🎉 “Ambil ini di parti. Rasa best. Di Korea okay.”"
+          ],
+          "stop": "BERHENTI. Jika tidak tahu kandungannya, jangan ambil. Kanabis haram di Korea.",
+          "dont": [
+            "Jangan terima, bawa atau simpan",
+            "Jangan ambil pil atau serbuk tidak dikenali"
+          ],
+          "do": [
+            "Tolak",
+            "Jika sudah ada, jangan buka. Telefon 112"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "terima bungkusan untuk orang",
+        "bayaran tinggi untuk hantar mudah",
+        "tidak beritahu apa itu",
+        "dadah parti",
+        "terima pos antarabangsa untuk orang"
+      ],
+      "dont": [
+        "Jangan terima pos atau bungkusan antarabangsa untuk orang asing",
+        "Jangan bawa beg atau kotak jika tidak tahu kandungannya",
+        "Jangan ambil dadah tidak dikenali di parti",
+        "Jangan beli atau ambil dadah untuk orang di SNS"
+      ],
+      "actions": [
+        "Jika sudah terima barang mencurigakan, jangan buka",
+        "Beritahu 112 dengan jujur",
+        "Simpan sembang orang yang minta anda buat"
+      ],
+      "policeTip": "Jenayah dadah boleh menamatkan pengajian dan membawa deportasi. Walaupun kawan yang minta, jika tidak tahu kandungannya, tolak."
+    }
+  },
+  "embassy": {
+    "title": "Minta bantuan kedutaan",
+    "lead": "Jika jenayah sedang berlaku di Korea, telefon 112 sebelum kedutaan. Misi boleh bantu pasport, tahanan, keluarga, dan maklumat peguam.",
+    "first112": "Jika bahaya atau jenayah berlaku, telefon 112. Kedutaan tidak menggantikan polis Korea.",
+    "can": "Apa yang biasanya boleh dibantu",
+    "cannot": "Apa yang biasanya tidak boleh",
+    "canItems": [
+      "Bantu ganti pasport hilang atau rosak",
+      "Beritahu keluarga dan lawat jika anda ditahan",
+      "Kongsi maklumat peguam dan jurubahasa tempatan",
+      "Terangkan cara ke hospital atau balai polis"
+    ],
+    "cannotItems": [
+      "Tidak boleh hentikan siasatan atau perbicaraan polis Korea",
+      "Tidak membayar denda atau jaminan untuk anda",
+      "Selalunya tidak membayar hotel atau kos hidup",
+      "Penghantaran kecemasan ialah 112 dan 119"
+    ],
+    "website": "Buka laman rasmi",
+    "findOthers": "Cari misi negara lain di laman Kementerian Luar Korea.",
+    "hours": {
+      "24h": "24 jam",
+      "weekday": "Waktu pejabat hari bekerja",
+      "after-hours": "Selepas waktu pejabat (MFA negara sendiri)"
+    },
+    "missions": {
+      "cn": {
+        "name": "Kedutaan China / perlindungan konsular 12308",
+        "help": "Untuk warganegara China. Dari Korea boleh telefon talian 24 jam +86-10-12308.",
+        "warn": "Jika 12308 telefon anda dahulu dan minta wang, itu scam. Tutup telefon dan dail sendiri. Jika bahaya di Korea, telefon 112.",
+        "phones": {
+          "12308": "Talian perlindungan konsular MFA China",
+          "12308b": "Nombor sandaran 12308"
+        }
+      },
+      "th": {
+        "name": "Kedutaan Diraja Thai di Seoul",
+        "help": "Untuk warganegara Thai. Hubungi misi Hannam-dong untuk pasport dan perlindungan.",
+        "phones": {
+          "main": "Talian utama kedutaan",
+          "consular": "Bahagian konsular"
+        }
+      },
+      "vn": {
+        "name": "Kedutaan Vietnam di Seoul",
+        "help": "Untuk warganegara Vietnam. Telefon talian utama dan minta perlindungan konsular.",
+        "phones": {
+          "main": "Talian utama kedutaan"
+        }
+      },
+      "my": {
+        "name": "Kedutaan Malaysia di Seoul",
+        "help": "Untuk warganegara Malaysia. Misi Seoul dan talian MFA di Putrajaya.",
+        "phones": {
+          "main": "Kedutaan di Seoul",
+          "hq": "Talian bantuan MFA Malaysia",
+          "duty": "Pegawai bertugas selepas waktu pejabat"
+        }
+      },
+      "us": {
+        "name": "Kedutaan A.S. di Seoul",
+        "help": "Untuk warganegara A.S. Warganegara berbahasa Inggeris lain gunakan laman kedutaan sendiri.",
+        "phones": {
+          "emergency": "Bantuan kecemasan warganegara A.S."
+        }
+      }
+    }
+  }
+}

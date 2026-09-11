@@ -1,0 +1,688 @@
+{
+  "app": {
+    "shortName": "SAFE112",
+    "copied": "Copied",
+    "close": "Close",
+    "yes": "YES",
+    "no": "NO",
+    "searchPlaceholder": "Search crime types",
+    "searchEmpty": "No matches. Try another word.",
+    "back": "Back",
+    "updated": "Updated:",
+    "noPersonalData": "This page does not collect sign-ups, location, or phone numbers.",
+    "notLegalAdvice": "If you are in danger, call 112. This is crime-prevention information, not legal advice."
+  },
+  "lang": {
+    "choose": "Language / 언어"
+  },
+  "nav": {
+    "menu": "Menu",
+    "home": "Home",
+    "check": "Check",
+    "show": "Show police",
+    "report": "Report"
+  },
+  "home": {
+    "title": "Stay safe in Korea",
+    "subtitle": "Crime prevention guide for international students",
+    "call112": "In danger now? Call 112",
+    "knowTitle": "Three things police want you to know",
+    "know1": "Prosecutors, police, and banks never ask you to move money to a “safe account” by phone.",
+    "know2": "A part-time job that pays a lot for simple errands can be a crime.",
+    "know3": "Never lend your bank account or card — not even to a friend.",
+    "recentCrimes": "Crimes happening often",
+    "quick": "Quick access",
+    "checkTitle": "30-second danger check",
+    "checkDesc": "If someone asked you to do this, check now",
+    "jobsTitle": "Wait — this may not be a part-time job",
+    "jobsDesc": "You can become a suspect, not only a victim",
+    "showTitle": "Show this to police",
+    "showDesc": "Use Korean sentences if you cannot explain",
+    "reportTitle": "How to report",
+    "reportDesc": "Call 112. You can ask for an interpreter",
+    "embassyTitle": "Embassy / consular help",
+    "embassyDesc": "Call 112 first in danger. Your embassy helps with passports and detention"
+  },
+  "check": {
+    "title": "30-second danger check",
+    "lead": "If any answer is YES, stop. Do not send money, move items, or lend your account.",
+    "stopBody": "This is not a part-time job. Stop sending money, delivering cash, lending accounts, or installing apps. Call 112.",
+    "okBody": "No danger signal right now. Still refuse high-pay errands, account lending, and unknown parcels.",
+    "q": {
+      "money": "Is someone telling you to send money?",
+      "account": "Are they asking to borrow your account or debit card?",
+      "cash": "Are they asking you to receive cash and pass it to someone else?",
+      "parcel": "Are they asking you to carry a stranger’s package?",
+      "police-money": "Is someone claiming to be police or prosecutors and asking for money?",
+      "app": "Are they telling you to install an app?",
+      "unclear-job": "Is it a high-pay job with unclear work?"
+    },
+    "stopTitle": "Stop now"
+  },
+  "jobs": {
+    "title": "Wait! This may not be a part-time job",
+    "lead": "Saying “I thought it was just a job” does not automatically protect you. Police keep warning international students about this.",
+    "banner": "High pay + simple work + hired only by chat + Telegram only → you may be moving scam money.",
+    "risk": "Risk",
+    "why": "Why it is dangerous",
+    "refuse": "How to refuse",
+    "ifAlready": "If you already did it",
+    "ifAlreadyBody": "Do not move more money. Do not delete chats or transfer records. Call 112. Reporting quickly can reduce harm.",
+    "cards": {
+      "cash": {
+        "title": "Deliver cash",
+        "risk": "You may be moving stolen money",
+        "why": "The cash is often money taken from a scam victim.",
+        "refuse": "“I don’t do cash-delivery jobs. If this is illegal I will ask the police.”"
+      },
+      "account": {
+        "title": "Give your account",
+        "risk": "Your name is used in a crime",
+        "why": "Lending a bank account can be illegal. Scam money in your account can freeze it.",
+        "refuse": "“I cannot lend my account. That is illegal in Korea.”"
+      },
+      "card": {
+        "title": "Hand over a card",
+        "risk": "Debit card and PIN",
+        "why": "A card is the same as your account. If someone else uses it, you can be investigated.",
+        "refuse": "“I never give my card or PIN to anyone.”"
+      },
+      "phone": {
+        "title": "Open a phone line",
+        "risk": "The phone can be used for scams",
+        "why": "A phone in your name used for fraud can make you a suspect.",
+        "refuse": "“I will not open a phone line and give it to someone else.”"
+      },
+      "parcel": {
+        "title": "Receive a parcel",
+        "risk": "It may be drugs or crime goods",
+        "why": "Collecting a parcel you do not know can be treated as drug transport.",
+        "refuse": "“I don’t receive parcels for people I don’t know.”"
+      },
+      "name": {
+        "title": "Give your ID",
+        "risk": "ID photo and SMS codes",
+        "why": "Loans, accounts, or phones can be opened in your name.",
+        "refuse": "“My ID and verification codes are only for me.”"
+      },
+      "coin": {
+        "title": "Buy crypto",
+        "risk": "Hiding crime money",
+        "why": "Buying coins with someone else’s money can be seen as money laundering.",
+        "refuse": "“I don’t buy crypto with other people’s money.”"
+      },
+      "remit": {
+        "title": "Send money abroad",
+        "risk": "Illegal exchange or scam funds",
+        "why": "“Better exchange rate” requests can be illegal money movement.",
+        "refuse": "“I don’t send other people’s money overseas. Use a bank.”"
+      }
+    }
+  },
+  "show": {
+    "title": "Show this to the police",
+    "lead": "If Korean is hard, show the Korean sentence. Use Big Korean or Copy.",
+    "bigKo": "Big Korean",
+    "copy": "Copy",
+    "phrases": {
+      "scammed": "I think I was scammed.",
+      "transferred": "I transferred money to the scammer.",
+      "cash-delivery": "Someone told me to collect cash and deliver it.",
+      "account-request": "Someone asked to borrow my bank account or card.",
+      "fake-police": "Someone claiming to be police or prosecutors asked for money.",
+      "followed": "I am being followed.",
+      "danger-now": "I am in danger now. I need help.",
+      "interpreter": "I need an interpreter.",
+      "filmed": "I think I was filmed without my consent.",
+      "stalking": "I want to report stalking.",
+      "account-frozen": "My bank account was frozen.",
+      "unknown-parcel": "Someone asked me to receive a parcel I do not know.",
+      "malware-app": "I installed an app they told me to install.",
+      "need-station": "I want to go to the nearest police station.",
+      "embassy": "I want to contact my embassy."
+    }
+  },
+  "report": {
+    "title": "How to get help",
+    "lead": "Keep it simple. If you are in danger or a crime happened, call 112.",
+    "emergency": "If you are in danger or a crime happened",
+    "emergencyBody": "112 works anywhere in Korea. Foreigners can call it.",
+    "how112": "When you call 112",
+    "how112Steps": [
+      "Say first if you are in danger, and where you are.",
+      "Use short sentences. If you cannot speak Korean, say “English” or “Chinese”.",
+      "Ask for an interpreter, or show a sentence from the Show Police screen.",
+      "A building name, subway station, or convenience store is enough for location."
+    ],
+    "interpreter": "Language help",
+    "interpreterBody": "The Korean National Police Agency says 112 can connect interpretation. English and Chinese are often available first. Other languages may take longer — showing a Korean sentence is faster.",
+    "ifSilent": "If you cannot speak",
+    "ifSilentBody": "Go to the nearest police box (지구대 / 파출소) and show this screen. The Ministry of the Interior and Safety “Emergency Call” app can send picture or text reports. If it is urgent, still call 112.",
+    "moneySent": "If you already sent money, do this now",
+    "moneySentSteps": [
+      "Call your bank’s customer center immediately and ask to freeze the transfer (지급정지).",
+      "Also tell the Financial Supervisory Service at 1332 (weekdays).",
+      "Call 112. Speed matters.",
+      "Do not delete texts, calls, accounts, or app screens. Take screenshots."
+    ],
+    "contactsTitle": "Verified numbers",
+    "c112": {
+      "name": "Police emergency",
+      "desc": "Crime and danger · 24 hours · ask for an interpreter"
+    },
+    "c119": {
+      "name": "Fire and ambulance",
+      "desc": "Fire or medical emergency · 24 hours"
+    },
+    "c1332": {
+      "name": "Financial Supervisory Service",
+      "desc": "Voice phishing and account freeze help (weekdays)"
+    },
+    "c118": {
+      "name": "KISA",
+      "desc": "Smishing and malware apps"
+    },
+    "c117": {
+      "name": "Violence counseling",
+      "desc": "Sexual violence and stalking counseling"
+    },
+    "appsTitle": "Official sites",
+    "appsBody": "You can check suspicious numbers on the police anti-scam site counterscam112.go.kr. This page does not list unverified phone numbers."
+  },
+  "crimePage": {
+    "what": "What is this crime?",
+    "approach": "How they approach you",
+    "suspect": "If you hear this, be suspicious",
+    "dont": "Never do this",
+    "ifHarmed": "If it already happened",
+    "callPolice": "Call the police",
+    "policeTip": "Police tip"
+  },
+  "crimes": {
+    "voice-phishing": {
+      "title": "Voice / messenger phishing",
+      "short": "Fake prosecutors, police, family",
+      "what": "Scammers call, text, or message you as prosecutors, police, a bank, immigration, Chinese public security, or your family. They try to make you send money or install an app. This happens often to international students in Korea.",
+      "examples": [
+        {
+          "lines": [
+            "📞 “This is the Seoul Central Prosecutors’ Office.”",
+            "“Your account was used in a crime.”",
+            "“Move your money to a safe account.”"
+          ],
+          "stop": "STOP. Real police and prosecutors never ask you to transfer money to a “safe account” by phone.",
+          "dont": [
+            "Do not transfer money",
+            "Do not install their app",
+            "Do not give passwords or codes"
+          ],
+          "do": [
+            "Hang up",
+            "Call 112 yourself or call your bank",
+            "If money moved, call 112 now"
+          ]
+        },
+        {
+          "lines": [
+            "📞 “This is public security / the embassy.”",
+            "“Your account is tied to money laundering. Transfer to a safe account.”",
+            "“Something happened to your family. Do not hang up.”"
+          ],
+          "stop": "STOP. Public security, embassies, and immigration do not make you send money by phone.",
+          "dont": [
+            "Do not continue on WeChat or WhatsApp",
+            "Do not keep it secret from family"
+          ],
+          "do": [
+            "Hang up and call your family on another number",
+            "For visa issues, call 1345 yourself"
+          ]
+        },
+        {
+          "lines": [
+            "📱 “Your parcel failed. Tap this link.”",
+            "“Install this prosecutor safety app.”",
+            "🔊 AI voice: “It’s me. I’m in trouble. Send money.”"
+          ],
+          "stop": "STOP. Links, fake apps, and AI family voices are tools to steal from you.",
+          "dont": [
+            "Do not tap the text link",
+            "Do not install unknown apps"
+          ],
+          "do": [
+            "Report malware to 118",
+            "Check family voices with a video call or another number"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "safe account",
+        "your account is involved",
+        "prosecutors / police / public security",
+        "immigration fine",
+        "install an app",
+        "verification code",
+        "don’t hang up",
+        "keep it secret"
+      ],
+      "dont": [
+        "Do not send money to an account given on the phone",
+        "Do not install an app they send",
+        "Do not read OTP, passwords, or SMS codes",
+        "Do not withdraw cash and deliver it",
+        "Do not let them control your phone with screen sharing"
+      ],
+      "actions": [
+        "Call your bank now and ask to freeze the money",
+        "Call the Financial Supervisory Service 1332",
+        "Call 112",
+        "Screenshot texts, calls, and bank screens",
+        "If you installed an app, tell 118 and check the phone"
+      ],
+      "policeTip": "Real investigators never move your money by phone. If anything feels wrong, hang up and call 112 yourself."
+    },
+    "cash-job": {
+      "title": "High-pay part-time jobs",
+      "short": "Cash pickup can be a crime",
+      "what": "Jobs that look like easy errands for 200,000–300,000 won a day are often moving voice-phishing money. Police repeatedly warn that international students — including Chinese students — join thinking it is a normal job, then get punished.",
+      "examples": [
+        {
+          "lines": [
+            "💬 Telegram: “Cash-in/cash-out. Remote hiring. 300,000 won a day.”",
+            "“Withdraw at an ATM and take it to this address.”",
+            "“You only run errands. It is legal.”"
+          ],
+          "stop": "STOP. If the work is moving cash, accounts, cards, or crypto, it is not a normal job.",
+          "dont": [
+            "Do not collect and deliver cash",
+            "Do not send money to another account",
+            "Do not buy crypto for them"
+          ],
+          "do": [
+            "Save the job post",
+            "Stop following orders",
+            "Ask or report to 112"
+          ]
+        },
+        {
+          "lines": [
+            "💬 “Just open a card and a phone for us.”",
+            "💬 “Lend your account for one day. We’ll pay interest.”"
+          ],
+          "stop": "STOP. Making accounts or phones for someone else is illegal.",
+          "dont": [
+            "Do not hand over an account or SIM in your name"
+          ],
+          "do": [
+            "Refuse and save the chat",
+            "If you already did, tell the bank and 112 now"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "high-pay short job",
+        "hired only online",
+        "Telegram only",
+        "cash in/out",
+        "cash pickup",
+        "buy crypto then deliver",
+        "no ID needed"
+      ],
+      "dont": [
+        "Do not take cash or checks to a place they choose",
+        "Do not withdraw at an ATM and deliver",
+        "Do not forward money that arrived in your account",
+        "Do not deliver items, cards, or phones for strangers",
+        "Do not send money abroad or buy crypto for them"
+      ],
+      "actions": [
+        "Stop the work immediately",
+        "Keep chats, transfers, and ATM records",
+        "Tell 112 the truth. Hiding it can make things worse",
+        "If you have not moved money yet, stop now — that helps a lot"
+      ],
+      "policeTip": "Even if the ad says “legal work,” moving other people’s money can be treated as joining a phishing crime. “I didn’t know” is not an automatic defense."
+    },
+    "account-lend": {
+      "title": "Accounts, cards, phones",
+      "short": "Lending them puts your name on a crime",
+      "what": "If you give someone your account, debit card, banking login, phone, SIM, ID, or SMS code, it can be used for fraud, gambling, or drugs. In Korea, transferring or lending a bankbook or card can itself be a crime.",
+      "question": "A friend asks to borrow your account for one day. What then?",
+      "questionAnswer": "Say no. Close friends, seniors, or people from your country are not an exception. If scam money enters that account, your name is in the investigation, the account can be frozen, and future banking can be blocked.",
+      "examples": [
+        {
+          "lines": [
+            "💬 “Lend me your account for one day. I’m late on rent.”",
+            "💬 “I just need your debit card. It won’t hurt your credit.”",
+            "💬 “Just tell me the SMS code. I’ll handle it.”"
+          ],
+          "stop": "STOP. “Just one day,” “we’re friends,” or “no payment” still is dangerous.",
+          "dont": [
+            "Do not hand over accounts or cards",
+            "Do not read verification codes"
+          ],
+          "do": [
+            "Refuse clearly",
+            "If they keep asking, call 112"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "just one day",
+        "I’ll pay interest",
+        "I’ll get you a job",
+        "tell me the code",
+        "open a SIM",
+        "sell your account"
+      ],
+      "dont": [
+        "Do not lend or sell your account",
+        "Do not give a debit card or PIN",
+        "Do not open a phone/SIM and hand it over",
+        "Do not send photos of your ID",
+        "Do not share internet banking logins"
+      ],
+      "actions": [
+        "If you already lent it, tell the bank and freeze the account/card now",
+        "Call 112",
+        "Keep the chat that shows who asked and how you handed it over"
+      ],
+      "legalLine": "Electronic Financial Transactions Act: transferring or lending access tools such as a bankbook or debit card can mean up to 5 years in prison or a fine of up to 30 million won. A promise of a loan or a job can still count as payment.",
+      "policeTip": "“It’s my account, so I can lend it” is the most dangerous thought. Crime groups actively look for student accounts."
+    },
+    "sns-fraud": {
+      "title": "SNS and online scams",
+      "short": "Used goods, tickets, exchange, loans",
+      "what": "On WeChat, WhatsApp, Telegram, LINE, Instagram, and used-goods apps, scammers offer cheap items, unofficial money exchange, loans, or investments. Chinese students have also had accounts frozen after using unofficial exchangers for tuition.",
+      "examples": [
+        {
+          "lines": [
+            "💬 WeChat: “Better rate than the bank. Send KRW, I’ll give RMB.”",
+            "💬 “Concert tickets cheaper than face value. Pay first.”",
+            "💬 “Group buy. Send money, I’ll purchase.”"
+          ],
+          "stop": "STOP. Pay-first and never showing the item is a classic scam.",
+          "dont": [
+            "Do not send full payment before meeting",
+            "Do not give tuition money to a private exchanger"
+          ],
+          "do": [
+            "Use your school or bank for exchange and tuition",
+            "For used goods, meet in person or use safe payment"
+          ]
+        },
+        {
+          "lines": [
+            "💬 Telegram: “Loan with no job. Pay a fee first.”",
+            "💬 “Join this investment room. Guaranteed daily profit.”"
+          ],
+          "stop": "STOP. Upfront-fee loans and guaranteed-profit rooms are illegal or scams.",
+          "dont": [
+            "Do not send an upfront fee",
+            "Do not invest on a site they send"
+          ],
+          "do": [
+            "Save the chat and contact 112 or 1332"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "too cheap",
+        "pay first",
+        "private exchange",
+        "refuses safe payment",
+        "move to another messenger",
+        "guaranteed profit",
+        "loan fee first"
+      ],
+      "dont": [
+        "Do not send large money before seeing the item or room",
+        "Do not exchange tuition through a WeChat/WhatsApp person",
+        "Do not prepay only for tickets or game items",
+        "Do not trust Telegram investment rooms"
+      ],
+      "actions": [
+        "If you paid, freeze with the bank and call 112",
+        "Capture the account, chat, and bank details",
+        "Report on the platform too"
+      ],
+      "policeTip": "A “better exchange rate” can be bait to move scam money through a student account. Your account may then be frozen, blocking tuition and living costs."
+    },
+    "romance-scam": {
+      "title": "Romance and investment scams",
+      "short": "Love first, then money and crypto",
+      "what": "Someone on SNS or a dating app builds affection, then asks for investment, travel costs, or fees. Police treat this as a financial crime. It looks like love. The goal is your money.",
+      "steps": [
+        "A good-looking profile messages you first on SNS or a dating app",
+        "They chat every day and get close fast. They call you “baby” or “honey”",
+        "They ask to move to Telegram, WhatsApp, or another app",
+        "They say they made money from crypto or stocks and offer to teach you",
+        "A small amount looks like it made a profit",
+        "They push a large deposit. To withdraw, they demand tax or fees",
+        "If you stop paying, they threaten you or disappear"
+      ],
+      "warningSigns": [
+        "never meets in person",
+        "move to another app",
+        "investment link",
+        "withdrawal fee",
+        "send money for a visa/ticket",
+        "keep it secret"
+      ],
+      "dont": [
+        "Do not send money to someone you have only met online",
+        "Do not join or deposit on an “exchange” they send",
+        "Do not pay extra “tax” or “fees” to withdraw",
+        "Do not install apps they send"
+      ],
+      "actions": [
+        "Do not send more money. There is no “last time”",
+        "Save chats, profile, wallet addresses, and transfers",
+        "Ask the bank to freeze funds and call 112",
+        "Do not feel ashamed. This is organized crime"
+      ],
+      "policeTip": "If someone you have never met talks about love and then asks for money, treat it as a scam from that moment."
+    },
+    "housing-scam": {
+      "title": "Rental housing scams",
+      "short": "Fake listings and pay-before-viewing",
+      "what": "For students, the danger is a room that is far too cheap, “pay today to reserve,” or a contract only on SNS. This is not a law class. It is how to stop before you lose your deposit.",
+      "examples": [
+        {
+          "lines": [
+            "💬 “This room is 300,000 won a month with a small deposit. Pay today to book.”",
+            "💬 “I’m abroad. Just send the deposit first.”",
+            "💬 “Skip the agent. Direct deal is cheaper.”"
+          ],
+          "stop": "STOP. Sending money before you see the room and the landlord is dangerous.",
+          "dont": [
+            "Do not pay before a contract",
+            "Do not pay with no written contract"
+          ],
+          "do": [
+            "Visit the room",
+            "Sign at a licensed real-estate office",
+            "Check the landlord’s ID and ownership"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "far below market price",
+        "pay urgently",
+        "SNS only",
+        "landlord overseas",
+        "no contract",
+        "keys first, papers later"
+      ],
+      "dont": [
+        "Do not send a deposit before viewing the room",
+        "Do not contract from photos on KakaoTalk or WeChat only",
+        "Do not contract with someone who is not the owner",
+        "Do not rush because the price is too good"
+      ],
+      "actions": [
+        "If you already paid, freeze the transfer and call 112",
+        "Capture chats, accounts, and the fake listing",
+        "Tell your university international office. The same scam is often repeated"
+      ],
+      "policeTip": "A real landlord does not demand a large payment before showing the room. The more urgent they are, the more you should stop."
+    },
+    "sexual-crime": {
+      "title": "Sexual crime and stalking",
+      "short": "Hidden cameras, threats, dating violence",
+      "what": "This includes hidden filming, threats to share photos, stalking, dating violence, and sexual threats on SNS. We will not describe this in a shocking way. What matters is what you can do now. The fault is the offender’s, not yours.",
+      "examples": [
+        {
+          "lines": [
+            "You notice a tiny camera or a strange hole in a room, bathroom, or taxi.",
+            "After a breakup, someone says they will post photos unless you pay.",
+            "You said no, but they keep following you or messaging you."
+          ],
+          "stop": "Do not go alone to confront them. Move to a safe place first.",
+          "dont": [
+            "Do not delete messages",
+            "Do not meet the person alone",
+            "Do not pay the demanded money"
+          ],
+          "do": [
+            "Go somewhere safe",
+            "Call 112",
+            "Keep evidence"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "possible hidden camera",
+        "threat to share photos",
+        "waiting at home or school",
+        "location tracking",
+        "memory gap after drinking",
+        "messages that will not stop"
+      ],
+      "dont": [
+        "Do not pay because of a threat",
+        "Do not delete chats and accounts right away",
+        "Do not meet them alone in a risky place"
+      ],
+      "actions": [
+        "Move to a safe place: a convenience store, a busy street, or a police box",
+        "If you are in danger, call 112. If you are hurt, call 119",
+        "Screenshot messages, accounts, and transfers. Do not delete them",
+        "Note the place and whether CCTV is likely",
+        "For counseling call 117. To report, call 112"
+      ],
+      "policeTip": "Hidden filming and stalking are crimes. If Korean is hard, still call 112 and use the Show Police sentences."
+    },
+    "drugs": {
+      "title": "Drug crime",
+      "short": "Do not carry unknown packages",
+      "banner": "Do not carry or store a package if you do not know what is inside.",
+      "what": "Korea punishes drug crime strictly, including cannabis. “It’s OK in Korea,” “it’s a health product,” or “it’s just an errand” can be lies. Even receiving or carrying an unknown parcel can lead to an investigation.",
+      "examples": [
+        {
+          "lines": [
+            "💬 “Receive my parcel. I’ll pay you.”",
+            "💬 “Just hand this bag to someone on the subway.”",
+            "🎉 “Take this at the party. You’ll feel good. It’s fine in Korea.”"
+          ],
+          "stop": "STOP. If you do not know the contents, do not take it. Cannabis is illegal in Korea.",
+          "dont": [
+            "Do not receive, carry, or store it",
+            "Do not take unknown pills or powder"
+          ],
+          "do": [
+            "Refuse",
+            "If you already have it, do not open it. Call 112"
+          ]
+        }
+      ],
+      "warningSigns": [
+        "receive a parcel for someone",
+        "high pay for a simple delivery",
+        "they will not say what it is",
+        "party drugs",
+        "receive overseas mail for someone"
+      ],
+      "dont": [
+        "Do not receive international mail or parcels for a stranger",
+        "Do not carry a bag or box if you do not know the contents",
+        "Do not take unknown drugs at a party",
+        "Do not buy or fetch drugs for someone on SNS"
+      ],
+      "actions": [
+        "If you already received a suspicious item, do not open it",
+        "Tell 112 the facts",
+        "Keep the chat with the person who asked you"
+      ],
+      "policeTip": "Drug crime can end your studies and lead to deportation. Even a friend’s request should be refused if you do not know the contents."
+    }
+  },
+  "embassy": {
+    "title": "Ask your embassy for help",
+    "lead": "If a crime is happening in Korea, call 112 before the embassy. Missions can help with passports, detention, family contact, and lawyer information.",
+    "first112": "If you are in danger or a crime happened, call 112. An embassy does not replace Korean police.",
+    "can": "What your mission can often do",
+    "cannot": "What they usually cannot do",
+    "canItems": [
+      "Help replace a lost or damaged passport",
+      "Notify family and visit if you are arrested",
+      "Share information about local lawyers and interpreters",
+      "Explain how to reach a hospital or police station"
+    ],
+    "cannotItems": [
+      "They cannot stop a Korean police investigation or trial",
+      "They do not pay fines or bail for you",
+      "They often cannot pay hotel or living costs",
+      "Emergency dispatch is 112 and 119"
+    ],
+    "website": "Open official website",
+    "findOthers": "Find other missions on the Korean Ministry of Foreign Affairs site.",
+    "hours": {
+      "24h": "24 hours",
+      "weekday": "Weekday office hours",
+      "after-hours": "After hours (home MFA)"
+    },
+    "missions": {
+      "cn": {
+        "name": "Chinese Embassy / 12308 consular protection",
+        "help": "For Chinese nationals. From Korea you can call China’s 24-hour consular hotline +86-10-12308.",
+        "warn": "If 12308 calls you first and asks for money or a “safe account,” it is a scam. Hang up and dial the number yourself. In danger in Korea, call 112.",
+        "phones": {
+          "12308": "China MFA consular protection hotline",
+          "12308b": "12308 backup number"
+        }
+      },
+      "th": {
+        "name": "Royal Thai Embassy in Seoul",
+        "help": "For Thai nationals. Call the Hannam-dong mission for passports and consular protection.",
+        "phones": {
+          "main": "Embassy switchboard",
+          "consular": "Consular section"
+        }
+      },
+      "vn": {
+        "name": "Embassy of Vietnam in Seoul",
+        "help": "For Vietnamese nationals. Call the main number and ask for consular protection.",
+        "phones": {
+          "main": "Embassy switchboard"
+        }
+      },
+      "my": {
+        "name": "Embassy of Malaysia in Seoul",
+        "help": "For Malaysian nationals. Seoul mission plus Malaysia MFA duty numbers.",
+        "phones": {
+          "main": "Embassy in Seoul",
+          "hq": "Malaysia MFA helpline",
+          "duty": "MFA after-hours duty officer"
+        }
+      },
+      "us": {
+        "name": "U.S. Embassy in Seoul",
+        "help": "For U.S. citizens. Other English-speaking nationals should use their own embassy website.",
+        "phones": {
+          "emergency": "U.S. citizen emergency help"
+        }
+      }
+    }
+  }
+}
