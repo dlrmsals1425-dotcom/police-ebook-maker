@@ -258,40 +258,45 @@
 
 /* ——— COVER ——— */
 .cover-top {
-  background: linear-gradient(165deg, var(--navy-800) 0%, var(--navy-950) 70%);
+  background: #0b1f3a;
   color: #fff;
-  padding: 18mm 16mm 14mm;
+  padding: 14mm 16mm 16mm;
   position: relative;
   overflow: hidden;
-  flex: 1.35 1 0;
+  flex: 1.55 1 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
+}
+
+.cover-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  z-index: 0;
 }
 
 .cover-top::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
-    repeating-linear-gradient(
-      -18deg,
-      transparent 0 18px,
-      rgba(255, 255, 255, 0.018) 18px 19px
+    linear-gradient(
+      to top,
+      rgba(7, 18, 33, 0.94) 0%,
+      rgba(7, 18, 33, 0.55) 38%,
+      rgba(7, 18, 33, 0.18) 70%,
+      rgba(7, 18, 33, 0.08) 100%
     );
   pointer-events: none;
 }
 
 .cover-top::after {
-  content: "";
-  position: absolute;
-  right: -30mm;
-  top: -20mm;
-  width: 140mm;
-  height: 140mm;
-  border: 1px solid rgba(212, 188, 106, 0.22);
-  transform: rotate(18deg);
-  pointer-events: none;
+  display: none;
 }
 
 .cover-brand {
@@ -299,7 +304,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .cover-badge {
@@ -325,25 +330,25 @@
   height: 48px;
   color: var(--gold-soft);
   margin: auto 0 8mm;
-  z-index: 1;
+  z-index: 2;
 }
 
 .cover-emblem {
-  width: 42mm;
-  height: 42mm;
+  width: 28mm;
+  height: 28mm;
   object-fit: contain;
   border-radius: 50%;
   background: #fff;
-  margin: auto 0 9mm;
-  z-index: 1;
+  margin: auto 0 8mm;
+  z-index: 2;
   align-self: flex-start;
   box-shadow:
-    0 0 0 3px rgba(212, 188, 106, 0.7),
-    0 14px 36px rgba(0, 0, 0, 0.28);
+    0 0 0 2px rgba(212, 188, 106, 0.85),
+    0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
 .cover-kicker {
-  z-index: 1;
+  z-index: 2;
   font-size: 13px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -353,7 +358,7 @@
 }
 
 .cover-title {
-  z-index: 1;
+  z-index: 2;
   margin: 0;
   font-size: var(--fs-cover);
   font-weight: 800;
@@ -363,7 +368,7 @@
 }
 
 .cover-sub {
-  z-index: 1;
+  z-index: 2;
   margin: 12px 0 0;
   font-size: 18px;
   color: #c5d4e4;

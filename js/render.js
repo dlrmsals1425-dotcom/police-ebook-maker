@@ -350,6 +350,11 @@
     );
   }
 
+  function coverPhotoHtml() {
+    if (!EB.COVER_PHOTO) return "";
+    return '<img class="cover-photo" src="' + EB.COVER_PHOTO + '" alt="고양경찰서 전경">';
+  }
+
   function renderCover(project, page, opts) {
     const m = project.meta;
     const ed = editableAttr(opts);
@@ -358,6 +363,7 @@
       page.id +
       '">' +
       '<div class="cover-top">' +
+      coverPhotoHtml() +
       '<div class="cover-brand"><div class="cover-badge">내부 교육자료</div>' +
       '<div class="cover-org">고양경찰서</div></div>' +
       coverEmblemHtml() +
