@@ -131,15 +131,17 @@
 .page-body .blk:has(.dodont),
 .page-body .blk:has(.law-card),
 .page-body .blk:has(.check-group) {
-  flex: 1 1 auto;
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-height: min-content;
 }
 
 .page-end {
   flex: 0 0 auto;
   margin-top: 5mm;
+  position: relative;
+  z-index: 2;
 }
 
 .page-footer {
@@ -632,11 +634,11 @@
 .flow {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 8px;
   padding-left: 4px;
-  flex: 1;
-  justify-content: space-between;
-  min-height: 0;
+  flex: 1 0 auto;
+  justify-content: flex-start;
+  min-height: min-content;
 }
 
 .flow-step {
@@ -644,8 +646,9 @@
   grid-template-columns: 32px 1fr;
   gap: 12px;
   position: relative;
-  flex: 1 1 auto;
-  min-height: 0;
+  flex: 1 0 auto;
+  min-height: min-content;
+  align-items: start;
 }
 
 .flow-rail {
@@ -692,11 +695,13 @@
   background: #fff;
   border: 1px solid var(--line);
   padding: 8px 14px 10px;
-  margin-bottom: 4px;
-  flex: 1;
+  margin-bottom: 0;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  min-height: min-content;
+  overflow: hidden;
 }
 
 .flow-card .lab {
@@ -721,6 +726,7 @@
 .flow-card .txt {
   font-size: 15.5px;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 /* ——— DO / DON'T ——— */
@@ -728,8 +734,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  flex: 1;
-  min-height: 0;
+  flex: 1 0 auto;
+  min-height: min-content;
 }
 
 .col-do,
@@ -737,7 +743,7 @@
   border: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-height: min-content;
 }
 
 .col-do { background: var(--do-bg); }
@@ -774,17 +780,17 @@
 .check-group {
   margin-bottom: 0;
   border: 1px solid var(--line);
-  flex: 1;
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-height: min-content;
   background: #fff;
 }
 
 .page-body .blk {
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-height: min-content;
 }
 
 .check-group h3 {
@@ -841,10 +847,10 @@
   border: 1px solid #e2d6be;
   background: var(--law-bg);
   padding: 14px 16px;
-  flex: 1;
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-height: min-content;
 }
 
 .law-name {
